@@ -86,4 +86,12 @@ public class Day3 {
             }
         }
     }
+    public static void practiceForLoop(int x){
+
+        for (int i = 1; i < x; i++){
+            int mul = x * i;
+            System.out.println(x + " x " + i + " = " + mul);
+        }
+    }
+
 }
