@@ -1,6 +1,5 @@
 /*
- * 
- * Given an integer array nums, find the 
+ Given an integer array nums, find the 
 subarray
  with the largest sum, and return its sum.
 
@@ -30,7 +29,7 @@ Constraints:
  
 
 Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
- * 
+ 
  */
 
 
@@ -40,7 +39,7 @@ class Solution {
         int curr = nums[0];
         int max = nums[0];
         for(int i = 1; i< nums.length; i++){
-            curr = Math.max(nums[i], nums[i] + curr);
+            curr = Math.max(nums[i], nums[i] + curr); //check for the highest nuber
             max = Math.max(max, curr);
         }
         return max;
