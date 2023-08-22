@@ -1,4 +1,4 @@
-# LEARN DSA WITH ME [HERE WITH HANDS ON PRACTICAL](https://neetcode.io/practice)
+# LEARN DATA STRUCTURE [HERE WITH HANDS ON PRACTICAL](https://neetcode.io/practice)
 # [AWESOME BOOK](https://github.com/Innocentsax/JAVA_BEGINNERS_ROADMAP_RESOURCES/blob/main/JAVA%20-%20Coding%20Interview%20QnA_221125_185006.pdf)
 Data Structure and  Algorithm in Java
 
