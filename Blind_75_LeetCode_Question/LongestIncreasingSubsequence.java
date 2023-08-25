@@ -14,8 +14,6 @@ Example 3:
 
 Input: nums = [7,7,7,7,7,7,7]
 Output: 1
- 
-
 Constraints:
 
 1 <= nums.length <= 2500
