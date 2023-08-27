@@ -21,7 +21,7 @@ A LinkedList is a data structure in which elements are stored as nodes, and each
 ### 4. Stack:
 A Stack is a Last-In-First-Out (LIFO) data structure that allows elements to be added and removed only from one end (the top). It is commonly used for implementing undo functionality and solving problems involving recursion.
 
-5. Queue:
+### 5. Queue:
 A Queue is a First-In-First-Out (FIFO) data structure that allows elements to be added at the rear and removed from the front. It is useful for solving problems like BFS (Breadth-First Search).
 
 6. HashMap:
