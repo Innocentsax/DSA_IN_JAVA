@@ -24,7 +24,7 @@ A Stack is a Last-In-First-Out (LIFO) data structure that allows elements to be 
 ### 5. Queue:
 A Queue is a First-In-First-Out (FIFO) data structure that allows elements to be added at the rear and removed from the front. It is useful for solving problems like BFS (Breadth-First Search).
 
-6. HashMap:
+### 6. HashMap:
 A HashMap is an implementation of a hash table, which allows for fast retrieval of values based on their keys. It provides constant-time average-case complexity for common operations like get and put.
 
 
