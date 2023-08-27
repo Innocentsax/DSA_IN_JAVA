@@ -7,6 +7,8 @@ Data Structure and  Algorithm in Java
 
 In Java, there are various data structures and algorithms that you can use to solve a wide range of problems efficiently. Here's a brief overview of some commonly used data structures and algorithms in Java:
 
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG89EvymW_oARDLObo8u18xNOqOR_r9naJqw&usqp=CAU">
+
 1. Arrays:
 Arrays are the simplest data structures in Java and provide a way to store a collection of elements of the same type. They offer constant-time access to elements based on their index.
 
