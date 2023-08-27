@@ -18,7 +18,7 @@ An ArrayList is a dynamic array implementation that automatically resizes itself
 ### 3. LinkedList:
 A LinkedList is a data structure in which elements are stored as nodes, and each node contains a reference to the next node in the sequence. It allows for efficient insertions and deletions but requires linear-time access to elements.
 
-4. Stack:
+### 4. Stack:
 A Stack is a Last-In-First-Out (LIFO) data structure that allows elements to be added and removed only from one end (the top). It is commonly used for implementing undo functionality and solving problems involving recursion.
 
 5. Queue:
