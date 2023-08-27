@@ -3,7 +3,7 @@
 Data Structure and  Algorithm in Java
 
 
-<img src="https://www.tutorialspoint.com/dsa_using_java/images/dsa-using-java-mini-logo.jpg" height="400" width="1000">
+<img src="https://www.tutorialspoint.com/dsa_using_java/images/dsa-using-java-mini-logo.jpg" height="400" width="100">
 
 In Java, there are various data structures and algorithms that you can use to solve a wide range of problems efficiently. Here's a brief overview of some commonly used data structures and algorithms in Java:
 
