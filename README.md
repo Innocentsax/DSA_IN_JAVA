@@ -15,7 +15,7 @@ Arrays are the simplest data structures in Java and provide a way to store a col
 ### 2. ArrayList:
 An ArrayList is a dynamic array implementation that automatically resizes itself as elements are added or removed. It is part of the Java Collections Framework and provides various methods for manipulating the list of elements.
 
-3. LinkedList:
+### 3. LinkedList:
 A LinkedList is a data structure in which elements are stored as nodes, and each node contains a reference to the next node in the sequence. It allows for efficient insertions and deletions but requires linear-time access to elements.
 
 4. Stack:
