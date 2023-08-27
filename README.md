@@ -12,7 +12,7 @@ In Java, there are various data structures and algorithms that you can use to so
 ### 1. Arrays:
 Arrays are the simplest data structures in Java and provide a way to store a collection of elements of the same type. They offer constant-time access to elements based on their index.
 
-2. ArrayList:
+### 2. ArrayList:
 An ArrayList is a dynamic array implementation that automatically resizes itself as elements are added or removed. It is part of the Java Collections Framework and provides various methods for manipulating the list of elements.
 
 3. LinkedList:
