@@ -64,3 +64,41 @@ class Challenge {
         return maxLaptops;
     }
 }
+
+//TEST
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.List;
+import java.util.Arrays;
+public class LaptopRentalsTests {
+  @Test
+  public void example1() {
+    Integer expected0 = 3;
+    Integer actual0 = Challenge.laptopRentals(Arrays.asList(Arrays.asList(0,2),Arrays.asList(1,4),Arrays.asList(4,6),Arrays.asList(0,4),Arrays.asList(7,8),Arrays.asList(9,11),Arrays.asList(3,10)));
+    assertEquals(expected0, actual0);
+  }
+  @Test
+  public void example2() {
+    Integer expected0 = 4;
+    Integer actual0 = Challenge.laptopRentals(Arrays.asList(Arrays.asList(0,4),Arrays.asList(2,3),Arrays.asList(2,3),Arrays.asList(2,3)));
+    assertEquals(expected0, actual0);
+  }
+  @Test
+  public void example3() {
+    Integer expected0 = 1;
+    Integer actual0 = Challenge.laptopRentals(Arrays.asList(Arrays.asList(1,5),Arrays.asList(5,6),Arrays.asList(6,7),Arrays.asList(7,9)));
+    assertEquals(expected0, actual0);
+  }
+  @Test
+  public void example4() {
+    Integer expected0 = 1;
+    Integer actual0 = Challenge.laptopRentals(Arrays.asList(Arrays.asList(0,4)));
+    assertEquals(expected0, actual0);
+  }
+  @Test
+  public void example5() {
+    Integer expected0 = 0;
+    Integer actual0 = Challenge.laptopRentals(Arrays.asList(Arrays.asList()));
+    assertEquals(expected0, actual0);
+  }
+}
