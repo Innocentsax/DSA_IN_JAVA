@@ -136,3 +136,153 @@ class Program {
         }
     }
 }
+
+
+======> Test =======
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import java.util.*;
+
+public class ProgramTest {
+  @Test
+  public void TestCase1() {
+    Program.LRUCache lruCache = new Program.LRUCache(3);
+
+    lruCache.insertKeyValuePair("b", 2);
+    lruCache.insertKeyValuePair("a", 1);
+    lruCache.insertKeyValuePair("c", 3);
+
+    assertTrue(lruCache.getMostRecentKey() == "c");
+    assertTrue(lruCache.getValueFromKey("a").value == 1);
+    assertTrue(lruCache.getMostRecentKey() == "a");
+
+    lruCache.insertKeyValuePair("d", 4);
+
+    var evictedValue = lruCache.getValueFromKey("b");
+
+    assertTrue(evictedValue == null || evictedValue.found == false);
+
+    lruCache.insertKeyValuePair("a", 5);
+
+    assertTrue(lruCache.getValueFromKey("a").value == 5);
+  }
+  
+  @Test
+  public void TestCase2() {
+    Program.LRUCache lruCache = new Program.LRUCache(1);
+
+    assertTrue(lruCache.getValueFromKey("a").found == false);
+
+    lruCache.insertKeyValuePair("a", 1);
+
+    assertTrue(lruCache.getValueFromKey("a").value == 1);
+
+    lruCache.insertKeyValuePair("a", 9001);
+
+    assertTrue(lruCache.getValueFromKey("a").value == 9001);
+
+    lruCache.insertKeyValuePair("b", 2);
+
+    assertTrue(lruCache.getValueFromKey("a").value == null);
+    assertTrue(lruCache.getValueFromKey("b").value == 2);
+
+    lruCache.insertKeyValuePair("c", 3);
+
+    assertTrue(lruCache.getValueFromKey("a").value == null);
+    assertTrue(lruCache.getValueFromKey("b").value == null);
+    assertTrue(lruCache.getValueFromKey("c").value == 3);
+  }
+
+  @Test
+  public void TestCase3() {
+    Program.LRUCache lruCache = new Program.LRUCache(4);
+
+    lruCache.insertKeyValuePair("a", 1);
+    lruCache.insertKeyValuePair("b", 2);
+    lruCache.insertKeyValuePair("c", 3);
+    lruCache.insertKeyValuePair("d", 4);
+
+    assertTrue(lruCache.getValueFromKey("a").value == 1);
+    assertTrue(lruCache.getValueFromKey("b").value == 2);
+    assertTrue(lruCache.getValueFromKey("c").value == 3);
+    assertTrue(lruCache.getValueFromKey("d").value == 4);
+
+    lruCache.insertKeyValuePair("e", 5);
+
+    assertTrue(lruCache.getValueFromKey("a").found == false);
+    assertTrue(lruCache.getValueFromKey("b").value == 2);
+    assertTrue(lruCache.getValueFromKey("c").value == 3);
+    assertTrue(lruCache.getValueFromKey("d").value == 4);
+    assertTrue(lruCache.getValueFromKey("e").value == 5);
+  }
+
+  @Test
+  public void TestCase4() {
+    Program.LRUCache lruCache = new Program.LRUCache(4);
+
+    lruCache.insertKeyValuePair("a", 1);
+
+    assertTrue(lruCache.getMostRecentKey() == "a");
+
+    lruCache.insertKeyValuePair("b", 2);
+
+    assertTrue(lruCache.getMostRecentKey() == "b");
+
+    lruCache.insertKeyValuePair("c", 3);
+
+    assertTrue(lruCache.getMostRecentKey() == "c");
+
+    lruCache.insertKeyValuePair("d", 4);
+
+    assertTrue(lruCache.getMostRecentKey() == "d");
+
+    assertTrue(lruCache.getValueFromKey("a").value == 1);
+    assertTrue(lruCache.getMostRecentKey() == "a");
+
+    assertTrue(lruCache.getValueFromKey("b").value == 2);
+    assertTrue(lruCache.getMostRecentKey() == "b");
+
+    assertTrue(lruCache.getValueFromKey("c").value == 3);
+    assertTrue(lruCache.getMostRecentKey() == "c");
+
+    assertTrue(lruCache.getValueFromKey("d").value == 4);
+    assertTrue(lruCache.getMostRecentKey() == "d");
+
+    lruCache.insertKeyValuePair("e", 5);
+
+    assertTrue(lruCache.getMostRecentKey() == "e");
+  }
+
+  @Test
+  public void TestCase5() {
+    Program.LRUCache lruCache = new Program.LRUCache(4);
+
+    lruCache.insertKeyValuePair("a", 1);
+    lruCache.insertKeyValuePair("b", 2);
+    lruCache.insertKeyValuePair("c", 3);
+    lruCache.insertKeyValuePair("d", 4);
+
+    assertTrue(lruCache.getValueFromKey("a").value == 1);
+
+    lruCache.insertKeyValuePair("e", 5);
+
+    assertTrue(lruCache.getValueFromKey("a").value == 1);
+    assertTrue(lruCache.getValueFromKey("b").found == false);
+    assertTrue(lruCache.getValueFromKey("c").value == 3);
+
+    lruCache.insertKeyValuePair("f", 5);
+
+    assertTrue(lruCache.getValueFromKey("c").value == 3);
+    assertTrue(lruCache.getValueFromKey("d").found == false);
+
+    lruCache.insertKeyValuePair("g", 5);
+
+    assertTrue(lruCache.getValueFromKey("e").found == false);
+    assertTrue(lruCache.getValueFromKey("a").value == 1);
+    assertTrue(lruCache.getValueFromKey("c").value == 3);
+    assertTrue(lruCache.getValueFromKey("f").value == 5);
+    assertTrue(lruCache.getValueFromKey("g").value == 5);
+  }
+}
