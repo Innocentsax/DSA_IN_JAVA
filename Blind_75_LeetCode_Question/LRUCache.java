@@ -18,8 +18,11 @@ key-value pair should be evicted from
 the cache and no longer retrievable; the newly added key-value 
 pair should effectively replace it.
 
-Note that inserting a key-value pair with an already existing key should simply replace the key's 
-value in the cache with the new value and shouldn't evict a key-value pair if the cache is full. Lastly, attempting to retrieve a value from a key that isn't in the cache should return None / null.
+Note that inserting a key-value pair with an already existing key should 
+simply replace the key's 
+value in the cache with the new value and shouldn't evict a key-value pair 
+if the cache is full. Lastly, attempting to retrieve a value from a key 
+that isn't in the cache should return None / null.
 
 Sample Usage
 // All operations below are performed sequentially.
@@ -30,9 +33,11 @@ insertKeyValuePair("c", 3): -
 getMostRecentKey(): "c" // "c" was the most recently inserted key
 getValueFromKey("a"): 1
 getMostRecentKey(): "a" // "a" was the most recently retrieved key
-insertKeyValuePair("d", 4): - // the cache had 3 entries; the least recently used one is evicted
+insertKeyValuePair("d", 4): - // the cache had 3 entries; the least recently 
+used one is evicted
 getValueFromKey("b"): None // "b" was evicted in the previous operation
-insertKeyValuePair("a", 5): - // "a" already exists in the cache so its value just gets replaced
+insertKeyValuePair("a", 5): - // "a" already exists in the cache so its 
+value just gets replaced
 getValueFromKey("a"): 5
 */
 
