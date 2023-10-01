@@ -7,8 +7,8 @@ import java.util.Set;
 // least twice in the array, and return false if every element is distinct.
 public class ContainDuplicate {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 1};
-        System.out.println(containDuplicate(nums));
+        int[] nums = {1, 2, 3, 4};
+        System.out.println(containDuplicate2(nums));
     }
 
     //Time complexity O(n) and Space complexity O(n)
@@ -23,7 +23,13 @@ public class ContainDuplicate {
     }
 
     public static boolean containDuplicate2(int[] nums){
-
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length ; j++) {
+                if(nums[i] == nums[j]){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 }
