@@ -1,4 +1,4 @@
-package dev.Innocent;
+package dev.Innocent.Intro;
 
 import java.util.Scanner;
 

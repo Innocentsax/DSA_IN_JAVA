@@ -1,4 +1,4 @@
-package dev.Innocent;
+package dev.Innocent.Intro;
 
 public class CountNumber {
     // Q. How many numbers of 5 appears in this list
