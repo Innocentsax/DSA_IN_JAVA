@@ -54,7 +54,7 @@ public class EvenDigits {
         int count = 0; // Initialize a counter variable to keep track of the count of numbers with even number of digits
         for (int i = 0; i < nums.length; i++) {// Iterate through each element of the nums array using a normal for loop
             // Check if the current number nums[i] has an even number of digits
-            if(nums[i] >= 10 && nums[i] < 100 || nums[i] >= 1000 && nums[i] < 9999 || nums[i] == 100000){
+            if(nums[i] >= 10 && nums[i] < 100 || nums[i] >= 1000 && nums[i] <= 9999 || nums[i] == 100000){
                 count++; // If the number of digits is even, increment the counter
             }
         }
