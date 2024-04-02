@@ -1,4 +1,4 @@
-package dev.Innocent.BubbleSort;
+package dev.Innocent.SortingArrays;
 
 import java.util.Arrays;
 
