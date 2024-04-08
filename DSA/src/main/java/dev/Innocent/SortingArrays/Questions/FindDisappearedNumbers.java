@@ -1,7 +1,6 @@
 package dev.Innocent.SortingArrays.Questions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 // https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
