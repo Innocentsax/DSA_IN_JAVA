@@ -1,12 +1,15 @@
 package dev.Innocent.SortingArrays.Questions;
 
+import java.util.Arrays;
+
 // https://leetcode.com/problems/first-missing-positive/
 // Amazon
 class SmallestPositiveInteger {
     public static void main(String[] args) {
-
+        int[] arr = {2, 3, 1, 56, 7};
+        System.out.println(firstMissingPositive(arr));
     }
-    public int firstMissingPositive(int[] nums) {
+    public static int firstMissingPositive(int[] nums) {
         int i = 0;
         while(i < nums.length){
             int correct = nums[i] - 1;
