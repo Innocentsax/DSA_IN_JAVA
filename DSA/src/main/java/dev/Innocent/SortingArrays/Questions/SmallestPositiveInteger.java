@@ -7,6 +7,7 @@ import java.util.Arrays;
 class SmallestPositiveInteger {
     public static void main(String[] args) {
         int[] arr = {2, 3, 1, 56, 7};
+        Arrays.toString(arr);
         System.out.println(firstMissingPositive(arr));
     }
     public static int firstMissingPositive(int[] nums) {
