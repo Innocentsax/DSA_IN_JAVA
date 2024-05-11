@@ -23,10 +23,10 @@ class CountMatches {
     public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
         int searchIndex = 0;
         int count = 0;
-        if(ruleKey == "color"){
+        if(ruleKey.equals("color")){
             searchIndex = 1;
         }
-        if(ruleKey == "name"){
+        if(ruleKey.equals("name")){
             searchIndex = 2;
         }
         for (int i = 0; i < items.size(); i++) {
