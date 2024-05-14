@@ -2,9 +2,11 @@ package dev.Innocent.Assignment.Arrays;
 // https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/
 class OddCells {
     public static void main(String[] args) {
-
+        int m = 2, n = 3;
+        int[][] indices = {{0,1},{1,1}};
+        System.out.println(oddCells(m, n, indices));
     }
-    public int oddCells(int m, int n, int[][] indices) {
+    public static int oddCells(int m, int n, int[][] indices) {
         // Initialize matrix with all Zeros
         int[][] matrix = new int[m][n];
 
