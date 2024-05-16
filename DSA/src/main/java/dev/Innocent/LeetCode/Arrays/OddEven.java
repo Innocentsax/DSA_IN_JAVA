@@ -1,4 +1,4 @@
-package dev.Innocent.Assignment.Arrays;
+package dev.Innocent.LeetCode.Arrays;
 
 public class OddEven {
     public static void main(String[] args) {
