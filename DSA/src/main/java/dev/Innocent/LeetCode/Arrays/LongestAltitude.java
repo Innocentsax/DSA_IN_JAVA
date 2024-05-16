@@ -1,4 +1,4 @@
-package dev.Innocent.Assignment.Arrays;
+package dev.Innocent.LeetCode.Arrays;
 
 
 // https://leetcode.com/problems/find-the-highest-altitude/description/
