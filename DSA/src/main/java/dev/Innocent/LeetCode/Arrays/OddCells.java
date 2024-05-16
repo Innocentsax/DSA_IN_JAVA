@@ -1,4 +1,4 @@
-package dev.Innocent.Assignment.Arrays;
+package dev.Innocent.LeetCode.Arrays;
 // https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/
 class OddCells {
     public static void main(String[] args) {
