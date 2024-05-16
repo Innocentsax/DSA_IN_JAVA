@@ -1,4 +1,4 @@
-package dev.Innocent.Assignment.Arrays;
+package dev.Innocent.LeetCode.Arrays;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
