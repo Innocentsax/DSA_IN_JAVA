@@ -3,9 +3,13 @@ package dev.Innocent.LeetCode.Arrays;
 // https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/
 class FindRotation {
     public static void main(String[] args) {
-
+       int[][] mat = {{0,1},{1,0}};
+       int[][] target = {{1,0},{0,1}};
+        System.out.println(findRotation(mat, target));
     }
-    public boolean findRotation(int[][] mat, int[][] target) {
+
+    // Don't pass all test
+    public static boolean findRotation(int[][] mat, int[][] target) {
         if(areMatricsEqual(mat, target)){
             return true;
         }
@@ -20,7 +24,7 @@ class FindRotation {
     }
 
     // This method is to rotate the matrix in 90 degree
-    private int[][] rotate90DegreeClockwise(int[][] mat) {
+    private static int[][] rotate90DegreeClockwise(int[][] mat) {
         int n = mat.length;
         int[][] rotated = new int[n][n];
 
@@ -33,7 +37,7 @@ class FindRotation {
     }
 
     // This method is to check if the two matrices are equal
-    private boolean areMatricsEqual(int[][] mat, int[][] target) {
+    private static boolean areMatricsEqual(int[][] mat, int[][] target) {
         int n = mat.length;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -43,5 +47,9 @@ class FindRotation {
             }
         }
         return true;
+    }
+
+    public static boolean findRotation1(int[][] mat, int[][] target){
+
     }
 }
