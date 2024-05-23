@@ -6,6 +6,6 @@ class SumZero {
 
     }
     public int[] sumZero(int n) {
-        
+        return new int[n];
     }
 }
