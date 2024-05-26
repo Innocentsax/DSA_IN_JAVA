@@ -6,9 +6,10 @@ import java.util.List;
 // https://leetcode.com/problems/lucky-numbers-in-a-matrix/
 class LuckyNumber {
     public static void main(String[] args) {
-
+        int[][] matrix = {{3,7,8},{9,11,13},{15,16,17}};
+        System.out.println(luckyNumbers(matrix));
     }
-    public List<Integer> luckyNumbers (int[][] matrix) {
+    public static List<Integer> luckyNumbers (int[][] matrix) {
         List<Integer> luckyNum = new ArrayList<>();
 
         for (int i = 0; i < matrix.length; i++) {
