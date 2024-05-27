@@ -12,26 +12,26 @@ class LuckyNumber {
     public static List<Integer> luckyNumbers (int[][] matrix) {
         List<Integer> luckyNum = new ArrayList<>();
 
-        for (int i = 0; i < matrix.length; i++) {
+        for (int[] ints : matrix) {
             int minNum = Integer.MAX_VALUE;
             int col = 0;
 
-            for (int j = 0; j < matrix[i].length; j++) {
-                if(minNum > matrix[i][j]){
-                    minNum = matrix[i][j]; // This gives the minimum element in that array
+            for (int j = 0; j < ints.length; j++) {
+                if (minNum > ints[j]) {
+                    minNum = ints[j]; // This gives the minimum element in that array
                     col = j;
                 }
             }
 
             boolean isTrue = true;
-            for (int j = 0; j < matrix.length; j++) {
-                if(matrix[i][col] < matrix[j][col]){
+            for (int[] value : matrix) {
+                if (ints[col] < value[col]) {
                     isTrue = false;
                     break;
                 }
             }
-            if(isTrue){
-                luckyNum.add(matrix[i][col]);
+            if (isTrue) {
+                luckyNum.add(ints[col]);
             }
         }
         return luckyNum;
