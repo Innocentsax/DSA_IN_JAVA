@@ -1,10 +1,16 @@
 package dev.Innocent.LeetCode.Arrays;
 
+
+import java.util.Arrays;
+
+// https://leetcode.com/problems/reshape-the-matrix/description/
 class MatrixReshape {
     public static void main(String[] args) {
-
+        int[][] mat = {{1,2},{3,4}};
+        int r = 1, c = 4;
+        System.out.println(Arrays.deepToString(matrixReshape(mat, r, c)));
     }
-    public int[][] matrixReshape(int[][] mat, int r, int c) {
+    public static int[][] matrixReshape(int[][] mat, int r, int c) {
         // Count the number of pieces
         int m = mat.length; // Number of row in the original Matrix
         int n = mat[0].length; // Number of col in the original matrix
