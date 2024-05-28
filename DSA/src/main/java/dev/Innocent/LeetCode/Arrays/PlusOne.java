@@ -2,6 +2,7 @@ package dev.Innocent.LeetCode.Arrays;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/plus-one/description/
 class PlusOne {
     public static void main(String[] args) {
         int[] digits = {1,2,3};
