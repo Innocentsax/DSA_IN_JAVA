@@ -1,5 +1,6 @@
 package dev.Innocent.LeetCode.Arrays;
 
+// https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position/description/
 class MinCostToMoveChips {
     public static void main(String[] args) {
         int[] position = {1,2,3};
