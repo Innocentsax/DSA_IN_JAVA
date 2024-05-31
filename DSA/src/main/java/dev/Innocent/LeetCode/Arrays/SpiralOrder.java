@@ -1,12 +1,13 @@
 package dev.Innocent.LeetCode.Arrays;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class SpiralOrder {
     public static void main(String[] args) {
         int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
-        System.out.println(spiralOrder(matrix));
+        System.out.println(spiralOrder1(matrix));
     }
 
     // I tried but i didn't pass all the test cases 👀
@@ -49,5 +50,68 @@ class SpiralOrder {
             }
         }
         return result;
+    }
+
+    // This method passes all the test cases
+    public static List<Integer> spiralOrder1(int[][] matrix){
+        boolean[][] visited = new boolean[matrix.length][matrix[0].length];
+        for(boolean[] sub : visited){
+            Arrays.fill(sub, false);
+        }
+        List<Integer> result = new ArrayList<>();
+
+        int m = matrix[0].length;
+        int n = matrix.length;
+        right(0,0,matrix,result,visited);
+        return result;
+    }
+    private static void right(int i, int j, int[][] matrix,
+                              List<Integer> temp, boolean[][] visited) {
+        while(j < matrix[0].length && !visited[i][j]){
+            temp.add(matrix[i][j]);
+            visited[i][j] = true;
+            j++;
+        }
+        if(i + 1 < matrix.length && !visited[i + 1][j - 1]){
+            down(i + 1, j - 1, matrix, temp, visited);
+        }
+    }
+    public static void down(int i,int j,int[][] matrix,
+                            List<Integer> temp,boolean[][] visited)
+    {
+        while(i<matrix.length && !visited[i][j])
+        {
+            temp.add(matrix[i][j]);
+            visited[i][j]=true;
+            i++;
+        }
+        if (j - 1 >= 0 && !visited[i - 1][j - 1]) {
+            left(i - 1, j - 1, matrix, temp, visited);
+        }
+    }
+    public static void left(int i,int j,int[][] matrix,
+                            List<Integer> temp,boolean[][] visited)
+    {
+        while(j>=0 && !visited[i][j])
+        {
+            temp.add(matrix[i][j]);
+            visited[i][j]=true;
+            j--;
+        }
+        if (i - 1 >= 0 && !visited[i - 1][j + 1]) {
+            up(i - 1, j + 1, matrix, temp, visited);
+        }
+    }
+    public static void up(int i,int j,int[][] matrix,
+                          List<Integer> temp,boolean[][] visited)
+    {
+        while (i >= 0 && !visited[i][j]) {
+            temp.add(matrix[i][j]);
+            visited[i][j] = true;
+            i--;
+        }
+        if (j + 1 < matrix[0].length && !visited[i + 1][j + 1]) {
+            right(i + 1, j + 1, matrix, temp, visited);
+        }
     }
 }
