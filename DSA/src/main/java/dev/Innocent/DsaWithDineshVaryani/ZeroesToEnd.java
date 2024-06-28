@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class ZeroesToEnd {
     public static void main(String[] args) {
         int[] arr = {8, 1, 0, 2, 1, 0, 3};
-        System.out.println(Arrays.toString(zeroesToEnd(arr)));
+        System.out.println(Arrays.toString(zerosAtEnd(arr, 7)));
     }
 
     public static int[] zeroesToEnd(int[] arr){
@@ -21,6 +21,22 @@ public class ZeroesToEnd {
             }
             if(arr[checkIfNumberIsZero] != 0){
                 checkIfNumberIsZero++;
+            }
+        }
+        return arr;
+    }
+
+    public static int[] zerosAtEnd(int[] arr, int n){
+        int j = 0; // Focus on numbers that are Zeros
+        for(int i = 0; i < n; i++){ // Focus on numbers that are not Zeros
+            if (arr[i] != 0 && arr[j] == 0) { // If this is all true
+                // Perform a swap
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+            if(arr[j] != 0){
+                j++;
             }
         }
         return arr;
