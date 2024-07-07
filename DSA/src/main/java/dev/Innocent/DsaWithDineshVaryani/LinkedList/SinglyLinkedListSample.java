@@ -15,6 +15,9 @@ public class SinglyLinkedListSample {
 
     public static void main(String[] args) {
         SinglyLinkedListSample sll = new SinglyLinkedListSample();
+        sll.insectNode(45);
+        sll.insectNode(34);
+        sll.insectNode(2);
 //        head = new ListNode(10);
 //        ListNode second = new ListNode(1);
 //        ListNode third = new ListNode(8);
@@ -25,22 +28,20 @@ public class SinglyLinkedListSample {
 //        second.next = third;
 //        third.next = fourth;
 
+//         Print it on the console
+        ListNode current = head;
+        while(current != null){
+            int result = current.data;
+            System.out.print(result + " ---> ");
+            current = current.next;
+        }
+        System.out.println("null");
 
-        // Print it on the console
-//        ListNode current = head;
-//        while(current != null){
-//            int result = current.data;
-//            System.out.print(result + " ---> ");
-//            current = current.next;
-//        }
-//        System.out.println("null");
-
-//        System.out.println("Length is " + current.data);
 
     }
 
     // How to find the Length of a Singly Linked List
-    private static int LengthOfSinglyLinkedList(){
+    private int LengthOfSinglyLinkedList(){
         if(head == null){
             return 0;
         }
@@ -51,5 +52,11 @@ public class SinglyLinkedListSample {
             current = current.next;
         }
         return count;
+    }
+
+    private void insectNode(int value){
+        ListNode newNode = new ListNode(value);
+        newNode.next = head;
+        head = newNode;
     }
 }
