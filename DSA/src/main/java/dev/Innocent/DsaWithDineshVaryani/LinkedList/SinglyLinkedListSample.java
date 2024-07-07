@@ -14,25 +14,42 @@ public class SinglyLinkedListSample {
     }
 
     public static void main(String[] args) {
-//        SinglyLinkedListSample sll = new SinglyLinkedListSample();
-        head = new ListNode(10);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(8);
-        ListNode fourth = new ListNode(11);
-
-        // Now will connect them together to form a chain
-        head.next = second;
-        second.next = third;
-        third.next = fourth;
+        SinglyLinkedListSample sll = new SinglyLinkedListSample();
+//        head = new ListNode(10);
+//        ListNode second = new ListNode(1);
+//        ListNode third = new ListNode(8);
+//        ListNode fourth = new ListNode(11);
+//
+//        // Now will connect them together to form a chain
+//        head.next = second;
+//        second.next = third;
+//        third.next = fourth;
 
 
         // Print it on the console
+//        ListNode current = head;
+//        while(current != null){
+//            int result = current.data;
+//            System.out.print(result + " ---> ");
+//            current = current.next;
+//        }
+//        System.out.println("null");
+
+//        System.out.println("Length is " + current.data);
+
+    }
+
+    // How to find the Length of a Singly Linked List
+    private static int LengthOfSinglyLinkedList(){
+        if(head == null){
+            return 0;
+        }
         ListNode current = head;
+        int count = 0;
         while(current != null){
-            System.out.print(current.data + " ---> ");
+            count++;
             current = current.next;
         }
-        System.out.println("null");
-
+        return count;
     }
 }
