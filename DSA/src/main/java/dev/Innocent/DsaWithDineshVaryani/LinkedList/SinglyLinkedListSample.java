@@ -18,15 +18,15 @@ public class SinglyLinkedListSample {
         sll.insectNode(45);
         sll.insectNode(34);
         sll.insectNode(2);
-//        head = new ListNode(10);
-//        ListNode second = new ListNode(1);
-//        ListNode third = new ListNode(8);
-//        ListNode fourth = new ListNode(11);
-//
-//        // Now will connect them together to form a chain
-//        head.next = second;
-//        second.next = third;
-//        third.next = fourth;
+        head = new ListNode(10);
+        ListNode second = new ListNode(1);
+        ListNode third = new ListNode(8);
+        ListNode fourth = new ListNode(11);
+
+        // Now will connect them together to form a chain
+        head.next = second;
+        second.next = third;
+        third.next = fourth;
 
 //         Print it on the console
         ListNode current = head;
