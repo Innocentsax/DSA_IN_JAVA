@@ -15,9 +15,14 @@ public class SinglyLinkedListSample {
 
     public static void main(String[] args) {
         SinglyLinkedListSample sll = new SinglyLinkedListSample();
-        sll.insertNodeAtEnd(45);
-        sll.insertNodeAtEnd(34);
-        sll.insertNodeAtEnd(2);
+        sll.insertNodeAtPosition(10, 1);
+        sll.insertNodeAtPosition(20, 2);
+        sll.insertNodeAtPosition(30, 3);
+        sll.insertNodeAtPosition(9, 1);
+        sll.insertNodeAtPosition(19, 3);
+//        sll.insertNodeAtEnd(45);
+//        sll.insertNodeAtEnd(34);
+//        sll.insertNodeAtEnd(2);
 //        head = new ListNode(10);
 //        ListNode second = new ListNode(1);
 //        ListNode third = new ListNode(8);
@@ -60,6 +65,7 @@ public class SinglyLinkedListSample {
         head = newNode;
     }
 
+    // Insert a node at the end of the singly linked list
     private void insertNodeAtEnd(int value){
         ListNode newNode = new ListNode(value);
         if(head == null){
@@ -71,5 +77,26 @@ public class SinglyLinkedListSample {
             current = current.next;
         }
         current.next = newNode;
+    }
+
+    // QA: Implement a method to insert a node at a given position in the singly linked list.
+    // assuming that the position is valid t and start from  position 1
+    private void insertNodeAtPosition(int value, int position){
+        ListNode newNode = new ListNode(value);
+        if(position == 1){
+            newNode.next = head;
+            head = newNode;
+        }
+        else{
+            ListNode previous = head;
+            int count = 1;
+            while(count < position - 1){
+                previous = previous.next;
+                count++;
+            }
+            ListNode current = previous.next;
+            newNode.next = current;
+            previous.next = newNode;
+        }
     }
 }
