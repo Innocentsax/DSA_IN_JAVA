@@ -15,18 +15,18 @@ public class SinglyLinkedListSample {
 
     public static void main(String[] args) {
         SinglyLinkedListSample sll = new SinglyLinkedListSample();
-        sll.insectNode(45);
-        sll.insectNode(34);
-        sll.insectNode(2);
-        head = new ListNode(10);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(8);
-        ListNode fourth = new ListNode(11);
-
-        // Now will connect them together to form a chain
-        head.next = second;
-        second.next = third;
-        third.next = fourth;
+        sll.insertNodeAtEnd(45);
+        sll.insertNodeAtEnd(34);
+        sll.insertNodeAtEnd(2);
+//        head = new ListNode(10);
+//        ListNode second = new ListNode(1);
+//        ListNode third = new ListNode(8);
+//        ListNode fourth = new ListNode(11);
+//
+//        // Now will connect them together to form a chain
+//        head.next = second;
+//        second.next = third;
+//        third.next = fourth;
 
 //         Print it on the console
         ListNode current = head;
@@ -58,5 +58,18 @@ public class SinglyLinkedListSample {
         ListNode newNode = new ListNode(value);
         newNode.next = head;
         head = newNode;
+    }
+
+    private void insertNodeAtEnd(int value){
+        ListNode newNode = new ListNode(value);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        ListNode current = head;
+        while(null != current.next){
+            current = current.next;
+        }
+        current.next = newNode;
     }
 }
