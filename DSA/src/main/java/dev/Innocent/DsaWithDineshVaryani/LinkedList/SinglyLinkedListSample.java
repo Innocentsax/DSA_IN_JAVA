@@ -20,6 +20,8 @@ public class SinglyLinkedListSample {
         sll.insertNodeAtPosition(30, 3);
         sll.insertNodeAtPosition(9, 1);
         sll.insertNodeAtPosition(19, 3);
+        sll.insertNodeAtPosition(29, 5);
+        sll.insertNodeAtPosition(39, 7);
 //        sll.insertNodeAtEnd(45);
 //        sll.insertNodeAtEnd(34);
 //        sll.insertNodeAtEnd(2);
