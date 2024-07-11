@@ -38,6 +38,8 @@ public class SinglyLinkedListSample {
         sll.display();
         System.out.println(sll.deleteFirstNode().data);
         sll.display();
+        sll.deleteLastNode();
+        sll.display();
     }
 
     private void display(){
@@ -112,5 +114,19 @@ public class SinglyLinkedListSample {
         head = head.next;
         temp.next = null;
         return temp;
+    }
+
+    private ListNode deleteLastNode(){
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode current = head;
+        ListNode previous = null;
+        while(current.next != null){
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null;
+        return current;
     }
 }
