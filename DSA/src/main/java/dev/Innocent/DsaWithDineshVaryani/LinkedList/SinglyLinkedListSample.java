@@ -35,16 +35,18 @@ public class SinglyLinkedListSample {
 //        second.next = third;
 //        third.next = fourth;
 
-//         Print it on the console
+        sll.display();
+        System.out.println(sll.deleteFirstNode().data);
+        sll.display();
+    }
+
+    private void display(){
         ListNode current = head;
         while(current != null){
-            int result = current.data;
-            System.out.print(result + " ---> ");
+            System.out.print(current.data + " --> ");
             current = current.next;
         }
         System.out.println("null");
-
-
     }
 
     // How to find the Length of a Singly Linked List
@@ -100,5 +102,15 @@ public class SinglyLinkedListSample {
             newNode.next = current;
             previous.next = newNode;
         }
+    }
+
+    public ListNode deleteFirstNode(){
+        if(head == null){
+            return null;
+        }
+        ListNode temp = head;
+        head = head.next;
+        temp.next = null;
+        return temp;
     }
 }
