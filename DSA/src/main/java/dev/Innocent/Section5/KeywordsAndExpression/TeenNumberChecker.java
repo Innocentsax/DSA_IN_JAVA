@@ -11,4 +11,12 @@ public class TeenNumberChecker {
     public static boolean isTeen(int d){
         return d >= 13 && d <= 19;
     }
+
+    public static double convertToCentimeter(int height){
+        return 1;
+    }
+
+    public static double convertToCentimeter(int heightF, int heightI){
+        return 2;
+    }
 }
