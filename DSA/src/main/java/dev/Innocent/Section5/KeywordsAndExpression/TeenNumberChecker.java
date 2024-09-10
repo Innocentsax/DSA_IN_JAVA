@@ -23,4 +23,8 @@ public class TeenNumberChecker {
     public static double convertToCentimeter2(int feet, int inches){
         return convertToCentimeter((feet * 12) + inches);
     }
+
+    public static double convertToCentimeter3(int feet, int inches){
+        return ((feet * 12) + inches) * 2.54;
+    }
 }
