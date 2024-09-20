@@ -1,6 +1,9 @@
 package dev.Innocent.Section5.KeywordsAndExpression;
 
 public class SumOddRange {
+    public static void main(String[] args) {
+        System.out.println(sumOdd(3, 45));
+    }
     public static boolean isOdd(int number){
         if(number < 0){
             return false;
