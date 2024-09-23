@@ -2,7 +2,7 @@ package dev.Innocent.Section5.KeywordsAndExpression;
 
 public class MinutesToYearsDaysCalculator {
     public static void main(String[] args) {
-
+        printYearsAndDays(56);
     }
     public static void printYearsAndDays(long minutes){
         if(minutes<0){
