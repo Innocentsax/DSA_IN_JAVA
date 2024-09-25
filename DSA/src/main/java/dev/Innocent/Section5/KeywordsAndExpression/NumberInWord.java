@@ -1,6 +1,9 @@
 package dev.Innocent.Section5.KeywordsAndExpression;
 
 public class NumberInWord {
+    public static void main(String[] args) {
+        printNumberInWord(4);
+    }
     public static void printNumberInWord(int wholeNumber){
         System.out.println(switch(wholeNumber){
             case 0 -> "ZERO";
