@@ -2,7 +2,7 @@ package dev.Innocent.Section5.KeywordsAndExpression;
 
 public class LargestPrime {
     public static void main(String[] args) {
-        System.out.println(getLargestPrime(21));
+        System.out.println(getLargestPrime(23));
     }
     public static int getLargestPrime(int number){
         if(number < 2){
