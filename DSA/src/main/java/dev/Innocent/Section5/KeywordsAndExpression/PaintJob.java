@@ -1,6 +1,9 @@
 package dev.Innocent.Section5.KeywordsAndExpression;
 
 public class PaintJob {
+    public static void main(String[] args) {
+        System.out.println(getBucketCount(2, 4, 3, 5));
+    }
     public static int getBucketCount(double width, double height, double areaPerBucket, double extraBuckets){
         double area;
         int bucketNeeded;
