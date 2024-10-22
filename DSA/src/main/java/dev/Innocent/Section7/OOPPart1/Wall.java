@@ -31,4 +31,12 @@ public class Wall {
     public double getArea(){
         return getWidth() * getHeight();
     }
+
+    @Override
+    public String toString() {
+        return "Wall{" +
+                "width=" + width +
+                ", height=" + height +
+                '}';
+    }
 }
