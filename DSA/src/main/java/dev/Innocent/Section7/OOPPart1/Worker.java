@@ -20,11 +20,11 @@ public class Worker {
         return currentYear - birthYear;
     }
 
-    private double collectPay(){
+    public double collectPay(){
         return 0.0;
     }
 
-    private void terminate(String endDate){
+    public void terminate(String endDate){
         this.endDate = endDate;
     }
 
