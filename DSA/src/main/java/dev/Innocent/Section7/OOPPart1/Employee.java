@@ -10,14 +10,6 @@ public class Employee extends Worker{
         this.hireDate = hireDate;
     }
 
-    public long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(long employeeId) {
-        this.employeeId = employeeId;
-    }
-
     public String getHireDate() {
         return hireDate;
     }
