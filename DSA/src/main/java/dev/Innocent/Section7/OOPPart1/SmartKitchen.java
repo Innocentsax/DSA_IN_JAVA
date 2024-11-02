@@ -17,6 +17,12 @@ public class SmartKitchen {
         return dishWasher;
     }
 
+    public void setKitchenState(boolean coffeeFlag, boolean fridgeFlag, boolean dishWasherFlag){
+        brewMaster.setHasWorkToDo(coffeeFlag);
+        iceBox.setHasWorkToDo(fridgeFlag);
+        dishWasher.setHasWorkToDo(dishWasherFlag);
+    }
+
     public SmartKitchen() {
         brewMaster = new CoffeeMaker();
         iceBox = new Refrigerator();
