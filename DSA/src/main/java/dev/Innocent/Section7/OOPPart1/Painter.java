@@ -13,7 +13,9 @@ public class Painter {
 
     public int addToner(int tonerAmount){
         int tempAmount = tonerAmount + tonerLevel;
-        if(tempAmount > 100 || tonerAmount < 0) return -1;
+        if(tempAmount > 100 || tonerAmount < 0){
+            return -1;
+        }
         tonerLevel += tonerAmount;
         return tonerLevel;
     }
