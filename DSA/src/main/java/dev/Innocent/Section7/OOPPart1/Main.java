@@ -29,11 +29,11 @@ public class Main {
 //        Wall newWall = new Wall(5, 4);
 //        System.out.println("Area " + newWall.getArea());
 
-        Car car = new Car("Killer car");
+        Cars car = new Cars("Killer car");
         runRace(car);
     }
 
-    public static void runRace(Car car){
+    public static void runRace(Cars car){
         car.startEngine();
         car.drive();
     }
