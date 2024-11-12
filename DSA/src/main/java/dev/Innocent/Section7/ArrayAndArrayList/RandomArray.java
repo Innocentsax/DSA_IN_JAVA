@@ -1,6 +1,8 @@
 package dev.Innocent.Section7.ArrayAndArrayList;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 
 public class RandomArray {
@@ -24,6 +26,14 @@ public class RandomArray {
 
         int[] fourthArray = Arrays.copyOf(thirdArray, thirdArray.length);
         System.out.println(Arrays.toString(fourthArray));
+
+        // Using the Binary Search function
+        String[] sArray = {"Able", "Jane", "Mark", "Ralph", "David"};
+        Arrays.sort(sArray);
+        System.out.println(Arrays.toString(sArray));
+        if(Arrays.binarySearch(sArray, "Mark") >= 0){
+            System.out.println("Found Mark in the lists");
+        }
     }
 
     private static int[] getRandomArray(int len){
