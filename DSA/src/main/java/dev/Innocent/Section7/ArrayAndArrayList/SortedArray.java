@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class SortedArray {
+    public static void main(String[] args) {
+        System.out.println(getIntegers(10));
+    }
       public static int[] getIntegers(int size){
           Scanner scanner = new Scanner(System.in);
           int[] array = new int[size];
