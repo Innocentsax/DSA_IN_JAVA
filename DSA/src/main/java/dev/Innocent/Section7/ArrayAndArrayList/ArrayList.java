@@ -13,4 +13,7 @@ record GroceryItem(String name, String type, int count){
 }
 
 public class ArrayList {
+    public static void main(String[] args) {
+
+    }
 }
