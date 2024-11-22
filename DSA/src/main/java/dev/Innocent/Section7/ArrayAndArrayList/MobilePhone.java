@@ -6,9 +6,9 @@ public class MobilePhone {
     private String myNumber;
     private ArrayList<Contact> myContacts;
 
-    public MobilePhone(String myNumber, ArrayList<Contact> myContacts) {
+    public MobilePhone(String myNumber) {
         this.myNumber = myNumber;
-        this.myContacts = myContacts;
+        this.myContacts = new ArrayList<>();
     }
 
     public boolean addNewContact(Contact contact){
