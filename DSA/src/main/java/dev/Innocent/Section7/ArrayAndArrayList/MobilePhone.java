@@ -11,8 +11,13 @@ public class MobilePhone {
         this.myContacts = myContacts;
     }
 
-    public static boolean addNewContact(Contact contact){
-        if()
+    public boolean addNewContact(Contact contact){
+        if(findContact(contact.getName()) >= 0){
+            System.out.println("Contact already exists.");
+            return false;
+        }
+        myContacts.add(contact);
+        return true;
     }
 
     public int findContact(Contact contact){
