@@ -13,16 +13,32 @@ public class MyLinkedList implements NodeList{
     }
 
     @Override
-    public boolean addItem(ListItem item) {
+    public boolean addItem(ListItem newItem) {
         if(this.root == null){
-            this.root = item;
+            this.root = newItem;
             return true;
         }
         ListItem currentItem = this.root;
-        while (currentItem != null){
-
+        while (true){
+            int comparison = currentItem.compareTo(newItem);
+            if(comparison < 0){
+                if(currentItem.next() != null){
+                    currentItem = currentItem.next();
+                }else {
+                    currentItem.setNext(newItem);
+                    return true;
+                }
+            } else if (comparison > 0) {
+                if(currentItem.previous() != null){
+                    currentItem = currentItem.previous();
+                }else {
+                    currentItem.setPrevious(newItem);
+                    return true;
+                }
+            }else {
+                return false;
+            }
         }
-        return false;
     }
 
     @Override
