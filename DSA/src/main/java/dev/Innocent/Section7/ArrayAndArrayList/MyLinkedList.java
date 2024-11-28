@@ -74,11 +74,29 @@ public class MyLinkedList implements NodeList{
             }else {
                 parent.setPrevious(null);
             }
+        }  else if (item.next() != null) {
+            ListItem current = item.next();
+            while (current.previous() != null) {
+                current = current.previous();
+            }
+            item.setValue(current.getValue());
+            performRemoval(current, item);
+        } else {
+            ListItem current = item.previous();
+            while (current.next() != null) {
+                current = current.next();
+            }
+            item.setValue(current.getValue());
+            performRemoval(current, item);
         }
     }
 
     @Override
     public void traverse(ListItem root) {
-
+        if (root != null) {
+            traverse(root.previous());
+            System.out.println(root.getValue());
+            traverse(root.next());
+        }
     }
 }
