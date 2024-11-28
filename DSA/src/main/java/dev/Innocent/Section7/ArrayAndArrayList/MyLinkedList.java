@@ -14,89 +14,75 @@ public class MyLinkedList implements NodeList{
 
     @Override
     public boolean addItem(ListItem newItem) {
-        if(this.root == null){
+        if (this.root == null) {
             this.root = newItem;
             return true;
         }
+
         ListItem currentItem = this.root;
-        while (true){
+        while (currentItem != null) {
             int comparison = currentItem.compareTo(newItem);
-            if(comparison < 0){
-                if(currentItem.next() != null){
+            if (comparison < 0) {
+                if (currentItem.next() != null) {
                     currentItem = currentItem.next();
-                }else {
-                    currentItem.setNext(newItem);
+                } else {
+                    currentItem.setNext(newItem).setPrevious(currentItem);
                     return true;
                 }
             } else if (comparison > 0) {
-                if(currentItem.previous() != null){
-                    currentItem = currentItem.previous();
-                }else {
-                    currentItem.setPrevious(newItem);
-                    return true;
+                if (currentItem.previous() != null) {
+                    currentItem.previous().setNext(newItem).setPrevious(currentItem.previous());
+                    newItem.setNext(currentItem).setPrevious(newItem);
+                } else {
+                    newItem.setNext(this.root).setPrevious(newItem);
+                    this.root = newItem;
                 }
-            }else {
-                return false;
-            }
-        }
-    }
-
-    @Override
-    public boolean removeItem(ListItem item) {
-        if(this.root == null || item == null){
-            return false;
-        }
-        ListItem currentItem = this.root;
-        ListItem parentItem = null;
-
-        while (currentItem != null){
-            int comparison = currentItem.compareTo(item);
-            if(comparison < 0){
-                parentItem = currentItem;
-                currentItem = currentItem.next();
-            } else if (comparison > 0) {
-                parentItem = currentItem;
-                currentItem = currentItem.previous();
-            }else {
-                performRemoval(currentItem, parentItem);
                 return true;
+            } else {
+                return false;
             }
         }
         return false;
     }
 
-    private void performRemoval(ListItem item, ListItem parent){
-        if (item.next() == null && item.previous() == null) {
-            if(parent == null){
-                this.root = null;
-            } else if (parent.next() == item) {
-                parent.setNext(null);
-            }else {
-                parent.setPrevious(null);
-            }
-        }  else if (item.next() != null) {
-            ListItem current = item.next();
-            while (current.previous() != null) {
-                current = current.previous();
-            }
-            item.setValue(current.getValue());
-            performRemoval(current, item);
-        } else {
-            ListItem current = item.previous();
-            while (current.next() != null) {
-                current = current.next();
-            }
-            item.setValue(current.getValue());
-            performRemoval(current, item);
+    @Override
+    public boolean removeItem(ListItem item) {
+        if (item == null || this.root == null) {
+            return false;
         }
+
+        ListItem currentItem = this.root;
+        while (currentItem != null) {
+            int comparison = currentItem.compareTo(item);
+            if (comparison == 0) {
+                if (currentItem == this.root) {
+                    this.root = currentItem.next();
+                } else {
+                    currentItem.previous().setNext(currentItem.next());
+                    if (currentItem.next() != null) {
+                        currentItem.next().setPrevious(currentItem.previous());
+                    }
+                }
+                return true;
+            } else if (comparison < 0) {
+                currentItem = currentItem.next();
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
     @Override
     public void traverse(ListItem root) {
-        if (root != null) {
-            traverse(root.previous());
-            System.out.println(root.getValue());
-            traverse(root.next());
+        if (root == null) {
+            System.out.println("The list is empty");
+        } else {
+            ListItem currentItem = root;
+            while (currentItem != null) {
+                System.out.println(currentItem.getValue());
+                currentItem = currentItem.next();
+            }
         }
     }
 }
