@@ -43,6 +43,25 @@ public class MyLinkedList implements NodeList{
 
     @Override
     public boolean removeItem(ListItem item) {
+        if(this.root == null || item == null){
+            return false;
+        }
+        ListItem currentItem = this.root;
+        ListItem parentItem = null;
+
+        while (currentItem != null){
+            int comparison = currentItem.compareTo(item);
+            if(comparison < 0){
+                parentItem = currentItem;
+                currentItem = currentItem.next();
+            } else if (comparison > 0) {
+                parentItem = currentItem;
+                currentItem = currentItem.previous();
+            }else {
+                performRemoval(currentItem, parentItem);
+                return true;
+            }
+        }
         return false;
     }
 
