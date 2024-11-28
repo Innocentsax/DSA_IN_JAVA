@@ -65,6 +65,18 @@ public class MyLinkedList implements NodeList{
         return false;
     }
 
+    private void performRemoval(ListItem item, ListItem parent){
+        if (item.next() == null && item.previous() == null) {
+            if(parent == null){
+                this.root = null;
+            } else if (parent.next() == item) {
+                parent.setNext(null);
+            }else {
+                parent.setPrevious(null);
+            }
+        }
+    }
+
     @Override
     public void traverse(ListItem root) {
 
