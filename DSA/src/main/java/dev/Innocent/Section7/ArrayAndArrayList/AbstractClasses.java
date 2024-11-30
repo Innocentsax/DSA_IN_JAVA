@@ -21,7 +21,7 @@ abstract class Animal{
 
 }
 
-class Dog extends Animal{
+class Dog {
 
     public Dog(String type, String size, double weight) {
         super(type, size, weight);
