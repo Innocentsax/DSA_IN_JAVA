@@ -53,6 +53,7 @@ public class BaseBallTeam {
     public static void main(String[] args) {
         BaseBallTeam kk = new BaseBallTeam("Eka");
         BaseBallTeam gg = new BaseBallTeam("pp");
+        BaseBallTeam mm = new BaseBallTeam("mm");
         scoreResult(kk, 5, gg, 3);
     }
 
