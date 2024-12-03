@@ -54,6 +54,7 @@ public class BaseBallTeam {
         BaseBallTeam kk = new BaseBallTeam("Eka");
         BaseBallTeam gg = new BaseBallTeam("pp");
         BaseBallTeam mm = new BaseBallTeam("mm");
+        BaseBallTeam qq = new BaseBallTeam("qq");
         scoreResult(kk, 5, gg, 3);
     }
 
