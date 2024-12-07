@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StudentMain {
     public static void main(String[] args) {
-        int studentCount = 10;
+        int studentCount = 20;
         List<Student> students = new ArrayList<>();
         for (int i = 0; i < studentCount; i++) {
             students.add(new Student());
@@ -27,10 +27,10 @@ public class StudentMain {
         System.out.println();
     }
 
-//    public static <T extends Student> void printList(List<T> students){
-//        for(var student : students){
-//            System.out.println(student.getYearStarted() + ": " + student);
-//        }
-//        System.out.println();
-//    }
+    public static <T extends Student> void printList(List<T> students){
+        for(var student : students){
+            System.out.println(student.getYearStarted() + ": " + student);
+        }
+        System.out.println();
+    }
 }
