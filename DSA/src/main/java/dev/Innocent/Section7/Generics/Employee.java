@@ -13,4 +13,13 @@ public class Employee {
         this.name = name;
         this.yearStarted = yearStarted;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
