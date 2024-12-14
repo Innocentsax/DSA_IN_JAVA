@@ -10,8 +10,8 @@ record Employees(String first, String last, String hireDate){}
 
 public class LocalClassChallenge {
     public static void main(String[] args) {
-        Employees e1 = new Employees("Innocent", "Udo", "01/09/2024");
-        Employees e2 = new Employees("Innocent", "Udo", "05/09/2024");
+        Employees e1 = new Employees("Innocent", "Charles", "01/09/2024");
+        Employees e2 = new Employees("Innocent", "Ufan", "05/09/2024");
         Employees e3 = new Employees("Innocent", "Udo", "04/09/2024");
         Employees e4 = new Employees("Innocent", "Udo", "02/09/2024");
 
