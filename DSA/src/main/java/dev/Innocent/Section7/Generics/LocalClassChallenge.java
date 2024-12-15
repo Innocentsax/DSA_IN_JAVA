@@ -14,6 +14,7 @@ public class LocalClassChallenge {
         Employees e2 = new Employees("Innocent", "Ufan", "05/09/2024");
         Employees e3 = new Employees("Innocent", "Eka", "04/09/2024");
         Employees e4 = new Employees("Innocent", "Uweme", "02/09/2024");
+        Employees e5 = new Employees("Innocent", "Uweme", "02/09/2024");
 
         List<Employees> list = new ArrayList<>(Arrays.asList(e1, e2, e3, e4));
         printOrderedList(list, "yearWorked");
