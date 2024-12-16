@@ -2,7 +2,6 @@ package dev.Innocent.Section7.Generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 public class Person {
@@ -19,7 +18,8 @@ public class Person {
                 new Person.Persons("Innocent", "Udo"),
                 new Persons("David", "Koz"),
                 new Persons("Normal", "guy"),
-                new Persons("Ufan", "Uwem")
+                new Persons("Ufan", "Uwem"),
+                new Persons("Ubeh", "Joy")
         ));
 
         // Using anonymous class
