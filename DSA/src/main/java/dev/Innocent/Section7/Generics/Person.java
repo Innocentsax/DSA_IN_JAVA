@@ -26,11 +26,27 @@ public class Person {
         // Using anonymous class
         people.sort((o1, o2) -> o1.lastName.compareTo(o2.firstName));
         System.out.println(people);
+
+
+        interface EnhancedComparator<T> extends Comparator<T> {
+            int secondLevel(T o1, T o2);
+        }
+
+        EnhancedComparator<Persons> comparatorMixed = new EnhancedComparator<>() {
+
+            @Override
+            public int compare(Persons o1, Persons o2) {
+                int result = o1.lastName().compareTo(o2.lastName());
+                return (result == 0 ? secondLevel(o1, o2) : result);
+            }
+
+            @Override
+            public int secondLevel(Persons o1, Persons o2) {
+                return o1.firstName().compareTo(o2.firstName());
+            }
+        };
+        people.sort(comparatorMixed);
+        System.out.println(people);
+
     }
-
-    interface EnhancedComparator<T> extends Comparator<T>{
-        int secondLevel(T o1, T o2);
-    }
-
-
 }
