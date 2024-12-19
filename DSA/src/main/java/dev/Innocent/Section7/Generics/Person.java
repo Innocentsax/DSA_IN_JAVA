@@ -2,6 +2,7 @@ package dev.Innocent.Section7.Generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Person {
@@ -26,4 +27,10 @@ public class Person {
         people.sort((o1, o2) -> o1.lastName.compareTo(o2.firstName));
         System.out.println(people);
     }
+
+    interface EnhancedComparator<T> extends Comparator<T>{
+        int secondLevel(T o1, T o2);
+    }
+
+
 }
