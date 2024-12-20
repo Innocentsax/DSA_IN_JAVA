@@ -9,6 +9,8 @@ public class ConsumerLambda {
                 "alpha", "bravo", "charlie", "delta"
         ));
 
-
+        for(String s : list){
+            System.out.println(s);
+        }
     }
 }
