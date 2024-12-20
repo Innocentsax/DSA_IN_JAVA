@@ -12,5 +12,15 @@ public class ConsumerLambda {
         for(String s : list){
             System.out.println(s);
         }
+
+        System.out.println("-----------");
+        list.forEach((s) -> System.out.println(s));
+
+        System.out.println("-----------");
+        String prefix  = "nato";
+        list.forEach((var s) -> {
+            char first = s.charAt(0);
+            System.out.println(prefix + " " + s + " means " + first);
+        });
     }
 }
