@@ -13,5 +13,25 @@ public class miniLamdaChallenges {
                 }
             }
         };
+
+        Consumer<String> printWordsLambda = sentence -> {
+            String[] parts = sentence.split(" ");
+            for(String part : parts){
+                System.out.println(part);
+            }
+        };
+
+        printWords.accept("Let's split this up into an array");
+        printWords.accept("Let's split this up into an array");
+    }
+
+    public static String everySecondChar(String source){
+        StringBuilder returnVal = new StringBuilder();
+        for(int i = 0; i < source.length(); i++){
+            if(i % 2 == 1){
+                returnVal.append(source.charAt(i));
+            }
+        }
+        return returnVal.toString();
     }
 }
