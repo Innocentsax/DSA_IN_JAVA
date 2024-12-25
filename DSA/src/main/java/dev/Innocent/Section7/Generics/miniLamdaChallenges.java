@@ -60,6 +60,9 @@ public class miniLamdaChallenges {
             return returnVal.toString();
         };
         System.out.println(everySecondChar.apply("123456789"));
+
+        String result = everySecondCharacter(everySecondChar, "1234567890");
+        System.out.println(result);
     }
 
     public static String everySecondChar(String source){
