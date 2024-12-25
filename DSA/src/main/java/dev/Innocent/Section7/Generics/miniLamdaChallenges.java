@@ -3,6 +3,7 @@ package dev.Innocent.Section7.Generics;
 import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class miniLamdaChallenges {
@@ -63,6 +64,10 @@ public class miniLamdaChallenges {
 
         String result = everySecondCharacter(everySecondChar, "1234567890");
         System.out.println(result);
+
+        Supplier<String> iLoveJava = () -> "I Love Java!";
+        Supplier<String> iLoveJava2 = () -> {return "I love Java!";};
+        System.out.println(iLoveJava2.get());
     }
 
     public static String everySecondChar(String source){
