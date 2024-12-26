@@ -1,5 +1,6 @@
 package dev.Innocent.Section7.Generics;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -23,6 +24,20 @@ public class LambdaExpressionChallenge {
 
         backedArray.replaceAll(s -> s += " " + getReversedName(s.split(" ")[0]));
         System.out.println("--> Add reversed name as last name");
+        Arrays.asList(names).forEach(s -> System.out.println(s));
+
+
+        List<String> newList = new ArrayList<>(List.of(names));
+//        newList.removeIf(s -> s.substring(0, s.indexOf(" ")).equals(
+//                s.substring(s.lastIndexOf(" ") + 1)
+//        )); in a concise way
+        newList.removeIf(s -> {
+            String first = s.substring(0, s.indexOf(" "));
+            String last = s.substring(s.lastIndexOf(" ") + 1);
+            return first.equals(last);
+        });
+        System.out.println("--> Remove names where first = last");
+        newList.forEach(s -> System.out.println(s));
     }
 
     public static char getRandomChar(char startChar, char endChar){
