@@ -1,9 +1,7 @@
 package dev.Innocent.Section7.Collection;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 record Card(Suit suit, String face, int rank){
 
@@ -80,5 +78,8 @@ public class CollectionMethods {
         Card aceOfHearts = Card.getFaceCard(Card.Suit.HEART, 'A');
         Arrays.fill(cardArray, aceOfHearts);
         Card.printDeck(Arrays.asList(cardArray), "Aces of Hearts", 1);
+
+        List<Card> acesOfHearts = Collections.nCopies(13, aceOfHearts);
+        Card.printDeck(acesOfHearts, "AcesOfHearts", 1);
     }
 }
