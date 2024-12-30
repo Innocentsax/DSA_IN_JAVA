@@ -81,7 +81,7 @@ public class CollectionMethods {
 
         List<Card> acesOfHearts = Collections.nCopies(13, aceOfHearts);
         Card.printDeck(acesOfHearts, "AcesOfHearts", 1);
-        
+
         Card kingOfClubs = Card.getFaceCard(Card.Suit.CLUB, 'K');
         List<Card> kingsOfClubs = Collections.nCopies(13, kingOfClubs);
         Card.printDeck(kingsOfClubs, "Kings of Clubs", 1);
