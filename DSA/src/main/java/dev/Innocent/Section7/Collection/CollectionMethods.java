@@ -85,5 +85,12 @@ public class CollectionMethods {
 
         List<Card> deck = Card.getStandardDeck();
         Card.printDeck(deck);
+
+        Collections.shuffle(deck);
+        Card.printDeck(deck, "Shuffled Deck", 4);
+
+        Collections.reverse(deck);
+        Card.printDeck(deck, "Reversed Deck of Cards: ", 4);
+
     }
 }
