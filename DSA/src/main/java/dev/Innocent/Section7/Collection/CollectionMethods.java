@@ -1,6 +1,8 @@
 package dev.Innocent.Section7.Collection;
 
 
+import dev.Innocent.Section7.OOPPart1.Car;
+
 import java.util.*;
 
 record Card(Suit suit, String face, int rank){
@@ -92,5 +94,17 @@ public class CollectionMethods {
         Collections.reverse(deck);
         Card.printDeck(deck, "Reversed Deck of Cards: ", 4);
 
+        var sortingAlgorithm = Comparator.comparing(Card::rank).thenComparing(Card::suit);
+        Collections.sort(deck, sortingAlgorithm);
+        Card.printDeck(deck, "Standard Deck sorted by rank, suit", 13);
+
+        Collections.reverse(deck);
+        Card.printDeck(deck, "Sorted by rank, suit reversed: ", 13);
+
+        List<Card> kings = new ArrayList<>(deck.subList(4, 8));
+        Card.printDeck(kings, "Kings in deck", 1);
+
+        List<Card> tens = new ArrayList<>(deck.subList(16, 20));
+        Card.printDeck(kings, "Ten in deck", 1);
     }
 }
