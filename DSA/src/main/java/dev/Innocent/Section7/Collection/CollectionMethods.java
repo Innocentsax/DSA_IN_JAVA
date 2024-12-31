@@ -71,9 +71,6 @@ record Card(Suit suit, String face, int rank){
 
 public class CollectionMethods {
     public static void main(String[] args) {
-        List<Card> deck = Card.getStandardDeck();
-        Card.printDeck(deck);
-
         Card[] cardArray = new Card[13];
         Card aceOfHearts = Card.getFaceCard(Card.Suit.HEART, 'A');
         Arrays.fill(cardArray, aceOfHearts);
@@ -85,5 +82,8 @@ public class CollectionMethods {
         Card kingOfClubs = Card.getFaceCard(Card.Suit.CLUB, 'K');
         List<Card> kingsOfClubs = Collections.nCopies(13, kingOfClubs);
         Card.printDeck(kingsOfClubs, "Kings of Clubs", 1);
+
+        List<Card> deck = Card.getStandardDeck();
+        Card.printDeck(deck);
     }
 }
