@@ -105,6 +105,6 @@ public class CollectionMethods {
         Card.printDeck(kings, "Kings in deck", 1);
 
         List<Card> tens = new ArrayList<>(deck.subList(16, 20));
-        Card.printDeck(kings, "Ten in deck", 1);
+        Card.printDeck(kings, "Ten in deck", 2);
     }
 }
