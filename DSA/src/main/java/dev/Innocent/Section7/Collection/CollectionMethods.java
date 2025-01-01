@@ -1,8 +1,5 @@
 package dev.Innocent.Section7.Collection;
 
-
-import dev.Innocent.Section7.OOPPart1.Car;
-
 import java.util.*;
 
 record Card(Suit suit, String face, int rank){
