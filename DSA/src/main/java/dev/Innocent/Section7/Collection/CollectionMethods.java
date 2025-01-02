@@ -102,10 +102,13 @@ public class CollectionMethods {
         Card.printDeck(kings, "Kings in deck", 1);
 
         List<Card> tens = new ArrayList<>(deck.subList(16, 20));
-        Card.printDeck(kings, "Ten in deck", 2);
+        Card.printDeck(kings, "Ten in deck", 1);
 
         int subListIndex = Collections.indexOfSubList(deck, tens);
         System.out.println("Sublist index of tens = " + subListIndex);
         System.out.println("Contains = " + deck.containsAll(tens));
+
+        boolean disjoint = Collections.disjoint(deck, tens);
+        System.out.println("disjoint = " + disjoint);
     }
 }
