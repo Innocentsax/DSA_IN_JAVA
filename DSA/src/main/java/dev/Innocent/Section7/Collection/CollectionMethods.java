@@ -103,5 +103,9 @@ public class CollectionMethods {
 
         List<Card> tens = new ArrayList<>(deck.subList(16, 20));
         Card.printDeck(kings, "Ten in deck", 2);
+
+        int subListIndex = Collections.indexOfSubList(deck, tens);
+        System.out.println("Sublist index of tens = " + subListIndex);
+        System.out.println("Contains = " + deck.containsAll(tens));
     }
 }
