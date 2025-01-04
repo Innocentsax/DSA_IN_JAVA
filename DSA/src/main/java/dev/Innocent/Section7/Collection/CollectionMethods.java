@@ -96,7 +96,7 @@ public class CollectionMethods {
         Card.printDeck(deck, "Standard Deck sorted by rank, suit", 13);
 
         Collections.reverse(deck);
-        Card.printDeck(deck, "Sorted by rank, suit reversed: ", 13);
+        Card.printDeck(deck, "Sorted by rank, suit reversed:", 13);
 
         List<Card> kings = new ArrayList<>(deck.subList(4, 8));
         Card.printDeck(kings, "Kings in deck", 1);
