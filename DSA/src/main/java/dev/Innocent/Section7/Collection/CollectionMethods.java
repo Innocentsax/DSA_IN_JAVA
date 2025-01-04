@@ -106,7 +106,7 @@ public class CollectionMethods {
 
         int subListIndex = Collections.indexOfSubList(deck, tens);
         System.out.println("Sublist index of tens = " + subListIndex);
-        System.out.println("Contains = " + new HashSet<>(deck).containsAll(tens));
+        System.out.println("Contains =" + new HashSet<>(deck).containsAll(tens));
 
         boolean disjoint = Collections.disjoint(deck, tens);
         System.out.println("disjoint = " + disjoint);
