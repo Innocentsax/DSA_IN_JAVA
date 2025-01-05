@@ -110,5 +110,7 @@ public class CollectionMethods {
 
         boolean disjoint = Collections.disjoint(deck, tens);
         System.out.println("disjoint = " + disjoint);
+
+
     }
 }
