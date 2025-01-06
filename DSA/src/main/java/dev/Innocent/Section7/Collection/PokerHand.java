@@ -18,5 +18,10 @@ public class PokerHand {
         discards = new ArrayList<>(hand.size());
     }
 
-
+    @Override
+    public String toString() {
+        return "%d. %-16s Rank:%d %-40s %s".formatted(
+                playerNo, score, score.ordinal(), hand,
+                (discards.size() > 0) ? "Discards:" + discards : "");
+    }
 }
