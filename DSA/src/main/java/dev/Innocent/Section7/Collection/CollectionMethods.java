@@ -12,6 +12,10 @@ record Card(Suit suit, String face, int rank){
         }
     }
 
+    public static Comparator<Card> sortRankReversedSuit(){
+        return Comparator.comparing(Card::rank).reversed().thenComparing(Card::suit);
+    }
+
     @Override
     public String toString() {
         int index = face.equals("10") ? 2 : 1;
