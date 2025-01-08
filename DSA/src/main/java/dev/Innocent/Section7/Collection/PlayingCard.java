@@ -17,13 +17,18 @@ public class PlayingCard {
     }
 
     @Override
-    public int hashCode() {
-        return internalHash;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PlayingCard that = (PlayingCard) o;
+        return suit.equals(that.suit) && face.equals(that.face);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        System.out.println("--> Checking Playing Card equality");
-        return true;
+    public int hashCode() {
+        int result = suit.hashCode();
+        result = 31 * result + face.hashCode();
+        return result;
     }
 }
