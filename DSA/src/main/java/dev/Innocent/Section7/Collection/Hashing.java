@@ -30,5 +30,20 @@ public class Hashing {
             }
             System.out.println(" ");
         }
+
+        PlayingCard aceHearts = new PlayingCard("Heart", "Ace");
+        PlayingCard kingClubs = new PlayingCard("Clubs", "King");
+        PlayingCard queenSpades = new PlayingCard("Spaces", "Queen");
+
+        List<PlayingCard> cards = Arrays.asList(aceHearts, kingClubs, queenSpades);
+        cards.forEach(s -> System.out.println(s + ": " + s.hashCode()));
+
+        Set<PlayingCard> deck = new HashSet<>();
+        for(PlayingCard c : cards){
+            if(!deck.add(c)){
+                System.out.println("Found a duplicate for " + c);
+            }
+        }
+        System.out.println(deck);
     }
 }
