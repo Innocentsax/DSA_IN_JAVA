@@ -30,6 +30,15 @@ public class SetsAndMaps {
         unionAB.addAll(emailContacts);
         unionAB.addAll(phoneContact);
         printData("(A ∪ B) Union of emails (A) with phones (B)", unionAB);
+
+        Set<Contact> intersectAB = new HashSet<>(emailContacts);
+        intersectAB.retainAll(phoneContact);
+        printData("(A ∩ B) Intersect emails (A) and phones (B)", intersectAB);
+
+        Set<Contact> intersectBA = new HashSet<>(phoneContact);
+        intersectBA.retainAll(emailContacts);
+        printData("(B ∩ A) Intersect emails (B) and phones (A)", intersectBA);
+
     }
 
     public static void printData(String header, Collection<Contact> contacts){
