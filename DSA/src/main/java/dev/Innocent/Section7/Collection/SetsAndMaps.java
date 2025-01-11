@@ -39,6 +39,9 @@ public class SetsAndMaps {
         intersectBA.retainAll(emailContacts);
         printData("(B ∩ A) Intersect emails (B) and phones (A)", intersectBA);
 
+        Set<Contact> AMinusB = new HashSet<>(emailContacts);
+        AMinusB.removeAll(phoneContact);
+        printData("(A - B) emails (A) - phones (B)", AMinusB);
     }
 
     public static void printData(String header, Collection<Contact> contacts){
