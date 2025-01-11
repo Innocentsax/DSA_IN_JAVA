@@ -25,6 +25,11 @@ public class SetsAndMaps {
         robinHood.addEmail("Sherwood Forest");
         robinHood.replaceEmailIfExists("RHood@sherwoodforest.com", "RHood@sherwoodforest.org");
         System.out.println(robinHood);
+
+        Set<Contact> unionAB = new HashSet<>();
+        unionAB.addAll(emailContacts);
+        unionAB.addAll(phoneContact);
+        printData("(A ∪ B) Union of emails (A) with phones (B)", unionAB);
     }
 
     public static void printData(String header, Collection<Contact> contacts){
