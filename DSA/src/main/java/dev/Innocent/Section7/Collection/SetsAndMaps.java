@@ -42,6 +42,14 @@ public class SetsAndMaps {
         Set<Contact> AMinusB = new HashSet<>(emailContacts);
         AMinusB.removeAll(phoneContact);
         printData("(A - B) emails (A) - phones (B)", AMinusB);
+
+        Set<Contact> BMinusA = new HashSet<>(phoneContact);
+        BMinusA.removeAll(emailContacts);
+        printData("(B - A) phones (B) - emails (A)", BMinusA);
+
+        Set<Contact> symmetricDiff = new HashSet<>(AMinusB);
+        symmetricDiff.addAll(BMinusA);
+        printData("Symmetric Difference: phones and emails", symmetricDiff);
     }
 
     public static void printData(String header, Collection<Contact> contacts){
