@@ -43,4 +43,10 @@ public class SetOperationChallenge {
         intersect.retainAll(b);
         return intersect;
     }
+
+    private static Set<Task> getDifference(Set<Task> a, Set<Task> b){
+        Set<Task> result = new HashSet<>(a);
+        result.removeAll(b);
+        return result;
+    }
 }
