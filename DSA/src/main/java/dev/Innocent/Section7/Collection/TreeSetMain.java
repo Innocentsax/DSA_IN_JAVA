@@ -42,5 +42,16 @@ public class TreeSetMain {
         System.out.println("Last element = " + copiedSet.pollLast());
         copiedSet.forEach(System.out::println);
         System.out.println("-------------------------------------------");
+
+        Contact daffy = new Contact("Daffy Duck");
+        Contact daisy = new Contact("Daisy Duck");
+        Contact snoopy = new Contact("Snoopy");
+        Contact archie = new Contact("Archie");
+
+        for (Contact c : List.of(daffy, daisy, last, snoopy)){
+            System.out.printf("Ceiling(%s)=%s%n", c.getName(), fullSet.ceiling(c));
+            System.out.printf("Higher(%s)=%s%n", c.getName(), fullSet.higher(c));
+        }
+        System.out.println("----------------------------------------------");
     }
 }
