@@ -1,6 +1,7 @@
 package dev.Innocent.Section7.Collection;
 
 import java.util.NavigableSet;
+import java.util.TreeSet;
 
 public class Theatre {
 
@@ -27,8 +28,15 @@ public class Theatre {
     private int seatPerRows;
     private NavigableSet<Seat> seats;
 
-    public Theatre(String theaterName, int seatPerRows) {
+    public Theatre(String theaterName, int rows, int totalSeats) {
         this.theaterName = theaterName;
-        this.seatPerRows = seatPerRows;
+        this.seatPerRows = totalSeats / rows;
+
+        seats = new TreeSet<>();
+        for (int i = 0; i < totalSeats; i++) {
+            char rowChar = (char) (i / seatPerRows + (int) 'A');
+            int seatInRow = i % seatPerRows + 1;
+            seats.add(new Seat(rowChar, seatInRow));
+        }
     }
 }
