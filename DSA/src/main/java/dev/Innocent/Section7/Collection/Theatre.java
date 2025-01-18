@@ -39,4 +39,10 @@ public class Theatre {
             seats.add(new Seat(rowChar, seatInRow));
         }
     }
+
+    public void printSeatMap(){
+        String separatorLine = "_".repeat(90);
+        System.out.printf("%1$s%n%2$s Seat Map%nn%1$s%n", separatorLine, theaterName);
+
+    }
 }
