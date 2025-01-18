@@ -43,6 +43,11 @@ public class Theatre {
     public void printSeatMap(){
         String separatorLine = "_".repeat(90);
         System.out.printf("%1$s%n%2$s Seat Map%nn%1$s%n", separatorLine, theaterName);
-
+        int index = 0;
+        for(Seat s : seats){
+            System.out.printf("%-8s%s", s.seatNum + ((s.reserved) ? "(\u25CF)" : ""),
+                    ((index++ + 1) % seatPerRows == 0) ? "\n" : "");
+        }
+        System.out.println(separatorLine);
     }
 }
