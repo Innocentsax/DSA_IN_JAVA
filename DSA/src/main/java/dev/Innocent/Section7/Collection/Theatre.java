@@ -1,7 +1,6 @@
 package dev.Innocent.Section7.Collection;
 
-import java.util.NavigableSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Theatre {
 
@@ -42,12 +41,31 @@ public class Theatre {
 
     public void printSeatMap(){
         String separatorLine = "_".repeat(90);
-        System.out.printf("%1$s%n%2$s Seat Map%nn%1$s%n", separatorLine, theaterName);
+        System.out.printf("%1$s%n%2$s Seat Map%n%1$s%n", separatorLine, theaterName);
         int index = 0;
         for(Seat s : seats){
             System.out.printf("%-8s%s", s.seatNum + ((s.reserved) ? "(\u25CF)" : ""),
                     ((index++ + 1) % seatPerRows == 0) ? "\n" : "");
         }
         System.out.println(separatorLine);
+    }
+
+    public String reserveSeat(char row, int seat){
+        Seat requestSeat = new Seat(row, seat);
+        Seat requested = seats.floor(requestSeat);
+
+        if(requested == null || !requested.seatNum.equals(requestSeat.seatNum)){
+            System.out.print("--> No such seat: " + requestSeat);
+            System.out.printf(": Seat must be between %s and %s%n",
+                    seats.first().seatNum, seats.last().seatNum);
+        }else{
+            if(!requested.reserved){
+                requested.reserved = true;
+                return requested.seatNum;
+            }else{
+                System.out.println("Seat's already reserved");
+            }
+        }
+        return null;
     }
 }
