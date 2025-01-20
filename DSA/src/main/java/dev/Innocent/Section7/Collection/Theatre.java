@@ -68,4 +68,8 @@ public class Theatre {
         }
         return null;
     }
+
+    public Set<Seat> reserveSeats(int count, char minRow, char maxRow, int minSeat, int maxSeat){
+
+    }
 }
