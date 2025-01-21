@@ -84,5 +84,10 @@ public class Theatre {
     public Set<Seat> reserveSeats(int count, char minRow, char maxRow, int minSeat, int maxSeat){
         char lastValid = seats.last().seatNum.charAt(0);
         maxRow = (maxRow < lastValid) ? maxRow : lastValid;
+
+        if(!validate(count, minRow, maxRow, minSeat, maxSeat)){
+            return null;
+        }
+        NavigableSet<Seat> selected = null;
     }
 }
