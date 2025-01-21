@@ -89,5 +89,33 @@ public class Theatre {
             return null;
         }
         NavigableSet<Seat> selected = null;
+        for (char letter = minRow; letter <= maxRow; letter++){
+            NavigableSet<Seat> contiguous = seats.subSet(
+                    new Seat(letter, minSeat), true,
+                    new Seat(letter, maxSeat), true);
+
+            int index = 0;
+            Seat first = null;
+            for (Seat current : contiguous){
+                if(current.reserved){
+                    index = 0;
+                    continue;
+                }
+                first = (index == 0) ? current : first;
+                if(++index == count){
+                    selected = contiguous.subSet(first, true, current, true);
+                    break;
+                }
+            }
+            if(selected != null){
+                break;
+            }
+        }
+        Set<Seat> reservedSeats = null;
+        if(selected != null){
+            selected.forEach(s -> s.reserved = true);
+            reservedSeats = new TreeSet<>(selected);
+        }
+        return reservedSeats;
     }
 }
