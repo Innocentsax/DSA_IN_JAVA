@@ -13,6 +13,8 @@ public class BookingAgent {
         bookSeat(rodgersNYC, 'B', 1);
         bookSeat(rodgersNYC, 'M', 11);
 
+        bookSeats(rodgersNYC, 4, 'B', 3, 10);
+
     }
 
     private static void bookSeat(Theatre theatre, char row, int seatNo){
