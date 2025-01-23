@@ -28,6 +28,21 @@ public class MapMain {
         System.out.println(contacts.getOrDefault("Chuck Brown", defaultContact));
 
         System.out.println("-------------------------------------------");
+        contacts.clear();
+        for(Contact contact : fullList){
+            Contact duplicate = contacts.put(contact.getName(), contact);
+            if(duplicate != null){
+//                System.out.println("Duplicate = " + duplicate);
+//                System.out.println("Current = " + contact);
+                contacts.put(contact.getName(), contact.mergeContactData(duplicate));
+            }
+        }
+        contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
 
+        System.out.println("---------------------------------------------");
+        for (Contact contact : fullList){
+            contacts.putIfAbsent(contact.getName(), contact);
+        }
+        contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
     }
 }
