@@ -60,5 +60,14 @@ public class MapMain {
             return v;
         });
         contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
+
+
+        System.out.println("-------------------------------------------");
+        Contact daisy = new Contact("Daisy Jane Duck", "daisyj@duck.com");
+
+        Contact replacedContact = contacts.replace("Daisy Duck", daisy);
+        System.out.println("daisy = " + daisy);
+        System.out.println("replacedContact = " + replacedContact);
+        contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
     }
 }
