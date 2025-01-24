@@ -44,5 +44,21 @@ public class MapMain {
             contacts.putIfAbsent(contact.getName(), contact);
         }
         contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
+
+        System.out.println("---------------------------------------------");
+        for (String contactName : new String[]{"Daisy Duck", "Daffy Duck", "Scrooge McDuck"}){
+            contacts.computeIfPresent(contactName, (k, v) -> {
+                v.addEmail("Fun Place"); return v;
+            });
+        }
+        contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
+
+        System.out.println("----------------------------------------------");
+        contacts.replaceAll((k, v) -> {
+            String newEmail = k.replaceAll(" ", " ") + "@funplace.com";
+            v.replaceEmailIfExists("DDuck@funplace.com", newEmail);
+            return v;
+        });
+        contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
     }
 }
