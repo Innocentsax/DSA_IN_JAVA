@@ -28,5 +28,16 @@ public class MapViewsMain {
         copyOfKeys.remove("Linus Van Pelt");
         System.out.println(keysView);
         contacts.forEach((k, v) -> System.out.println(v));
+
+        ContactData.getData("email").forEach(c -> contacts.put(c.getName(), c));
+        ContactData.getData("email").forEach(c -> contacts.put(c.getName(), c));
+        System.out.println(keysView);
+
+        var values = contacts.values();
+        values.forEach(System.out::println);
+
+        values.retainAll(ContactData.getData("email"));
+        System.out.println(keysView);
+        contacts.forEach((k, v) -> System.out.println(v));
     }
 }
