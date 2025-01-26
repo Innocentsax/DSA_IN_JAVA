@@ -1,9 +1,6 @@
 package dev.Innocent.Section7.Collection;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class MapViewsMain {
     public static void main(String[] args) {
@@ -39,5 +36,21 @@ public class MapViewsMain {
         values.retainAll(ContactData.getData("email"));
         System.out.println(keysView);
         contacts.forEach((k, v) -> System.out.println(v));
+
+        HashSet<Contact> set = new HashSet<>(values);
+        set.forEach(System.out::println);
+        if(set.size() < contacts.keySet().size()){
+            System.out.println("Duplicate values are in my Map");
+        }
+
+        var nodeSet = contacts.entrySet();
+        for(var node : nodeSet){
+            System.out.println(nodeSet.getClass().getName());
+            if(!node.getKey().equals(node.getValue().getName())){
+                System.out.println(node.getClass().getName());
+                System.out.println("Key doesn't match name: " + node.getKey() + ": " +
+                        node.getValue());
+            }
+        }
     }
 }
