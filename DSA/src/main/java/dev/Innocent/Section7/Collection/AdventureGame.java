@@ -1,6 +1,8 @@
 package dev.Innocent.Section7.Collection;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AdventureGame {
@@ -38,4 +40,26 @@ public class AdventureGame {
 
     }
 
+    private void loadLocations(String data){
+        for(String s : data.split("\\R")){
+            String[] parts = s.split(",", 3);
+            Arrays.asList(parts).replaceAll(String::trim);
+            Map<Compass, String> nextPlaces = loadDirections(parts[2]);
+            Location location = new Location(parts[1], nextPlaces);
+            adventureMap.put(parts[0], location);
+        }
+        adventureMap.forEach((k, v) -> System.out.printf("%s:%s%n", k, v));
+    }
+
+    private Map<Compass, String> loadDirections(String nextPlaces){
+        Map<Compass, String> directions = new HashMap<>();
+        List<String> nextSteps = Arrays.asList(nextPlaces.split(","));
+        nextSteps.replaceAll(String::trim);
+
+        for(String nextPlace : nextSteps){
+            String[] splits = nextPlace.split(":");
+            Compass compass = Compass.valueOf(splits[0].trim());
+        }
+        return directions;
+    }
 }
