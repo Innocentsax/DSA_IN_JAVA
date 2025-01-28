@@ -33,11 +33,14 @@ public class AdventureGame {
     private Map<String, Location> adventureMap = new HashMap<>();
 
     public AdventureGame(){
-
+        this(null);
     }
 
     public AdventureGame(String customLocation){
-
+        loadLocations(GAME_LOCATIONS);
+        if(customLocation != null){
+            loadLocations(customLocation);
+        }
     }
 
     private void loadLocations(String data){
@@ -59,6 +62,8 @@ public class AdventureGame {
         for(String nextPlace : nextSteps){
             String[] splits = nextPlace.split(":");
             Compass compass = Compass.valueOf(splits[0].trim());
+            String destination = splits[1].trim();
+            directions.put(compass, destination);
         }
         return directions;
     }
