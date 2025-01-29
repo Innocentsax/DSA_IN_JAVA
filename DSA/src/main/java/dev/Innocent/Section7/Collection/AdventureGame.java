@@ -1,9 +1,6 @@
 package dev.Innocent.Section7.Collection;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AdventureGame {
 
@@ -51,7 +48,7 @@ public class AdventureGame {
             Location location = new Location(parts[1], nextPlaces);
             adventureMap.put(parts[0], location);
         }
-        adventureMap.forEach((k, v) -> System.out.printf("%s:%s%n", k, v));
+//        adventureMap.forEach((k, v) -> System.out.printf("%s:%s%n", k, v));
     }
 
     private Map<Compass, String> loadDirections(String nextPlaces){
@@ -66,5 +63,50 @@ public class AdventureGame {
             directions.put(compass, destination);
         }
         return directions;
+    }
+
+    private void visit(Location location){
+        System.out.printf("*** You're standing %s *** %n", location.description);
+        System.out.println("\tFrom here, you can see: ");
+
+        location.nextPlaces.forEach((k, v) -> {
+            System.out.printf("\t* A %s to the %s (%S) %n", v, k.getString(), k);
+        });
+        System.out.print("Select Your Compass(Q to quit) >>");
+    }
+
+    public void move(String direction){
+        var nextPlaces = adventureMap.get(lastPlace).nextPlaces;
+        String nextPlace = null;
+        if("ENSW".contains(direction)){
+            nextPlace = nextPlaces.get(Compass.valueOf(direction));
+            if(nextPlace != null){
+                play(nextPlace);
+            }
+        } else {
+            System.out.println("!! Invalid direction, try again!!");
+        }
+    }
+
+    public void play(String location){
+        if(adventureMap.containsKey(location)){
+            Location next = adventureMap.get(location);
+            lastPlace = location;
+            visit(next);
+        } else {
+            System.out.println(location + " is an invalid location");
+        }
+    }
+
+    public static void main(String[] args) {
+        AdventureGame game = new AdventureGame();
+        game.play("road");
+
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            String direction = scanner.nextLine().trim().toUpperCase().substring(0, 1);
+            if(direction.equals("Q")) break;
+            game.move(direction);
+        }
     }
 }
