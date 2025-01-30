@@ -99,8 +99,15 @@ public class AdventureGame {
     }
 
     public static void main(String[] args) {
-        AdventureGame game = new AdventureGame();
-        game.play("road");
+
+        String myLocations = """
+                lake, at the edge of Lake Udo,E:ocean,W:forest,S:well house,N:cave
+                ocean,on Udo's beach before an angry sea,W:lake
+                cave,at the mouth of Udo's bat cave,E:ocean,W:forest,S:lake
+                """;
+
+        AdventureGame game = new AdventureGame(myLocations);
+        game.play("lake");
 
         Scanner scanner = new Scanner(System.in);
         while (true){
