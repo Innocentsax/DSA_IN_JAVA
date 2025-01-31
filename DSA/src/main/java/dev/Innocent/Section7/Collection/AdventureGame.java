@@ -107,7 +107,7 @@ public class AdventureGame {
                 """;
 
         AdventureGame game = new AdventureGame(myLocations);
-        game.play("lake");
+        game.play("Beach");
 
         Scanner scanner = new Scanner(System.in);
         while (true){
