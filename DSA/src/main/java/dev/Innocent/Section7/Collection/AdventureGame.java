@@ -84,7 +84,7 @@ public class AdventureGame {
                 play(nextPlace);
             }
         } else {
-            System.out.println("!! Invalid direction, try again!!");
+            System.out.println("!!! Invalid direction, try again!!");
         }
     }
 
