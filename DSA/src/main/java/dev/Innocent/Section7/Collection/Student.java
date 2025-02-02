@@ -109,6 +109,23 @@ public class Student {
             localDate = prevDate;
         }
 
+        System.out.println("--------------------------------------------");
+        var reversed = datedPurchases.descendingMap();
+
+        LocalDate firstDate = reversed.firstKey();
+        var nextEntry = reversed.firstEntry();
+
+        while(nextEntry != null){
+            List<Purchase> lastDaysData = nextEntry.getValue();
+            System.out.println(firstDate + " purchases : " + lastDaysData.size());
+
+            LocalDate nextDate = reversed.higherKey(firstDate);
+            nextEntry = reversed.higherEntry(firstDate);
+            firstDate = nextDate;
+        }
+
+        System.out.println("----------------------------------------");
+        datedPurchases.forEach((key, value) -> System.out.println(key + ": " + value));
     }
 
     private static void addPurchase(String name, Course course, double price){
