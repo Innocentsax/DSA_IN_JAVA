@@ -121,7 +121,8 @@ public class Store {
                 new Product("BC11","bacon","butcher",Category.MEAT),
                 new Product("BC77","coke","coca cola",Category.BEVERAGE),
                 new Product("BC88","coffee","value",Category.BEVERAGE),
-                new Product("BC99","tea","herbal",Category.BEVERAGE)
+                new Product("BC99","tea","herbal",Category.BEVERAGE),
+                new Product("BC10","Bread","herbal",Category.BEVERAGE)
         ));
         products.forEach(p -> inventory.put(p.sku(), new InventoryItem(p,
                 random.nextDouble(0, 1.25), 1000, 5)));
