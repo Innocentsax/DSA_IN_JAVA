@@ -1,7 +1,7 @@
 package dev.Innocent.Section7.Streams;
 
 public class BassClass {
-    public void recommendedMethod(){
+    public final void recommendedMethod(){
         System.out.println("[BaseClass.recommendedMethod]: Best way to do it");
         optionalMethod();
         mandatoryMethod();
