@@ -12,6 +12,18 @@ public class BassClass {
     }
 
     private void mandatoryMethod(){
+        System.out.println("[BaseClass.mandatoryMMethod]: NON-NEGOTIABLE");
+    }
 
+    public static void main(String[] args) {
+        BassClass parent = new BassClass();
+        ChildClass child = new ChildClass();
+        BassClass childReferredToAsBase = new ChildClass();
+
+        parent.recommendedMethod();
+        System.out.println("---------------------------------");
+        childReferredToAsBase.recommendedMethod();
+        System.out.println("----------------------------------");
+        child.recommendedMethod();
     }
 }
