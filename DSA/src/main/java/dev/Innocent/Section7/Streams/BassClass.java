@@ -15,6 +15,20 @@ public class BassClass {
         System.out.println("[BaseClass.mandatoryMMethod]: NON-NEGOTIABLE");
     }
 
+    public static void recommendedStatic(){
+        System.out.println("[BaseClass.recommendedStatic] BEST Way to Do it");
+        optionalStatic();
+        mandatoryStatic();
+    }
+
+    protected static void optionalStatic(){
+        System.out.println("[BaseClass.optionalStatic]: Optional");
+    }
+
+    private static void mandatoryStatic(){
+        System.out.println("[BaseClass.mandatoryStatic]: MANDATORY");
+    }
+
     public static void main(String[] args) {
         BassClass parent = new BassClass();
         ChildClass child = new ChildClass();
@@ -25,5 +39,13 @@ public class BassClass {
         childReferredToAsBase.recommendedMethod();
         System.out.println("----------------------------------");
         child.recommendedMethod();
+
+
+        System.out.println("----------------------------------");
+        parent.recommendedStatic();
+        System.out.println("---------------------------------");
+        childReferredToAsBase.recommendedStatic();
+        System.out.println("----------------------------------");
+        child.recommendedStatic();
     }
 }
