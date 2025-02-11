@@ -47,5 +47,13 @@ public class BassClass {
         childReferredToAsBase.recommendedStatic();
         System.out.println("----------------------------------");
         child.recommendedStatic();
+
+        String xArgument = "This is all i have got to say about this section";
+        doXYZ(xArgument, 16);
+    }
+
+    private static void doXYZ(String x, int y){
+        final String c = x + y;
+        System.out.println("c = " + c);
     }
 }
