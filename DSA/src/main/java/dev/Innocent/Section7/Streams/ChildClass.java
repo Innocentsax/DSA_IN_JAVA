@@ -13,7 +13,11 @@ public class ChildClass extends BassClass{
 //        optionalMethod();
 //    }
 
-    private void mandatoryMethod(){
+    private final void mandatoryMethod(){
         System.out.println("[Child:mandatoryMethod]: My own important stuff");
+    }
+
+    private final void recommendedMMethod(){
+
     }
 }
