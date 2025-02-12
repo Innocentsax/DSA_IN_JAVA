@@ -19,6 +19,9 @@ public class Logger {
             counts.merge(s, 1, Integer::sum);
         });
         System.out.println(counts);
+
+        List<StringBuilder> cleanedNames = standardizeNames(population);
+        System.out.println(cleanedNames);
     }
     public static void logToConsole(CharSequence message){
         LocalDateTime dt = LocalDateTime.now();
@@ -45,6 +48,9 @@ public class Logger {
         for(var name : list){
             for(String suffix : new String[]{"Ph.D", "M.D."}){
                 int startIndex = 1;
+                if((startIndex = name.indexOf(suffix)) > -1){
+                    name.replace(startIndex - 1, startIndex + suffix.length(), "");
+                }
             }
         }
 
