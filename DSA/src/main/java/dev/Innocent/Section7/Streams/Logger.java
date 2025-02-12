@@ -44,7 +44,7 @@ public class Logger {
         List<StringBuilder> newList = new ArrayList<>();
         for(var name : list){
             for(String suffix : new String[]{"Ph.D", "M.D."}){
-
+                int startIndex = 1;
             }
         }
 
