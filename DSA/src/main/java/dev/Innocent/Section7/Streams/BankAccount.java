@@ -36,8 +36,19 @@ public class BankAccount {
 //        BankAccount account = new BankAccount(BankAccount.AccountType.CHECKING, 500);
 //        System.out.println(account);
 
-        BankCustomer joe = new BankCustomer("Joe", 5000, 100000);
+        Bank bank = new Bank(3214567);
+        bank.addCustomer("Joe", 500.00, 10000.00);
+
+        BankCustomer joe = bank.getCustomer("000000010000000");
         System.out.println(joe);
+
+        if(bank.doTransaction(joe.getCustomerId(), AccountType.CHECKING, 35)){
+            System.out.printf(String.valueOf(joe));
+        }
+
+        if(bank.doTransaction(joe.getCustomerId(), AccountType.CHECKING, -535.01)){
+            System.out.printf(String.valueOf(joe));
+        }
     }
 
     void commitTransaction(int routingNumber, long transactionId,
