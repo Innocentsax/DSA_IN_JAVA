@@ -49,6 +49,10 @@ public class BankAccount {
         if(bank.doTransaction(joe.getCustomerId(), AccountType.CHECKING, -535.01)){
             System.out.printf(String.valueOf(joe));
         }
+
+        BankAccount checking = joe.getAccount(AccountType.CHECKING);
+        var transactions = checking.getTransactions();
+        transactions.forEach((k, v) -> System.out.println(k + ": " + v));
     }
 
     void commitTransaction(int routingNumber, long transactionId,
