@@ -3,21 +3,19 @@ package dev.Innocent.Section7.Streams;
 public class Parent {
     private String name;
     private String dob;
+    protected int siblings;
+
+    {
+        name = "John Doe";
+        dob = "01/01/1900";
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDob() {
         return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
     }
 
     @Override
@@ -28,5 +26,8 @@ public class Parent {
     public static void main(String[] args) {
         Parent parent = new Parent();
         Child child = new Child();
+
+        System.out.println(parent);
+        System.out.println(child);
     }
 }
