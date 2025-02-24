@@ -29,5 +29,7 @@ public class Parent {
 
         System.out.println(parent);
         System.out.println(child);
+
+        Generation g = Generation.BABY_BOOMER;
     }
 }
