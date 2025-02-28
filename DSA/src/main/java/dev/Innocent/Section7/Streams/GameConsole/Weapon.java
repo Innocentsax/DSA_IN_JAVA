@@ -1,5 +1,9 @@
 package dev.Innocent.Section7.Streams.GameConsole;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
 public enum Weapon {
     KNIFE(0, 10),
     AXE(0, 30),
@@ -29,5 +33,11 @@ public enum Weapon {
             }
         }
         return values()[0];
+    }
+
+    public static List<Weapon> getWeaponsByLevel(int levelOfPlay){
+        List<Weapon> weapons = new ArrayList<>(EnumSet.allOf(Weapon.class));
+        weapons.removeIf(w -> (w.minLevel > levelOfPlay));
+        return weapons;
     }
 }
