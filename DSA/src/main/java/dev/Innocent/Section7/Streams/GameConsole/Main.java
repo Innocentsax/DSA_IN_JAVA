@@ -16,5 +16,9 @@ public class Main {
 
         Pirate Inno = new Pirate("Innocent");
         System.out.println(Inno);
+
+        PirateGame.getTowns(0).forEach(System.out::println);
+        System.out.println("-----------------------------------------");
+        PirateGame.getTowns(1).forEach(System.out::println);
     }
 }
