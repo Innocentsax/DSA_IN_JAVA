@@ -33,4 +33,26 @@ public class PirateGame extends Game<Pirate>{
     public Map<Character, GameAction> getGameActions(int playerIndex) {
         return Map.of();
     }
+
+    private static void loadData(){
+        // Level 1 Towns
+        levelMap.add(new ArrayList<>(List.of(
+                "Bridgetown, Barbados",
+                "Fitts Village, Barbados",
+                "Holetown, Barbados"
+        )));
+        // Level 2 Towns
+        levelMap.add(new ArrayList<>(List.of(
+                "Fort-de-France, Martinique",
+                "Sainte-Anne, Martinique",
+                "Le Vauclin, Martinique"
+        )));
+    }
+
+    public static List<String> getTowns(int level){
+        if(level <= (levelMap.size() - 1)){
+            return levelMap.get(level);
+        }
+        return null;
+    }
 }
