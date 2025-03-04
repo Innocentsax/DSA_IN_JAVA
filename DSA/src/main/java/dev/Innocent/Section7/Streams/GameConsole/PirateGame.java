@@ -1,6 +1,7 @@
 package dev.Innocent.Section7.Streams.GameConsole;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,17 @@ public class PirateGame extends Game<Pirate>{
 
     @Override
     public Map<Character, GameAction> getGameActions(int playerIndex) {
-        return Map.of();
+        Pirate pirate = getPlayer(playerIndex);
+        System.out.println(pirate);
+        List<Weapon> weapons = Weapon.getWeaponsByLevel(pirate.value("level"));
+
+        Map<Character, GameAction> map = new LinkedHashMap<>();
+        for(Weapon weapon : weapons){
+            char init = weapon.name().charAt(0);
+            map.put(init, new GameAction(init, "Use " + weapon, this::useWeapon));
+        }
+        map.putAll(getStandardAction());
+        return map;
     }
 
     private static void loadData(){
@@ -58,5 +69,11 @@ public class PirateGame extends Game<Pirate>{
 
     private boolean useWeapon(int playerIndex){
         return getPlayer(playerIndex).useWeapon();
+    }
+
+    @Override
+    public boolean executeGameAction(int player, GameAction action) {
+        getPlayer(player).setCurrentWeapon(Weapon.getWeaponByChar(action.key()));
+        return super.executeGameAction(player, action);
     }
 }
