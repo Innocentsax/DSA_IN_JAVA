@@ -76,4 +76,10 @@ public class PirateGame extends Game<Pirate>{
         getPlayer(player).setCurrentWeapon(Weapon.getWeaponByChar(action.key()));
         return super.executeGameAction(player, action);
     }
+
+    @Override
+    public boolean printPlayer(int playerIndex) {
+        System.out.println(getPlayer(playerIndex).information());
+        return false;
+    }
 }
