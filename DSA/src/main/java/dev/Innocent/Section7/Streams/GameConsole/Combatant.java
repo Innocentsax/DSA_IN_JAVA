@@ -2,7 +2,7 @@ package dev.Innocent.Section7.Streams.GameConsole;
 
 import java.util.*;
 
-public abstract class Combatant implements Player{
+public sealed abstract class Combatant implements Player permits Pirate {
 
     private final String name;
     private final Map<String, Integer> gameData;
