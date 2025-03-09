@@ -1,5 +1,7 @@
 package dev.Innocent.Section7.Streams.GameConsole.GameConsoleThatWorks.out.production.GameConsole.dev.lpa.game.pirate;
 
+import dev.Innocent.Section7.Streams.GameConsole.PirateGame;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
