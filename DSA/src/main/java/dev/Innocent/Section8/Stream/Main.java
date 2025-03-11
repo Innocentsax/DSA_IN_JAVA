@@ -52,12 +52,15 @@ public class Main {
         System.out.println("------------------------------------");
 
         String[] strings = {"One", "Two", "Three"};
-        Arrays.stream(strings)
-                .sorted(Comparator.reverseOrder())
-                .forEach(System.out::println);
+        var firstStream = Arrays.stream(strings)
+                .sorted(Comparator.reverseOrder());
+//                .forEach(System.out::println);
 
-        Stream.of("Six", "Five", "Four")
-                .map(String::toUpperCase)
+        var secondStream =  Stream.of("Six", "Five", "Four")
+                .map(String::toUpperCase);
+//                .forEach(System.out::println);
+
+        Stream.concat(secondStream, firstStream)
                 .forEach(System.out::println);
     }
 
