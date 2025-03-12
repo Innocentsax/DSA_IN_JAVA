@@ -61,6 +61,7 @@ public class Main {
 //                .forEach(System.out::println);
 
         Stream.concat(secondStream, firstStream)
+                .map(s -> s.charAt(0) + " - " + s)
                 .forEach(System.out::println);
     }
 
