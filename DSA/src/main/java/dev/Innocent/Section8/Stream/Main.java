@@ -63,6 +63,16 @@ public class Main {
         Stream.concat(secondStream, firstStream)
                 .map(s -> s.charAt(0) + " - " + s)
                 .forEach(System.out::println);
+
+        Map<Character, int[]> myMap = new LinkedHashMap<>();
+        int bingoIndex = 1;
+        for(char c : "BINGO".toCharArray()){
+            int[] numbers = new int[15];
+            int labelNo = bingoIndex;
+            Arrays.setAll(numbers, i -> i + labelNo);
+            myMap.put(c, numbers);
+            bingoIndex += 15;
+        }
     }
 
 }
