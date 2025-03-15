@@ -91,6 +91,12 @@ public class Main {
                 .filter(Main::isPrime)
                 .limit(20)
                 .forEach(s -> System.out.print(s + " "));
+
+        System.out.println();
+        IntStream.iterate(1, n -> n + 1)
+                .limit(100)
+                .filter(Main::isPrime)
+                .forEach(s -> System.out.print(s + " "));
     }
 
     public static boolean isPrime(int wholeNumber){
