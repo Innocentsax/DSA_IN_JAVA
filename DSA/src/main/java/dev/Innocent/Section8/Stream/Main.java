@@ -88,7 +88,20 @@ public class Main {
 
         System.out.println();
         IntStream.iterate(1, n -> n + 1)
+                .filter(Main::isPrime)
                 .limit(20)
                 .forEach(s -> System.out.print(s + " "));
+    }
+
+    public static boolean isPrime(int wholeNumber){
+        if(wholeNumber <= 2){
+            return (wholeNumber == 2);
+        }
+        for(int divisor = 2; divisor < wholeNumber; divisor++){
+            if(wholeNumber % divisor == 0){
+                return false;
+            }
+        }
+        return true;
     }
 }
