@@ -7,11 +7,11 @@ public class ChildClass extends BassClass{
         super.optionalMethod();
     }
 
-    @Override
-    public void recommendedMethod() {
-        System.out.println("[Child:recommendedMethod]: I'll do things my way");
-        optionalMethod();
-    }
+//    @Override
+//    public void recommendedMethod() {
+//        System.out.println("[Child:recommendedMethod]: I'll do things my way");
+//        optionalMethod();
+//    }
 
     private final void mandatoryMethod(){
         System.out.println("[Child:mandatoryMethod]: My own important stuff");
