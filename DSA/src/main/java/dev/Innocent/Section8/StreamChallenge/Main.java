@@ -1,6 +1,7 @@
 package dev.Innocent.Section8.StreamChallenge;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.stream.Stream;
 
 public class Main {
@@ -48,6 +49,15 @@ public class Main {
         var streamNG = Stream.concat(streamN, streamG);
         var streamBING = Stream.concat(streamNG, streamBI);
         Stream.concat(streamBING, streamO).forEach(System.out::println);
+
+        System.out.println("-----------------------------------------------");
+
+        Stream.generate(() -> new Random().nextInt(rSeed, rSeed + 15))
+                .distinct()
+                .limit(15)
+                .map(i -> "O" + i)
+                .sorted()
+                .forEach(System.out::println);
     }
 
     public static int getCounter(){
