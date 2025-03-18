@@ -23,5 +23,13 @@ public class Main {
                 .distinct()
                 .sorted()
                 .forEach(d -> System.out.printf("%c ", d));
+
+        System.out.println();
+        int maxSeats = 100;
+        int seatsInRow = 10;
+        var stream = Stream.iterate(0, i -> i < maxSeats, i -> i + 1)
+                .map(i -> new Seat((char) ('A' + i / seatsInRow),
+                        i % seatsInRow + 1));
+        stream.forEach(System.out::println);
     }
 }
