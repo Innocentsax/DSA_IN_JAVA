@@ -49,4 +49,8 @@ public class CourseEngagement {
         var months = Period.between(lastActivityDate, now).toTotalMonths();
         return (int) months;
     }
+
+    void watchLecture(int lectureNumber, LocalDate currentDate){
+        lastLecture = Math.max(lectureNumber, lastLecture);
+    }
 }
