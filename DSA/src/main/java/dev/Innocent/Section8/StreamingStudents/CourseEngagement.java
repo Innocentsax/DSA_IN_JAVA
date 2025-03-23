@@ -53,5 +53,6 @@ public class CourseEngagement {
     void watchLecture(int lectureNumber, LocalDate currentDate){
         lastLecture = Math.max(lectureNumber, lastLecture);
         lastActivityDate = currentDate;
+        engagementType = "Lecture " + lastLecture;
     }
 }
