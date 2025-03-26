@@ -82,7 +82,7 @@ public class Student {
     }
 
     public int getMonthsSinceActive(){
-        int inactiveMonths = (LocalDate.now().getYear() - 2024) * 12;
+        int inactiveMonths = (LocalDate.now().getYear() - 2025) * 12;
         for(String key : engagementMap.keySet()){
             inactiveMonths = Math.min(inactiveMonths, getMonthsSinceActive(key));
         }
@@ -99,6 +99,36 @@ public class Student {
         if(activity != null){
             activity.watchLecture(lectureNumber, LocalDate.of(year, month, 1));
         }
+    }
+
+    private static String getRandomVal(String... data){
+        return data[random.nextInt(data.length)];
+    }
+
+    public static Student getRandomStudent(Course... courses){
+        int maxYear = LocalDate.now().getYear() + 1;
+
+        Student student = new Student(
+                getRandomVal("AU", "CA", "CN", "GB", "IN", "UA", "US"),
+                random.nextInt(2025, maxYear),
+                random.nextInt(18, 90),
+                getRandomVal("M", "F", "U"),
+                random.nextBoolean(),
+                courses
+        );
+
+        for(Course c : courses){
+            int lecture = random.nextInt(1, c.lectureCount());
+            int year = random.nextInt(student.getYearEnrolled(), maxYear);
+            int month = random.nextInt(1, 13);
+            if(year == (maxYear - 1)){
+                if(month > LocalDate.now().getMonthValue()){
+                    month = LocalDate.now().getMonthValue();
+                }
+            }
+            student.watchLecture(c.courseCode(), lecture, month, year);
+        }
+        return student;
     }
 
     @Override
