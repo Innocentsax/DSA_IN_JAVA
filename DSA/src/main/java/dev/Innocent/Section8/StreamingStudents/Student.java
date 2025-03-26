@@ -1,5 +1,6 @@
 package dev.Innocent.Section8.StreamingStudents;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,5 +25,67 @@ public class Student {
         this.ageEnrolled = ageEnrolled;
         this.gender = gender;
         this.programmingExperience = programmingExperience;
+
+        for(Course course : courses){
+            addCourse(course, LocalDate.of(yearEnrolled, 1, 1));
+        }
+    }
+
+    public void addCourse(Course newCourse){
+        addCourse(newCourse, LocalDate.now());
+    }
+
+    public void addCourse(Course newCourse, LocalDate enrollDate){
+        engagementMap.put(newCourse.courseCode(), new CourseEngagement(
+                newCourse, enrollDate, "Enrollment"));
+    }
+
+    public long getStudentId() {
+        return studentId;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public int getYearEnrolled() {
+        return yearEnrolled;
+    }
+
+    public int getAgeEnrolled() {
+        return ageEnrolled;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public boolean hasProgrammingExperience() {
+        return programmingExperience;
+    }
+
+    public Map<String, CourseEngagement> getEngagementMap() {
+        return Map.copyOf(engagementMap);
+    }
+
+    public int getYearsSinceEnrolled(){
+        return LocalDate.now().getYear() - yearEnrolled;
+    }
+
+    public int getAge(){
+        return ageEnrolled + getYearsSinceEnrolled();
+    }
+
+    public int getMonthsSinceActive(String countryCode){
+        CourseEngagement info = engagementMap.get(countryCode);
+        return info == null ? 0 : info.getMonthsSinceActive();
+    }
+
+    public int getMonthsSinceActive(){
+        int inactiveMonths = (LocalDate.now().getYear() - 2024) * 12;
+        for(String key : engagementMap.keySet()){
+            inactiveMonths = Math.min(inactiveMonths, getMonthsSinceActive(key));
+        }
+        return inactiveMonths;
     }
 }
