@@ -88,4 +88,29 @@ public class Student {
         }
         return inactiveMonths;
     }
+
+    public double getPercentComplete(String courseCode){
+        var info = engagementMap.get(courseCode);
+        return (info == null) ? 0 : info.getPercentComplete();
+    }
+
+    public void watchLecture(String courseCode, int lectureNumber, int month, int year){
+        var activity = engagementMap.get(courseCode);
+        if(activity != null){
+            activity.watchLecture(lectureNumber, LocalDate.of(year, month, 1));
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", countryCode='" + countryCode + '\'' +
+                ", yearEnrolled=" + yearEnrolled +
+                ", ageEnrolled=" + ageEnrolled +
+                ", gender='" + gender + '\'' +
+                ", programmingExperience=" + programmingExperience +
+                ", engagementMap=" + engagementMap +
+                '}';
+    }
 }
