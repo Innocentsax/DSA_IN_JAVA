@@ -5,11 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import java.util.*;
-
 public class Student {
+
     private static long lastStudentId = 1;
-    private static final Random random = new Random();
+    private final static Random random = new Random();
 
     private final long studentId;
     private final String countryCode;
@@ -17,11 +16,12 @@ public class Student {
     private final int ageEnrolled;
     private final String gender;
     private final boolean programmingExperience;
+
     private final Map<String, CourseEngagement> engagementMap = new HashMap<>();
 
-    public Student(String countryCode, int yearEnrolled, int ageEnrolled,
-                   String gender, boolean programmingExperience, Course... courses) {
-        this.studentId = lastStudentId++;
+    public Student(String countryCode, int yearEnrolled, int ageEnrolled, String gender,
+                   boolean programmingExperience, Course... courses) {
+        studentId = lastStudentId++;
         this.countryCode = countryCode;
         this.yearEnrolled = yearEnrolled;
         this.ageEnrolled = ageEnrolled;
@@ -38,8 +38,9 @@ public class Student {
     }
 
     public void addCourse(Course newCourse, LocalDate enrollDate) {
-        engagementMap.put(newCourse.courseCode(), new CourseEngagement(
-                newCourse, enrollDate, "Enrollment"));
+
+        engagementMap.put(newCourse.courseCode(),
+                new CourseEngagement(newCourse, enrollDate, "Enrollment"));
     }
 
     public long getStudentId() {
@@ -67,7 +68,7 @@ public class Student {
     }
 
     public Map<String, CourseEngagement> getEngagementMap() {
-        return Collections.unmodifiableMap(engagementMap);
+        return Map.copyOf(engagementMap);
     }
 
     public int getYearsSinceEnrolled() {
@@ -79,27 +80,32 @@ public class Student {
     }
 
     public int getMonthsSinceActive(String courseCode) {
-        return Optional.ofNullable(engagementMap.get(courseCode))
-                .map(CourseEngagement::getMonthsSinceActive)
-                .orElse(0);
+
+        CourseEngagement info = engagementMap.get(courseCode);
+        return info == null ? 0 : info.getMonthsSinceActive();
     }
 
     public int getMonthsSinceActive() {
-        return engagementMap.values().stream()
-                .mapToInt(CourseEngagement::getMonthsSinceActive)
-                .min()
-                .orElse(0);
+
+        int inactiveMonths = (LocalDate.now().getYear() - 2025) * 12;
+        for (String key : engagementMap.keySet()) {
+            inactiveMonths = Math.min(inactiveMonths, getMonthsSinceActive(key));
+        }
+        return inactiveMonths;
     }
 
     public double getPercentComplete(String courseCode) {
-        return Optional.ofNullable(engagementMap.get(courseCode))
-                .map(CourseEngagement::getPercentComplete)
-                .orElse(0.0);
+
+        var info = engagementMap.get(courseCode);
+        return (info == null) ? 0 : info.getPercentComplete();
     }
 
     public void watchLecture(String courseCode, int lectureNumber, int month, int year) {
-        Optional.ofNullable(engagementMap.get(courseCode))
-                .ifPresent(activity -> activity.watchLecture(lectureNumber, LocalDate.of(year, month, 1)));
+
+        var activity = engagementMap.get(courseCode);
+        if (activity != null) {
+            activity.watchLecture(lectureNumber, LocalDate.of(year, month, 1));
+        }
     }
 
     private static String getRandomVal(String... data) {
@@ -107,27 +113,26 @@ public class Student {
     }
 
     public static Student getRandomStudent(Course... courses) {
-        int currentYear = LocalDate.now().getYear();
-        int maxYear = currentYear + 1;
 
-        String countryCode = getRandomVal("AU", "CA", "CN", "GB", "IN", "UA", "US");
-        int yearEnrolled = random.nextInt(2025, maxYear);
-        int ageEnrolled = random.nextInt(18, 90);
-        String gender = getRandomVal("M", "F", "U");
-        boolean programmingExperience = random.nextBoolean();
+        int maxYear = LocalDate.now().getYear() + 1;
 
-        Student student = new Student(countryCode, yearEnrolled, ageEnrolled, gender, programmingExperience, courses);
+        Student student = new Student(
+                getRandomVal("AU", "CA", "CN", "GB", "IN", "UA", "US"),
+                random.nextInt(2015, maxYear),
+                random.nextInt(18, 90),
+                getRandomVal("M", "F", "U"),
+                random.nextBoolean(),
+                courses);
 
         for (Course c : courses) {
             int lecture = random.nextInt(1, c.lectureCount());
-            int minYear = student.getYearEnrolled();
-            int year = (minYear < maxYear) ? random.nextInt(minYear, maxYear) : minYear;
+            int year = random.nextInt(student.getYearEnrolled(), maxYear);
             int month = random.nextInt(1, 13);
-
-            if (year == (maxYear - 1) && month > LocalDate.now().getMonthValue()) {
-                month = LocalDate.now().getMonthValue();
+            if (year == (maxYear - 1)) {
+                if (month > LocalDate.now().getMonthValue()) {
+                    month = LocalDate.now().getMonthValue();
+                }
             }
-
             student.watchLecture(c.courseCode(), lecture, month, year);
         }
         return student;
