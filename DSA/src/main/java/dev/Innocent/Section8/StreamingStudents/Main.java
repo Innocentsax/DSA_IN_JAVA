@@ -53,5 +53,11 @@ public class Main {
             System.out.printf("# of students (%s) = %d%n", i == 0 ? "< 30" : ">= 30 & 60", cnt);
         }
         System.out.println("# of students >= 60 = " + (students.length - total));
+
+        var ageStream = Arrays.stream(students).mapToInt(Student::getAgeEnrolled);
+        System.out.println("Stats for Enrollment Age = " + ageStream.summaryStatistics());
+
+        var currentAgeStream = Arrays.stream(students).mapToInt(Student::getAge);
+        System.out.println("Stats for Enrollment Age = " + currentAgeStream.summaryStatistics());
     }
 }
