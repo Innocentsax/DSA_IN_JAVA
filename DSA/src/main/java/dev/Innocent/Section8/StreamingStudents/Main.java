@@ -1,8 +1,10 @@
 package dev.Innocent.Section8.StreamingStudents;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -83,6 +85,23 @@ public class Main {
                         (s.getMonthsSinceActive() < 12))
                 .filter(s -> !s.hasProgrammingExperience())
                 .limit(5)
+                .toList()
                 .forEach(System.out::println);
+
+        var longTimeLearners =  Arrays.stream(students)
+                .filter(s -> (s.getAge() - s.getAgeEnrolled() >= 7) &&
+                        (s.getMonthsSinceActive() < 12))
+                .filter(s -> !s.hasProgrammingExperience())
+                .limit(5)
+                .toArray(Student[]::new);
+
+        var learners =  Arrays.stream(students)
+                .filter(s -> (s.getAge() - s.getAgeEnrolled() >= 7) &&
+                        (s.getMonthsSinceActive() < 12))
+                .filter(s -> !s.hasProgrammingExperience())
+                .limit(5)
+                .collect(Collectors.toList());
+
+        Collections.shuffle(learners);
     }
 }
