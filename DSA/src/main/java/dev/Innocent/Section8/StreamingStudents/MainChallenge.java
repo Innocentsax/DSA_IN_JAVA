@@ -19,5 +19,12 @@ public class MainChallenge {
                 .rangeClosed(1, 5000)
                 .mapToObj(s -> Student.getRandomStudent(jmc, pymc))
                 .toList();
+
+        double totalPercent = student2.stream()
+                .mapToDouble(s -> s.getPercentComplete("JMC"))
+                .reduce(0, Double::sum);
+
+        double avePercent = totalPercent / student2.size();
+        System.out.printf("Average Percentage Complete = %.2f%% %n", avePercent);
     }
 }
