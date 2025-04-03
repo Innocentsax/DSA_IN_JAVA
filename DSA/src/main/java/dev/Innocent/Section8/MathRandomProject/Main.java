@@ -1,5 +1,7 @@
 package dev.Innocent.Section8.MathRandomProject;
 
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
 //        int maxMinusFive = Integer.MAX_VALUE - 5;
@@ -27,7 +29,13 @@ public class Main {
         System.out.println("10 to the fifth power (10*10*10*10*10) = " + Math.pow(10, 5));
 
         for(int i = 0; i < 10; i++){
-            System.out.println(Math.random());
+            System.out.printf("%1$d = %1$c%n", (int) (Math.random() * 26) + 65);
+        }
+
+        System.out.println("---------------------------------------");
+        Random r = new Random();
+        for(int i = 0; i < 10; i++){
+            System.out.printf("%1$d = %1$c%n", r.nextInt(65, 91));
         }
     }
 }
