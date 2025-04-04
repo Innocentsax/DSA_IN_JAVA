@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-//        int maxMinusFive = Integer.MAX_VALUE - 5;
-//        for(int j = 0, id = maxMinusFive; j < 10; id++, j++){
-//            System.out.printf("Assigning id %,d%n", id);
-//        }
+        int maxMinusFive = Integer.MAX_VALUE - 5;
+        for(int j = 0, id = maxMinusFive; j < 10; id++, j++){
+            System.out.printf("Assigning id %,d%n", id);
+        }
 
         System.out.println(Math.abs(-50));
         System.out.println(Math.abs(Integer.MIN_VALUE));
