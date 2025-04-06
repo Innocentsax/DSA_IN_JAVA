@@ -12,11 +12,10 @@ public class RandomChallenge {
     public static void main(String[] args) {
         List<Integer> currentDice = new ArrayList<>();
 
-        int rolls = 0;
         do{
             rollDice(currentDice);
-            currentDice.clear();
-        } while (++rolls < 5);
+        } while (!pickLosers(currentDice));
+        System.out.println("Game over. Real game would score and continue");
     }
 
     private static void rollDice(List<Integer> currentDice){
