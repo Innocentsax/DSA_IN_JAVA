@@ -44,4 +44,9 @@ public final class GameConsole<T extends Game<? extends Player>> {
             }
         }
     }
+
+    public static String getUserInput(String prompt){
+        System.out.print(prompt + ": ");
+        return scanner.nextLine();
+    }
 }
