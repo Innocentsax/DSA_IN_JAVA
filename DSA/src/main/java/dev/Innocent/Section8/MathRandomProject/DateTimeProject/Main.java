@@ -2,6 +2,7 @@ package dev.Innocent.Section8.MathRandomProject.DateTimeProject;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.temporal.ChronoField;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,5 +28,10 @@ public class Main {
         System.out.println(april.getDayOfMonth());
         System.out.println(april.getDayOfWeek());
         System.out.println(april.getDayOfYear());
+
+        System.out.println(april.get(ChronoField.YEAR));
+        System.out.println(april.get(ChronoField.MONTH_OF_YEAR));
+        System.out.println(april.get(ChronoField.DAY_OF_MONTH));
+        System.out.println(april.get(ChronoField.DAY_OF_YEAR));
     }
 }
