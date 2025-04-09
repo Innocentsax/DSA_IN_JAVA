@@ -16,5 +16,16 @@ public class Main {
 
         LocalDate dat125 = LocalDate.ofYearDay(2025, 125);
         System.out.println(dat125);
+
+        LocalDate april = LocalDate.parse("2025-04-08");
+        System.out.println(april);
+
+        System.out.println(april.getYear());
+        System.out.println(april.getMonth());
+
+        System.out.println(april.getMonthValue());
+        System.out.println(april.getDayOfMonth());
+        System.out.println(april.getDayOfWeek());
+        System.out.println(april.getDayOfYear());
     }
 }
