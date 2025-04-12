@@ -1,9 +1,6 @@
 package dev.Innocent.Section8.MathRandomProject;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.TemporalAdjuster;
@@ -71,5 +68,11 @@ public class MoreTime {
         ZonedDateTime firstOfMonth = ZonedDateTime.now()
                 .with(TemporalAdjusters.firstDayOfNextMonth());
         System.out.printf("First of next Month = %tD %n", firstOfMonth);
+
+        Period timePast = Period.between(LocalDate.EPOCH, dob.toLocalDate());
+        System.out.println(timePast);
+
+        Duration timeSince = Duration.between(Instant.EPOCH, dob.toInstant(ZoneOffset.UTC));
+        System.out.println(timeSince);
     }
 }
