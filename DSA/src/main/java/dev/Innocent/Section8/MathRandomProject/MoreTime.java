@@ -3,7 +3,9 @@ package dev.Innocent.Section8.MathRandomProject;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,5 +50,15 @@ public class MoreTime {
             System.out.println("\t" + z.getRules().getDaylightSavings(instantNow));
             System.out.println("\t" + z.getRules().isDaylightSavings(instantNow));
         }
+
+        Instant dobInstant = Instant.parse("2020-01-01T08:01:00Z");
+        LocalDateTime dob = LocalDateTime.ofInstant(dobInstant, ZoneId.systemDefault());
+        System.out.println("Your kid's birthdate, LA time = " + dob.format(
+                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
+
+        ZonedDateTime dobSydney = ZonedDateTime.ofInstant(dobInstant, ZoneId.of("Australia/Sydney"));
+        System.out.println("Your Kid's birthdate, Sydney time = " + dobSydney.format(
+                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
+        ));
     }
 }
