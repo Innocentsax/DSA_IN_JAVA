@@ -6,6 +6,8 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -60,5 +62,14 @@ public class MoreTime {
         System.out.println("Your Kid's birthdate, Sydney time = " + dobSydney.format(
                 DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
         ));
+
+        ZonedDateTime dobHere = dobSydney.withZoneSameInstant(ZoneId.systemDefault());
+        System.out.println("Your Kid's birthdate, Sydney time = " + dobHere.format(
+                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
+        ));
+
+        ZonedDateTime firstOfMonth = ZonedDateTime.now()
+                .with(TemporalAdjusters.firstDayOfNextMonth());
+        System.out.printf("First of next Month = %tD %n", firstOfMonth);
     }
 }
