@@ -3,6 +3,7 @@ package dev.Innocent.Section8.MathRandomProject;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.HashSet;
@@ -74,5 +75,18 @@ public class MoreTime {
 
         Duration timeSince = Duration.between(Instant.EPOCH, dob.toInstant(ZoneOffset.UTC));
         System.out.println(timeSince);
+
+        LocalDateTime dob2 = dob.plusYears(2).plusMonths(4).plusDays(4).plusHours(7)
+                .plusMinutes(14).plusSeconds(37);
+        System.out.println(dob2);
+
+        for(ChronoUnit u : ChronoUnit.values()){
+            if(u.isSupportedBy(LocalDate.EPOCH)){
+                long val = u.between(LocalDate.EPOCH, dob.toLocalDate());
+                System.out.println(u + " past = " + val);
+            } else {
+                System.out.println("-- Not supported: " + u);
+            }
+        }
     }
 }
