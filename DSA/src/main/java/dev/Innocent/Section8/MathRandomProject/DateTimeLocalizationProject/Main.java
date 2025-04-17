@@ -3,6 +3,7 @@ package dev.Innocent.Section8.MathRandomProject.DateTimeLocalizationProject;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.zone.ZoneRules;
 import java.util.Locale;
 
 public class Main {
@@ -23,6 +24,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        Employee jane = new Employee("Jane", Locale.US, "America/New_York");
+        Employee joe = new Employee("Joe", "en-AU", "Australia/Sydney");
 
+        ZoneRules joeRule = joe.zone.getRules();
+        ZoneRules janeRule = jane.zone.getRules();
+
+        System.out.println(jane + " " + janeRule);
+        System.out.println(joe + " " + joeRule);
     }
 }
