@@ -1,5 +1,7 @@
 package dev.Innocent.Section8.RegularExpression;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -24,6 +26,46 @@ public class Main {
             String output = testString.replaceFirst(pattern, replacement);
             System.out.println("Pattern: " + pattern + " => " + output);
         }
+
+        // Song of the Witches in MacBeth, a Play by Shakespeare
+        String paragraph = """
+                Double, double toil and trouble;
+                Fire burn and caldron bubble.
+                Fillet of a fenny snake,
+                In the caldron boil and bake
+                Eye of newt and toe of frog,
+                Wool of bat and tongue of dog,
+                Adder's fork and blind-worm's sting,
+                Lizard's leg and howlet's wing,
+                For a charm of powerful trouble,
+                Like a hell-broth boil and bubble.
+                """;
+
+        String[] lines = paragraph.split("\\R");
+        System.out.println("This paragraph has " + lines.length + " lines");
+        String[] words = paragraph.split("\\s");
+        System.out.println("This paragraph has " + words.length + " words");
+        System.out.println(paragraph.replaceAll("[a-zA-Z]+ble",
+                "[GRUB]"));
+
+        Scanner scanner = new Scanner(paragraph);
+        System.out.println(scanner.delimiter());
+        scanner.useDelimiter("\\R");
+
+//        while (scanner.hasNext()) {
+//            String element = scanner.next();
+//            System.out.println(element);
+//        }
+
+//        scanner.tokens()
+//                .map(s -> s.replaceAll("\\p{Punct}", ""))
+//                .flatMap(s -> Arrays.stream(s.split("\\s+")))
+//                .filter(s -> s.matches("[a-zA-Z]+ble"))
+//                .forEach(System.out::println);
+
+        System.out.println(scanner.findInLine("[a-zA-Z]+ble"));
+        System.out.println(scanner.findInLine("[a-zA-Z]+ble"));
+        scanner.close();
     }
 
     private static String format(String regexp, String... args) {
