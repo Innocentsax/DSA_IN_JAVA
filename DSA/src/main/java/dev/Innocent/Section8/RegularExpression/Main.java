@@ -1,5 +1,6 @@
 package dev.Innocent.Section8.RegularExpression;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -52,16 +53,16 @@ public class Main {
         System.out.println(scanner.delimiter());
         scanner.useDelimiter("\\R");
 
-//        while (scanner.hasNext()) {
-//            String element = scanner.next();
-//            System.out.println(element);
-//        }
+        while (scanner.hasNext()) {
+            String element = scanner.next();
+            System.out.println(element);
+        }
 
-//        scanner.tokens()
-//                .map(s -> s.replaceAll("\\p{Punct}", ""))
-//                .flatMap(s -> Arrays.stream(s.split("\\s+")))
-//                .filter(s -> s.matches("[a-zA-Z]+ble"))
-//                .forEach(System.out::println);
+        scanner.tokens()
+                .map(s -> s.replaceAll("\\p{Punct}", ""))
+                .flatMap(s -> Arrays.stream(s.split("\\s+")))
+                .filter(s -> s.matches("[a-zA-Z]+ble"))
+                .forEach(System.out::println);
 
         System.out.println(scanner.findInLine("[a-zA-Z]+ble"));
         System.out.println(scanner.findInLine("[a-zA-Z]+ble"));
