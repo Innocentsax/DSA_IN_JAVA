@@ -15,9 +15,9 @@ public class Main {
             System.out.println(matched + ": " + s);
         }
 
-        String challenge3 = "[A-Z][a-z\\s]+[.]";
-        for(String s : List.of("The bike is red, and has flat tires",
-                "I love being a new L.P.A. student",
+        String challenge3 = "^[A-Z][\\p{all}]+[.?!]$";
+        for(String s : List.of("The bike is red, and has flat tires.",
+                "I love being a new L.P.A. student!",
                 "Hello, friends and family: Welcome!", "How are you, Mary?")){
             boolean matched = s.matches(challenge3);
             System.out.println(matched + ": " + s);
