@@ -45,5 +45,54 @@ public class Main {
                     htmlMatcher.group(2));
             System.out.println("index = " + htmlMatcher.start("level"));
         }
+
+        htmlMatcher.reset();
+        htmlMatcher.results().forEach(mr -> System.out.println(
+                mr.group(1) + " " + mr.group(2)));
+
+        String tabbedText = """
+                group1	group2	group3
+                1	2	3
+                a	b	d
+                """;
+
+        tabbedText.lines()
+                .flatMap(s -> Pattern.compile("\\t").splitAsStream(s))
+                .forEach(System.out::println);
+
+        htmlMatcher.reset();
+        String updatedSnippet = htmlMatcher.replaceFirst((mr) ->
+                "<em>" + mr.group(2) + "</em>");
+        System.out.println("------------------");
+        System.out.println(updatedSnippet);
+        System.out.println(htmlMatcher.start() + " : " + htmlMatcher.end());
+        System.out.println(htmlMatcher.group(2));
+
+        htmlMatcher.usePattern(
+                Pattern.compile("<([hH]\\d)>(.*)</\\1>"));
+
+        htmlMatcher.reset();
+        System.out.println("------------------");
+        System.out.println("Using Back Reference: \n" +
+                htmlMatcher.replaceFirst("<em>$2</em>"));
+
+        String replacedHTML = htmlMatcher.replaceAll((mr) ->
+                "<em>" + mr.group(2) + "</em>");
+        System.out.println("------------------");
+        System.out.println(replacedHTML);
+
+        htmlMatcher.reset();
+        StringBuilder sb = new StringBuilder();
+        int index = 1;
+        while (htmlMatcher.find()) {
+            htmlMatcher.appendReplacement(sb,
+                    switch (htmlMatcher.group(1).toLowerCase()) {
+                        case "h1" -> "<head>$2</head>";
+                        case "h2" -> "<em>$2</em>";
+                        default -> "<$1>" + index++ + ". $2</$1>";
+                    });
+        }
+        htmlMatcher.appendTail(sb);
+        System.out.println(sb);
     }
 }
