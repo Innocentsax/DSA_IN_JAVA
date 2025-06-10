@@ -66,7 +66,7 @@ public class Main {
 
             }
                 System.out.println("And I can read too");
-                System.out.println("--------------------");
+                System.out.println("--------------------------------");
                 Files.readAllLines(path).forEach(System.out::println);
             if(Files.isWritable(path)){
                 System.out.println("Would write to file here");
