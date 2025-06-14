@@ -19,12 +19,12 @@ public class Main {
         System.out.println("isAbsolute = " + path.isAbsolute());
         System.out.println("--------------------------------------");
 
-        System.out.println(absolutePath.getRoot());
-        int i = 1;
-        var it = path.toAbsolutePath().iterator();
-        while(it.hasNext()){
-            System.out.println(".".repeat(i++) + " " + it.next());
-        }
+//        System.out.println(absolutePath.getRoot());
+//        int i = 1;
+//        var it = path.toAbsolutePath().iterator();
+//        while(it.hasNext()){
+//            System.out.println(".".repeat(i++) + " " + it.next());
+//        }
 
         int pathParts = absolutePath.getNameCount();
         for(int i = 0; i < pathParts; i++){
