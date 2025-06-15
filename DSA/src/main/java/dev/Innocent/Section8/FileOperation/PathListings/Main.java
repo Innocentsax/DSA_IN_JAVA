@@ -9,8 +9,9 @@ import java.time.Instant;
 
 public class Main {
     public static void main(String[] args) {
-        Path path = Path.of("files/testing.txt");
+        Path path = Path.of("files/come.txt");
         printPathInfo(path);
+        logStatement(path);
     }
 
     private static void printPathInfo(Path path){
