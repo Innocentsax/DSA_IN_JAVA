@@ -1,6 +1,11 @@
 package dev.Innocent.Section8.FileOperation.PathListings;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.time.Instant;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,5 +36,18 @@ public class Main {
             System.out.println(".".repeat(i + 1) + " " + absolutePath.getName(i));
         }
         System.out.println("-------------------------------------------");
+    }
+
+    public static void logStatement(Path path){
+        try{
+            Path parent = path.getParent();
+            if(!Files.exists(parent)){
+                Files.createDirectory(parent);
+            }
+            Files.writeString(path, Instant.now() + ": hello file world\n",
+                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
