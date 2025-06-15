@@ -10,8 +10,9 @@ import java.time.Instant;
 public class Main {
     public static void main(String[] args) {
         Path path = Path.of("files/come.txt");
-        printPathInfo(path);
+//        printPathInfo(path);
         logStatement(path);
+        extraInfo(path);
     }
 
     private static void printPathInfo(Path path){
@@ -49,6 +50,15 @@ public class Main {
                     StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void extraInfo(Path path){
+        try {
+            var atts = Files.readAttributes(path, "*");
+            atts.entrySet().forEach(System.out::println);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
