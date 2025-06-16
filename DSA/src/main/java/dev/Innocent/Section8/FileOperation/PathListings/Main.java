@@ -57,8 +57,9 @@ public class Main {
         try {
             var atts = Files.readAttributes(path, "*");
             atts.entrySet().forEach(System.out::println);
+            System.out.println(Files.probeContentType(path));
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("Problem getting attributes");
         }
     }
 }
