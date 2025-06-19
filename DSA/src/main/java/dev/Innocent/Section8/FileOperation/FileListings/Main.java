@@ -20,6 +20,16 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        System.out.println("--------------------------------------------");
+
+        try (Stream<Path> paths = Files.walk(path, 2)) {
+            paths
+                    .map(Main::listDir)
+                    .forEach(System.out::println);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static String listDir(Path path){
