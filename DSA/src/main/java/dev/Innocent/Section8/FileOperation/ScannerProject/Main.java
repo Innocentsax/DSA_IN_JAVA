@@ -11,6 +11,8 @@ public class Main {
 //                System.out.println(scanner.nextLine());
 //            }
             System.out.println(scanner.delimiter());
+            scanner.useDelimiter("$");
+            scanner.tokens().forEach(System.out::println);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
