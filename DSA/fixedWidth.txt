@@ -1,0 +1,23 @@
+Name           AgeDept        Salary  ST
+John Doe        30HR             50000NY
+Jane Smith      25IT             60000CA
+Michael Brown   40Finance        75000TX
+Alice Johnson   35Marketing      55000IL
+Robert Lee      28IT             58000WA
+Emily Wang      32Marketing      52000NY
+Daniel Kim      29HR             49000CA
+Sarah Davis     31Finance        72000TX
+Jessica Chen    27IT             61000IL
+David Miller    33Marketing      53000WA
+Oliver Scott    26Finance        65000CA
+Sophia Adams    37IT             59000NY
+William Clark   34Marketing      54000TX
+Ava Turner      29HR             51000IL
+Ethan Hall      31Finance        70000WA
+Isabella King   24IT             62000CA
+James Evans     36Marketing      56000NY
+Grace Baker     27HR             48000TX
+Liam Brooks     32Finance        68000IL
+Charlotte Hill  28IT             57000WA
+
+
