@@ -14,6 +14,8 @@ public class Main {
         Path path = Path.of("fixedWidth.txt");
         try{
             System.out.println(new String(Files.readAllBytes(path)));
+            System.out.println("-----------------------------------------");
+            System.out.println(Files.readString(path));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
