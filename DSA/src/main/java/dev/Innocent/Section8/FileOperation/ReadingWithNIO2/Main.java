@@ -11,6 +11,9 @@ public class Main {
         System.out.println(System.getProperty("file.encoding"));
         System.out.println(Charset.defaultCharset());
 
+        System.out.println(Charset.defaultCharset());
+        System.out.println(Charset.defaultCharset());
+
         Path path = Path.of("fixedWidth.txt");
         try{
             System.out.println(new String(Files.readAllBytes(path)));
