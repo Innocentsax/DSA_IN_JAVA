@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,6 +35,15 @@ public class Main {
                     }
                 }
             });
+            try (var stringStream = Files.lines(path)){
+                var results = stringStream
+                        .skip(1)
+                        .map(p::matcher)
+                        .filter(Matcher::matches)
+                        .collect(Collectors.groupingBy(m -> m.group(3).trim(),
+                                        Collectors.counting()));
+               results.entrySet().forEach(System.out::println);
+            }
             System.out.println(values);
         } catch (IOException e) {
             throw new RuntimeException(e);
