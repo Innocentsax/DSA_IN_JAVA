@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
@@ -26,9 +27,13 @@ public class Main {
             Set<String> values = new TreeSet<>();
             Files.readAllLines(path).forEach(s -> {
                 if(!s.startsWith("Name")){
-
+                    Matcher m = p.matcher(s);
+                    if(m.matches()){
+                        values.add(m.group(3).trim());
+                    }
                 }
             });
+            System.out.println(values);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
