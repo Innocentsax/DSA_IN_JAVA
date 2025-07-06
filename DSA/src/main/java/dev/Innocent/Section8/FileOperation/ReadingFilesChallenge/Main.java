@@ -10,11 +10,20 @@ public class Main {
         try(BufferedReader br = new BufferedReader(new FileReader("article.txt"))){
 //            System.out.printf("%,d lines in file%n", br.lines().count());
             Pattern pattern = Pattern.compile("\\p{javaWhitespace}+");
-            System.out.printf("%,d words in file%n", br.lines()
-//                    .flatMap(pattern::splitAsStream).count());
-                    .flatMap(l -> Arrays.stream(l.split(pattern.toString())))
-                    .count()
-            );
+//            System.out.printf("%,d words in file%n", br.lines()
+////                    .flatMap(pattern::splitAsStream).count());
+//                    .flatMap(l -> Arrays.stream(l.split(pattern.toString())))
+//                    .count()
+//            );
+
+//            System.out.printf("%,d words in file%n", br.lines()
+//                    .mapToLong(l -> l.split(pattern.toString()).length)
+//                    .sum()
+//            );
+
+            var result = br.lines().flatMap(pattern::splitAsStream)
+                    .map(w -> w.replaceAll("\\p{Punct}",""
+                    ));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
