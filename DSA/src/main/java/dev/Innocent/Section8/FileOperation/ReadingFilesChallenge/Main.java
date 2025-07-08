@@ -2,9 +2,11 @@ package dev.Innocent.Section8.FileOperation.ReadingFilesChallenge;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Map;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -24,10 +26,13 @@ public class Main {
 //                    .sum()
 //            );
 
+            List<String> excluded = List.of(
+                    "grand", "canyon", "retrieved", "archived", "service", "original");
             var result = br.lines().flatMap(pattern::splitAsStream)
                     .map(w -> w.replaceAll("\\p{Punct}",""))
                     .filter(w -> w.length() > 4)
                     .map(String::toLowerCase)
+                    .filter(w -> !excluded.contains(w))
                     .collect(Collectors.groupingBy(w -> w, Collectors.counting()));
 
             result.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getKey,
@@ -39,5 +44,32 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println("-------------------------------------------------------");
+        String input = null;
+            try {
+                input = Files.readString(Path.of("article.txt"));
+                input = input.replaceAll("\\p{Punct}", "");
+
+                Pattern pattern = Pattern.compile("\\w{5,}");
+                Matcher matcher = pattern.matcher(input);
+                Map<String, Long> results = new HashMap<>();
+                while (matcher.find()){
+                    String word = matcher.group().toLowerCase();
+                    if(word.length() > 4){
+                        results.merge(word, 1L, (o, n) -> o += n);
+                    }
+                }
+
+                var sortedEntries = new ArrayList<>(results.entrySet());
+                sortedEntries.sort(Comparator.comparing(
+                        Map.Entry::getKey, Comparator.reverseOrder()));
+                for(int i = 0; i < Math.min(10, sortedEntries.size()); i++){
+                    var entry = sortedEntries.get(i);
+                    System.out.println(entry.getKey() + " - " + entry.getValue() + " times");
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
     }
 }
