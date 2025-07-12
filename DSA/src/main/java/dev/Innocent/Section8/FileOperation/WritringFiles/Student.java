@@ -1,8 +1,5 @@
 package dev.Innocent.Section8.FileOperation.WritringFiles;
 
-import dev.Innocent.Section8.StreamingStudents.Course;
-import dev.Innocent.Section8.StreamingStudents.CourseEngagement;
-
 import java.time.LocalDate;
 import java.util.*;
 
@@ -51,13 +48,13 @@ public class Student {
     public String getGender() {
         return demographics.gender();
     }
-    public int getEnrollmentYear() {			
-        return demographics.enrolledYear();		
+    public int getEnrollmentYear() {
+        return demographics.enrolledYear();
     }
 
-    public int getEnrollmentMonth() {				
-        return demographics.enrolledMonth();		
-    }												
+    public int getEnrollmentMonth() {
+        return demographics.enrolledMonth();
+    }
     public String getCountry() {
         return demographics.countryCode();
     }
@@ -154,10 +151,10 @@ public class Student {
         int yearEnrolled = student.getEnrollmentYear();
 
         List.of(courses).forEach(c ->
-            student.startVideo(c.courseCode(),
-                    random.nextInt(1, c.getLectureCount()),
-                    random.nextInt(1, 13),
-                    random.nextInt(yearEnrolled, maxYear))
+                student.startVideo(c.courseCode(),
+                        random.nextInt(1, c.getLectureCount()),
+                        random.nextInt(1, 13),
+                        random.nextInt(yearEnrolled, maxYear))
         );
 
         return student;
