@@ -73,7 +73,7 @@ public class CourseEngagement {
                 Month.of(lastActiveMonth), lastActiveYear, engagementType);
     }
 
-    void recordLastActivity(int lectureNumber, int month, int year) {
+    public void recordLastActivity(int lectureNumber, int month, int year) {
 
         if (lectureNumber > lastLecture) {
             lastLecture = lectureNumber;
