@@ -133,6 +133,15 @@ public class Student {
         return engagementData;
     }
 
+    public String JSON() {
+        return new StringJoiner(", ", "{", "}")
+                .add("\"studentId\":" + studentId)
+                .add("\"demographics\":" + demographics)
+                .add("\"coursesEnrolled\":" + coursesEnrolled)
+                .add("\"engagementMap\":" + engagementMap)
+                .toString();
+    }
+
     public static Student getRandomStudent(Course... courses) {
 
         Random random = new Random();
@@ -149,6 +158,8 @@ public class Student {
                 gender, random.nextBoolean(), courses);
 
         int yearEnrolled = student.getEnrollmentYear();
+
+
 
         List.of(courses).forEach(c ->
                 student.startVideo(c.courseCode(),
