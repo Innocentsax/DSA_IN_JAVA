@@ -137,8 +137,8 @@ public class Student {
         return new StringJoiner(", ", "{", "}")
                 .add("\"studentId\":" + studentId)
                 .add("\"demographics\":" + demographics)
-                .add("\"coursesEnrolled\":" + coursesEnrolled)
-                .add("\"engagementMap\":" + engagementMap)
+//                .add("\"coursesEnrolled\":" + coursesEnrolled)
+//                .add("\"engagementMap\":" + engagementMap)
                 .toString();
     }
 
