@@ -136,7 +136,7 @@ public class Student {
     public String JSON() {
         return new StringJoiner(", ", "{", "}")
                 .add("\"studentId\":" + studentId)
-                .add("\"demographics\":" + demographics)
+                .add("\"demographics\":" + demographics.JSON())
 //                .add("\"coursesEnrolled\":" + coursesEnrolled)
 //                .add("\"engagementMap\":" + engagementMap)
                 .toString();
