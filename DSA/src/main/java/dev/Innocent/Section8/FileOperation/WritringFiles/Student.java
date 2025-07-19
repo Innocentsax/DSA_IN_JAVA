@@ -2,6 +2,7 @@ package dev.Innocent.Section8.FileOperation.WritringFiles;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Student {
 
@@ -134,11 +135,19 @@ public class Student {
     }
 
     public String JSON() {
+
+        StringJoiner courses = new StringJoiner(",", "[", "]");
+        for(Course c : coursesEnrolled){
+            courses.add(c.JSON());
+        }
+        String engagement = engagementMap.values().stream()
+                .map(CourseEngagement::JSON)
+                .collect(Collectors.joining(",", "[", "]"));
         return new StringJoiner(", ", "{", "}")
                 .add("\"studentId\":" + studentId)
                 .add("\"demographics\":" + demographics.JSON())
-//                .add("\"coursesEnrolled\":" + coursesEnrolled)
-//                .add("\"engagementMap\":" + engagementMap)
+                .add("\"coursesEnrolled\":" + courses)
+                .add("\"engagementMap\":" + engagement)
                 .toString();
     }
 
