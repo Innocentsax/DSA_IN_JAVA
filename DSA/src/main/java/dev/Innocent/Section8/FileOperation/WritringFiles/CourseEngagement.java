@@ -2,6 +2,7 @@ package dev.Innocent.Section8.FileOperation.WritringFiles;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.StringJoiner;
 
 public class CourseEngagement {
 
@@ -71,6 +72,18 @@ public class CourseEngagement {
     public String toString() {
         return "%s,%s,%d,%s".formatted(courseCode,
                 Month.of(lastActiveMonth), lastActiveYear, engagementType);
+    }
+
+    public String JSON() {
+        return new StringJoiner(", ", "{", "}")
+                .add("\"courseCode\":\"" + courseCode + "\"")
+                .add("\"engagementType\":\"" + engagementType + "\"")
+                .add("\"enrollmentMonth\":" + enrollmentMonth)
+                .add("\"enrollmentYear\":" + enrollmentYear)
+                .add("\"lastLecture\":" + lastLecture)
+                .add("\"lastActiveMonth\":" + lastActiveMonth)
+                .add("\"lastActiveYear\":" + lastActiveYear)
+                .toString();
     }
 
     public void recordLastActivity(int lectureNumber, int month, int year) {
