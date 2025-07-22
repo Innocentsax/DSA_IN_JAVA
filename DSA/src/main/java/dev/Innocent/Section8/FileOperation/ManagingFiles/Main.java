@@ -1,6 +1,9 @@
 package dev.Innocent.Section8.FileOperation.ManagingFiles;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +15,17 @@ public class Main {
             System.out.println("FIle renamed successfully");
         } else {
             System.out.println("File does not exist");
+        }
+
+
+        Path oldPath = oldFile.toPath();
+        Path newPath = newFile.toPath();
+
+        try{
+            Files.move(newPath, oldPath);
+            System.out.println("Path renamed successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
