@@ -27,15 +27,25 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-        Path oldPath = Path.of("students.json");
-        Path newPath = Path.of("file/student-activity.json");
+//        Path oldPath = Path.of("students.json");
+//        Path newPath = Path.of("file/student-activity.json");
+//
+//        try{
+//            Files.createDirectories(newPath.subpath(0, newPath.getNameCount() - 1));
+//            Files.move(oldPath, newPath);
+//            System.out.println(oldPath + " moved (renamed to) --> " + newPath);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        Path fileDir = Path.of("file");
+        Path resourceDir = Path.of("resources");
 
         try{
-            Files.createDirectories(newPath.subpath(0, newPath.getNameCount() - 1));
-            Files.move(oldPath, newPath);
-            System.out.println(oldPath + " moved (renamed to) --> " + newPath);
+            Files.copy(fileDir, resourceDir);
+            System.out.println("Directory copied to " + resourceDir);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
