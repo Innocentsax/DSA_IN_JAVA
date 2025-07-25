@@ -1,9 +1,11 @@
 package dev.Innocent.Section8.FileOperation.ManagingFiles;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class Main {
     public static void main(String[] args) {
@@ -38,19 +40,36 @@ public class Main {
 //            throw new RuntimeException(e);
 //        }
 
-        Path fileDir = Path.of("file");
-        Path resourceDir = Path.of("resources");
+//        Path fileDir = Path.of("file");
+//        Path resourceDir = Path.of("resources");
+//
+//        try{
+//            recurseDelete(resourceDir);
+//            recurseCopy(fileDir, resourceDir);
+//            System.out.println("Directory copied to " + resourceDir);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try (BufferedReader reader = new BufferedReader(
+//                new FileReader("files//student-activity.json"));
+//             PrintWriter writer = new PrintWriter("students-backup.json")){
+//            reader.transferTo(writer);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
-        try{
-            Files.copy(fileDir, resourceDir);
-            System.out.println("Directory copied to " + resourceDir);
+        String urlString = "https://api.census.gov/data/2019/pep/charagegroups?get=NAME,POP&for=state:*";
+        URI uri = URI.create(urlString);
+        try(var urlInputStream = uri.toURL().openStream();){
+            urlInputStream.transferTo(System.out);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     public static void recurseCopy(Path source, Path target) throws IOException {
-        Files.copy(source, target);
+        Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
         if(Files.isDirectory(source)){
             try (var children = Files.list(source)){
                 children.toList().forEach(
@@ -65,6 +84,23 @@ public class Main {
                         }
                 );
             }
+        }
+    }
+
+    public static void recurseDelete(Path target) throws IOException {
+        if(Files.isDirectory(target)){
+            try (var children = Files.list(target)){
+                children.toList().forEach(
+                        p -> {
+                            try {
+                                Main.recurseDelete(p);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                );
+            }
+            Files.delete(target);
         }
     }
 }
