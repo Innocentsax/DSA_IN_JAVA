@@ -20,6 +20,22 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        for(int i = 1; i <= deepestFile.getNameCount(); i++){
+            Path indexedPath = deepestFile.subpath(0, i).resolve("index.txt");
+            Path backupPath = deepestFile.subpath(0, i).resolve("indexCopy.txt");
+            try {
+                Files.copy(indexedPath, backupPath, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        try{
+            generateIndexFile(deepestFile.getName(0));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void generateIndexFile(Path startingPath) throws IOException {
@@ -37,6 +53,17 @@ public class Main {
                     StandardOpenOption.TRUNCATE_EXISTING);
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+
+        try(Stream<Path> contents = Files.list(startingPath)){
+            contents.filter(Files::isDirectory)
+                    .toList().forEach(dir -> {
+                        try {
+                            generateIndexFile(dir);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
         }
     }
 }
