@@ -1,5 +1,11 @@
 Directory Contents: 
 /Users/apple/Desktop/DSA_IN_JAVA/DSA/public
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/indexCopy.txt
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/index.txt
 /Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets/indexCopy.txt
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets/index.txt
 /Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets/icons
-Generated: 2025-07-26T10:47:45.679681
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets/icons/indexCopy.txt
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets/icons/index.txt
+Generated: 2025-07-27T23:55:34.445218
