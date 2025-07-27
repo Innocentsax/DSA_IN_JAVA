@@ -1,0 +1,5 @@
+Directory Contents: 
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets/icons
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets/icons/indexCopy.txt
+/Users/apple/Desktop/DSA_IN_JAVA/DSA/public/assets/icons/index.txt
+Generated: 2025-07-27T23:55:34.448123
