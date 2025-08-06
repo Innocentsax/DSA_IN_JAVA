@@ -16,6 +16,20 @@ public class Main {
         CustomThread customThread = new CustomThread();
         customThread.start();
 
+        Runnable myRunnable = () -> {
+            for(int i = 1; i <= 8; i++){
+                System.out.print(" 2 ");
+                try{
+                    TimeUnit.MICROSECONDS.sleep(250);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Thread myThread = new Thread(myRunnable);
+        myThread.start();
+
         for (int i = 1; i <= 3; i++) {
             System.out.print("0");
             try {
@@ -24,6 +38,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
+
     }
 
     public static void printThreadState(Thread thread){
