@@ -1,5 +1,7 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.Thread;
 
+import dev.Innocent.Section8.ConcurrencyAndMultithreading.ThreadChallenge.SecondThread;
+
 public class CustomThread extends Thread{
     @Override
     public void run() {
