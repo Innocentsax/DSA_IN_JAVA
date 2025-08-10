@@ -17,13 +17,13 @@ class EvenRunnable implements Runnable{
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.print("Main Thread state here");
-//        try {
-//            System.out.println("get me some space");
-//            Thread.sleep(100);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        System.out.print("Main Thread state here");
+        try {
+            System.out.println("get me some space");
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         SecondThread secondThread = new SecondThread();
         Thread evenThread = new Thread(new EvenRunnable());
