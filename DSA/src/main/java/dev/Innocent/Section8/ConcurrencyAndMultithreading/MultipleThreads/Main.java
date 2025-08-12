@@ -15,6 +15,10 @@ class StopWatch {
         this.timeUnit = timeUnit;
     }
 
+    public void countDown(){
+        countDown(5);
+    }
+
     public void countDown(int unitCount){
         String threadName = Thread.currentThread().getName();
         ThreadColor threadColor = ThreadColor.ANSI_RESET;
