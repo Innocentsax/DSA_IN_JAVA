@@ -1,4 +1,4 @@
-package dev.Innocent.Section8.StreamingStudents;
+package dev.Innocent.Section8.Stream.StreamingStudents;
 
 public record Course(String courseCode, String title, int lectureCount) {
 
