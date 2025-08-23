@@ -1,11 +1,10 @@
-package dev.Innocent.Section8.StreamingStudents;
+package dev.Innocent.Section8.Stream.StreamingStudents;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Main {
 
