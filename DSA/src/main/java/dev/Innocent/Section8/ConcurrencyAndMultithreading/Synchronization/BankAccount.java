@@ -1,7 +1,5 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.Synchronization;
 
-import dev.Innocent.Section8.StreamIntermidiate.Seat;
-
 public class BankAccount {
     private double balance;
     private String name;
