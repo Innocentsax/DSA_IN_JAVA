@@ -1,4 +1,4 @@
-package dev.Innocent.Section8.StreamChallenge;
+package dev.Innocent.Section8.Stream.StreamChallenge;
 
 import java.util.Arrays;
 import java.util.Random;
