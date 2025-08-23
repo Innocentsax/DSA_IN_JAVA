@@ -1,4 +1,4 @@
-package dev.Innocent.Section8.SynchronizationChallenge;
+package dev.Innocent.Section8.ConcurrencyAndMultithreading.SynchronizationChallenge;
 
 import java.util.ArrayList;
 import java.util.List;
