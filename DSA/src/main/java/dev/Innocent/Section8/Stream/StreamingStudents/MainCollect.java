@@ -1,4 +1,4 @@
-package dev.Innocent.Section8.StreamingStudents;
+package dev.Innocent.Section8.Stream.StreamingStudents;
 
 import java.util.Comparator;
 import java.util.List;
