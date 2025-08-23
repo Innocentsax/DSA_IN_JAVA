@@ -1,4 +1,4 @@
-package dev.Innocent.Section8.StreamIntermidiate;
+package dev.Innocent.Section8.Stream.StreamIntermidiate;
 
 public record Seat(char rowMaker, int seatNumber, double price) {
     public Seat(char rowMaker, int seatNumber) {
