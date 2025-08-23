@@ -1,4 +1,4 @@
-package dev.Innocent.Section8.StreamingStudents;
+package dev.Innocent.Section8.Stream.StreamingStudents;
 
 import java.time.LocalDate;
 import java.util.HashMap;
