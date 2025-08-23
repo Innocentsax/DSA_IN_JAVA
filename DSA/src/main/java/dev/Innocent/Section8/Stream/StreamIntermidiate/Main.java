@@ -1,4 +1,4 @@
-package dev.Innocent.Section8.StreamIntermidiate;
+package dev.Innocent.Section8.Stream.StreamIntermidiate;
 
 import java.util.Comparator;
 import java.util.Random;
