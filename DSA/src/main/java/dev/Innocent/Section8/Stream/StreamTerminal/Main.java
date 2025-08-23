@@ -1,4 +1,4 @@
-package dev.Innocent.Section8.StreamTerminal;
+package dev.Innocent.Section8.Stream.StreamTerminal;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
