@@ -1,6 +1,7 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.ConsumerProducer;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -32,29 +33,33 @@ class MessageRepository {
                lock.unlock();
            }
        } else {
-           System.out.println("** read blocked");
+           System.out.println("** read blocked " + lock);
            hasMessage = false;
        }
         return message;
     }
 
     public void write(String message) {
-        if(lock.tryLock()) {
-            try {
-                while (hasMessage) {
-                    try {
-                        wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+        try {
+            if (lock.tryLock(3, TimeUnit.SECONDS)) {
+                try {
+                    while (hasMessage) {
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
+                    hasMessage = true;
+                } finally {
+                    lock.unlock();
                 }
+            } else {
+                System.out.println("** write blocked" + lock);
                 hasMessage = true;
-            } finally {
-                lock.unlock();
             }
-        } else {
-            System.out.println("** write blocked");
-            hasMessage = true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
         this.message = message;
     }
@@ -124,8 +129,8 @@ public class Main {
 
         MessageRepository messageRepository = new MessageRepository();
 
-        Thread reader = new Thread(new MessageReader(messageRepository));
-        Thread writer = new Thread(new MessageWriter(messageRepository));
+        Thread reader = new Thread(new MessageReader(messageRepository), "Reader");
+        Thread writer = new Thread(new MessageWriter(messageRepository), "Writer");
 
         writer.setUncaughtExceptionHandler((thread, exc) -> {
             System.out.println("Writer had exception: " + exc);
