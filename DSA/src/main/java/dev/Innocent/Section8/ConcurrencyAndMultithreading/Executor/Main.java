@@ -4,21 +4,70 @@ import dev.Innocent.Section8.ConcurrencyAndMultithreading.MultipleThreads.Thread
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 
 class ColorThreadFactory implements ThreadFactory{
+    private String threadName;
+
+    public ColorThreadFactory(ThreadColor color) {
+        this.threadName = color.name();
+    }
 
     @Override
     public Thread newThread(Runnable r) {
-        return null;
+        Thread thread = new Thread(r);
+        thread.setName(threadName);
+        return thread;
     }
 }
 
 public class Main {
 
     public static void main(String[] args) {
-        var blueExecutor = Executors.newSingleThreadExecutor();
+        var blueExecutor = Executors.newSingleThreadExecutor(
+                new ColorThreadFactory(ThreadColor.ANSI_BLUE)
+        );
         blueExecutor.execute(Main::countDown);
         blueExecutor.shutdown();
+
+        boolean isDone = false;
+        try {
+            isDone = blueExecutor.awaitTermination(500, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        if(isDone) {
+            System.out.println("Blue finished, starting Yellow");
+            var yellowExecutor = Executors.newSingleThreadExecutor(
+                    new ColorThreadFactory(ThreadColor.ANSI_YELLOW)
+            );
+            yellowExecutor.execute(Main::countDown);
+            yellowExecutor.shutdown();
+
+            try {
+                isDone = yellowExecutor.awaitTermination(500, TimeUnit.MILLISECONDS);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            if(isDone) {
+                System.out.println("Yellow finished, starting Red");
+                var redExecutor = Executors.newSingleThreadExecutor(
+                        new ColorThreadFactory(ThreadColor.ANSI_RED)
+                );
+                redExecutor.execute(Main::countDown);
+                redExecutor.shutdown();
+                try {
+                    isDone = redExecutor.awaitTermination(500, TimeUnit.MILLISECONDS);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                if(isDone){
+                    System.out.println("All processes completed");
+                }
+            }
+        }
     }
 
     public static void notmain(String[] args) {
