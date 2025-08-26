@@ -3,6 +3,15 @@ package dev.Innocent.Section8.ConcurrencyAndMultithreading.Executor;
 import dev.Innocent.Section8.ConcurrencyAndMultithreading.MultipleThreads.ThreadColor;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+
+class ColorThreadFactory implements ThreadFactory{
+
+    @Override
+    public Thread newThread(Runnable r) {
+        return null;
+    }
+}
 
 public class Main {
 
