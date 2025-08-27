@@ -24,6 +24,13 @@ class ColorThreadFactory implements ThreadFactory{
 public class Main {
 
     public static void main(String[] args) {
+        int count = 3;
+        var multipleExecutor = Executors.newFixedThreadPool(
+                count, new ColorThreadFactory()
+        );
+    }
+
+    public static void singlemain(String[] args) {
         var blueExecutor = Executors.newSingleThreadExecutor(
                 new ColorThreadFactory(ThreadColor.ANSI_BLUE)
         );
