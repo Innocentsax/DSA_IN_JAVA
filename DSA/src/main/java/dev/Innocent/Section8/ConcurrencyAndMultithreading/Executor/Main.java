@@ -40,6 +40,11 @@ public class Main {
         var multipleExecutor = Executors.newFixedThreadPool(
                 count, new ColorThreadFactory()
         );
+
+        for(int i = 0; i < count; i++){
+            multipleExecutor.execute(Main::countDown);
+        }
+        multipleExecutor.shutdown();
     }
 
     public static void singlemain(String[] args) {
