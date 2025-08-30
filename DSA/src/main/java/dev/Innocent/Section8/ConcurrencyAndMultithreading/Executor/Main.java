@@ -141,4 +141,8 @@ public class Main {
             + " " + i);
         }
     }
+
+    private static void sum(int start, int end, int delta, String colorString){
+
+    }
 }
