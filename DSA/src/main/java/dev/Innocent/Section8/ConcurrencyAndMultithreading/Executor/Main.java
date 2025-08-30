@@ -36,7 +36,7 @@ class ColorThreadFactory implements ThreadFactory{
 public class Main {
 
     public static void main(String[] args) {
-        int count = 3;
+        int count = 6;
         var multipleExecutor = Executors.newFixedThreadPool(
                 count, new ColorThreadFactory()
         );
