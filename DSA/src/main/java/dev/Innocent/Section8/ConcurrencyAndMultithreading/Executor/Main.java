@@ -143,6 +143,11 @@ public class Main {
     }
 
     private static void sum(int start, int end, int delta, String colorString){
-
+        var threadColor = ThreadColor.ANSI_RESET;
+        try{
+            threadColor = ThreadColor.valueOf("ANSI_" + colorString.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
