@@ -36,6 +36,10 @@ class ColorThreadFactory implements ThreadFactory{
 public class Main {
 
     public static void main(String[] args) {
+
+    }
+
+    public static void fixedmain(String[] args) {
         int count = 6;
         var multipleExecutor = Executors.newFixedThreadPool(
                 count, new ColorThreadFactory()
@@ -147,7 +151,14 @@ public class Main {
         try{
             threadColor = ThreadColor.valueOf("ANSI_" + colorString.toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException(e);
+            // User may pass a bad color name, will just ignore this error.
         }
+
+        String color = threadColor.color();
+        int sum = 0;
+        for(int i = start; i <= end; i += delta){
+            sum += i;
+        }
+        System.out.println(color + Thread.currentThread().getName() + ", " + colorString + " " + sum);
     }
 }
