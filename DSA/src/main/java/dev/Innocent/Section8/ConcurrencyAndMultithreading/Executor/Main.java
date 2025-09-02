@@ -38,8 +38,7 @@ public class Main {
     public static void main(String[] args) {
         var multExecutor = Executors.newCachedThreadPool();
         try{
-            multExecutor.execute(
-                    () -> Main.sum(1, 10, 1, "red"));
+            multExecutor.execute(() -> Main.sum(1, 10, 1, "red"));
             multExecutor.execute(() -> Main.sum(10, 100, 10, "blue"));
             multExecutor.execute(() -> Main.sum(2, 20, 2, "green"));
         } finally {
