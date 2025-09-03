@@ -41,6 +41,18 @@ public class Main {
             multExecutor.execute(() -> Main.sum(1, 10, 1, "red"));
             multExecutor.execute(() -> Main.sum(10, 100, 10, "blue"));
             multExecutor.execute(() -> Main.sum(2, 20, 2, "green"));
+
+            multExecutor.execute(() -> Main.sum(1, 10, 1, "yellow"));
+            multExecutor.execute(() -> Main.sum(10, 100, 10, "cyan"));
+            multExecutor.execute(() -> Main.sum(2, 20, 2, "purple"));
+
+            try{
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            System.out.println("Next Task will get executed");
         } finally {
             multExecutor.shutdown();
         }
