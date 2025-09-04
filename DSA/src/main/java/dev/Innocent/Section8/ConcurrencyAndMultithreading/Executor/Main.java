@@ -53,6 +53,11 @@ public class Main {
             }
 
             System.out.println("Next Task will get executed");
+            for(var color : new String[]{"red", "blue", "green", "yellow", "cyan", "black"}){
+                multExecutor.execute(() -> Main.sum(1, 10, 1, color));
+            }
+
+            System.out.println("Next Task will get executed");
         } finally {
             multExecutor.shutdown();
         }
