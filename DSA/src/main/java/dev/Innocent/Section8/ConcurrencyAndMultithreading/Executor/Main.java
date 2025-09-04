@@ -38,26 +38,28 @@ public class Main {
     public static void main(String[] args) {
         var multExecutor = Executors.newCachedThreadPool();
         try{
-            multExecutor.execute(() -> Main.sum(1, 10, 1, "red"));
-            multExecutor.execute(() -> Main.sum(10, 100, 10, "blue"));
-            multExecutor.execute(() -> Main.sum(2, 20, 2, "green"));
+            var redColor = multExecutor.submit(() -> Main.sum(1, 10, 1, "red"));
+            var blucColor = multExecutor.submit(() -> Main.sum(10, 100, 10, "blue"));
+            var greenColor = multExecutor.submit(() -> Main.sum(2, 20, 2, "green"));
 
-            multExecutor.execute(() -> Main.sum(1, 10, 1, "yellow"));
-            multExecutor.execute(() -> Main.sum(10, 100, 10, "cyan"));
-            multExecutor.execute(() -> Main.sum(2, 20, 2, "purple"));
+//            multExecutor.execute(() -> Main.sum(1, 10, 1, "yellow"));
+//            multExecutor.execute(() -> Main.sum(10, 100, 10, "cyan"));
+//            multExecutor.execute(() -> Main.sum(2, 20, 2, "purple"));
 
             try{
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
+                System.out.println(redColor.get(500, TimeUnit.SECONDS));
+                System.out.println(blucColor.get(500, TimeUnit.SECONDS));
+                System.out.println(greenColor.get(500, TimeUnit.SECONDS));
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
 
-            System.out.println("Next Task will get executed");
-            for(var color : new String[]{"red", "blue", "green", "yellow", "cyan", "black"}){
-                multExecutor.execute(() -> Main.sum(1, 10, 1, color));
-            }
-
-            System.out.println("Next Task will get executed");
+//            System.out.println("Next Task will get executed");
+//            for(var color : new String[]{"red", "blue", "green", "yellow", "cyan", "black"}){
+//                multExecutor.execute(() -> Main.sum(1, 10, 1, color));
+//            }
+//
+//            System.out.println("Next Task will get executed");
         } finally {
             multExecutor.shutdown();
         }
@@ -170,7 +172,7 @@ public class Main {
         }
     }
 
-    private static void sum(int start, int end, int delta, String colorString){
+    private static int sum(int start, int end, int delta, String colorString){
         var threadColor = ThreadColor.ANSI_RESET;
         try{
             threadColor = ThreadColor.valueOf("ANSI_" + colorString.toUpperCase());
@@ -184,5 +186,6 @@ public class Main {
             sum += i;
         }
         System.out.println(color + Thread.currentThread().getName() + ", " + colorString + " " + sum);
+        return sum;
     }
 }
