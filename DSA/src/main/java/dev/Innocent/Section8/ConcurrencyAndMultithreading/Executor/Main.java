@@ -2,9 +2,8 @@ package dev.Innocent.Section8.ConcurrencyAndMultithreading.Executor;
 
 import dev.Innocent.Section8.ConcurrencyAndMultithreading.MultipleThreads.ThreadColor;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.concurrent.*;
 
 class ColorThreadFactory implements ThreadFactory{
     private String threadName;
@@ -36,6 +35,25 @@ class ColorThreadFactory implements ThreadFactory{
 public class Main {
 
     public static void main(String[] args) {
+        var multExecutor = Executors.newCachedThreadPool();
+        List<Callable<Integer>> tasklist = List.of(
+                () -> Main.sum(1, 10, 1, "red"),
+                () -> Main.sum(10, 100, 10, "blue"),
+                () -> Main.sum(2, 20, 2, "green")
+        );
+        try {
+            var results = multExecutor.invokeAll(tasklist);
+            for (var result : results) {
+                System.out.println(result.get(500, TimeUnit.MILLISECONDS));
+            }
+        } catch (InterruptedException | TimeoutException | ExecutionException e){
+            throw new RuntimeException(e);
+        } finally {
+            multExecutor.shutdown();
+        }
+    }
+
+    public static void cachedmain(String[] args) {
         var multExecutor = Executors.newCachedThreadPool();
         try{
             var redColor = multExecutor.submit(() -> Main.sum(1, 10, 1, "red"));
