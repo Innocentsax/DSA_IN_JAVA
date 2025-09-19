@@ -2,7 +2,7 @@ package dev.Innocent.Recursion;
 
 public class Fibo {
     public static void main(String[] args) {
-        System.out.println(fibFormula(50));
+        System.out.println(fibo(50));
     }
 
     // Using the Formula
