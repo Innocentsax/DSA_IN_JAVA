@@ -3,8 +3,11 @@ package dev.Innocent.DsaWithDineshVaryani;
 // Given a String, the task is checked whether a given string is palindrome or not
 public class Palindrome {
     public static void main(String[] args) {
-        int[] num = {1,2,3,2,1};
-        System.out.println(numPalindrome(num));
+//        int[] num = {1,2,3,2,1};
+//        System.out.println(numPalindrome(num));
+
+        String name = "ABe";
+        System.out.println(palindrome(name));
     }
 
     // For String
