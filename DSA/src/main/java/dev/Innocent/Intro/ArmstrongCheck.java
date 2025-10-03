@@ -9,7 +9,7 @@ public class ArmstrongCheck {
 
         while (number > 0){
             int digit = number % 10;
-            result += Math.pow(digit, digits);
+            result += (int) Math.pow(digit, digits);
             number /= 10;
         }
 
@@ -19,6 +19,4 @@ public class ArmstrongCheck {
             System.out.println(original + " is not a Armstrong number");
         }
     }
-
-
 }
