@@ -15,6 +15,8 @@ public class ArmstrongCheck {
 
         if(result == original){
             System.out.println(original + " is Armstrong number");
+        }else {
+            System.out.println(original + " is not a Armstrong number");
         }
     }
 
