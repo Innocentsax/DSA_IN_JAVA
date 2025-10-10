@@ -13,6 +13,7 @@ public class MinMax {
         int min = numbers[0];
 
         for(int i = 1; i < numbers.length; i++){
+            // This is to check for the max value
             if(numbers[i] > max){
                 max = numbers[i];
             }
