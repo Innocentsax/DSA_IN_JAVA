@@ -17,6 +17,8 @@ public class MinMax {
             if(numbers[i] > max){
                 max = numbers[i];
             }
+
+            // This is to check for the min value
             if(numbers[i] < min){
                 min = numbers[i];
             }
