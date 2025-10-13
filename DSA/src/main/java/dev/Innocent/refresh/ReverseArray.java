@@ -11,6 +11,7 @@ public class ReverseArray {
         }
     }
 
+    // This is to reverse the array from the min to max
     private static void reverseArray(int[] array){
         int start = 0;
         int end = array.length - 1;
