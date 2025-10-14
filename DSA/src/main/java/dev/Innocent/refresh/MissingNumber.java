@@ -18,8 +18,6 @@ public class MissingNumber {
     }
 
     //1.  Create a class in Java 6 version and Java 8 version. Filter out names that start with "A"
-    //2. Find the missing number in an array of 1…n.
-
     public static void java6version(List<String> list){
         List<String> filtered = new ArrayList<>();
         for(String name : list){
@@ -35,6 +33,7 @@ public class MissingNumber {
         System.out.println(filtered);
     }
 
+    //2. Find the missing number in an array of 1…n.
     public static int findMissingNumber(int[] arr, int n){
         int expectedNum = n * (n + 1) / 2;
         int actual = 0;
