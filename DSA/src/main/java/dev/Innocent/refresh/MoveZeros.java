@@ -21,5 +21,10 @@ public class MoveZeros {
                 index++;
             }
         }
+
+        while (index < zeros.length){
+            zeros[index] = 0;
+            index++;
+        }
     }
 }
