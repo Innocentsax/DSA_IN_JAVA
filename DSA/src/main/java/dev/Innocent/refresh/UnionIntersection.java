@@ -9,8 +9,10 @@ public class UnionIntersection {
         int[] arr2 = {3, 4, 5, 6, 7};
 
         findUnion(arr1, arr2);
+        findIntersection(arr1, arr2);
     }
 
+    // Method to find union of two arrays
     public static void findUnion(int[] arr1, int[] arr2){
         HashSet<Integer> union = new HashSet<>();
 
@@ -22,6 +24,24 @@ public class UnionIntersection {
             union.add(num2);
         }
 
-        System.out.print("Union element : " + union);
+        System.out.println("Union element : " + union);
+    }
+
+    // Method to find intersection of two arrays
+    public static void findIntersection(int[] arr1, int[] arr2){
+        HashSet<Integer> inter = new HashSet<>();
+        HashSet<Integer> set1 = new HashSet<>();
+
+        for(int num : arr1){
+            set1.add(num);
+        }
+
+        for(int num : arr2){
+            if(set1.contains(num)){
+                inter.add(num);
+            }
+        }
+
+        System.out.println("Intersection : " + inter);
     }
 }
