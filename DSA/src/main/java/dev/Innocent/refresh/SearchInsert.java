@@ -1,5 +1,6 @@
 package dev.Innocent.refresh;
 
+// https://leetcode.com/problems/search-insert-position/description/?envType=problem-list-v2&envId=array
 public class SearchInsert {
     public static void main(String[] args) {
        int[] nums = {1,3,5,6};
