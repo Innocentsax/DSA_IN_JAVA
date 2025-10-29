@@ -29,4 +29,30 @@ public class Merge {
         Collections.sort(merged);
         return merged;
     }
+
+    public static void merge2(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;        // Pointer for nums1 (end of valid elements)
+        int j = n - 1;        // Pointer for nums2 (end)
+        int k = m + n - 1;    // Pointer for placement in nums1 (end of total length)
+
+        // Merge from the back
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
+            }
+            k--;
+        }
+
+        // If nums2 still has elements left, copy them
+        while (j >= 0) {
+            nums1[k] = nums2[j];
+            j--;
+            k--;
+        }
+    }
+
 }
