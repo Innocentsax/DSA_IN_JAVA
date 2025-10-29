@@ -15,6 +15,7 @@ public class Merge {
         System.out.println(result);
     }
 
+    // https://leetcode.com/problems/merge-sorted-array/description/?envType=problem-list-v2&envId=array
     public static List<Integer> merge(int[] nums1, int m, int[] nums2, int n) {
         List<Integer> merged = new ArrayList<>();
 
