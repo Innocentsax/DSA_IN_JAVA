@@ -17,6 +17,7 @@ public class SortedArrayToBST {
             return null;
         }
         int mid = l + (r - l) / 2;
+        TreeNode root = new TreeNode(nums[mid])
     }
 
 }
