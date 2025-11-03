@@ -1,23 +1,29 @@
 package dev.Innocent.refresh;
 
-import javax.swing.tree.TreeNode;
 
 //https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/?envType=problem-list-v2&envId=array
 public class SortedArrayToBST {
     public static void main(String[] args) {
-        System.out.println();
+        int[] nums = {-10, -3, 0, 5, 9};
+        TreeNode root = sortedArrayToBST(nums);
+        printPreorder(root);
     }
 
     public static TreeNode sortedArrayToBST(int[] nums) {
-
+        if(nums == null || nums.length == 0) return null;
+        return CreateBST(nums, 0, nums.length - 1);
     }
 
-    public TreeNode CreateBST(int[] nums, int l, int r){
+    public static TreeNode CreateBST(int[] a, int l, int r){
         if(l > r){
             return null;
         }
         int mid = l + (r - l) / 2;
-        TreeNode root = new TreeNode(nums[mid])
+        TreeNode root = new TreeNode(a[mid]);
+        root.left = CreateBST(a, l, mid - 1);
+        root.right = CreateBST(a, mid + 1, r);
+
+        return root;
     }
 
 }
