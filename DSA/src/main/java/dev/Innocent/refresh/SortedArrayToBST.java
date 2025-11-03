@@ -1,6 +1,5 @@
 package dev.Innocent.refresh;
 
-
 //https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/?envType=problem-list-v2&envId=array
 public class SortedArrayToBST {
     public static void main(String[] args) {
@@ -24,6 +23,13 @@ public class SortedArrayToBST {
         root.right = CreateBST(a, mid + 1, r);
 
         return root;
+    }
+
+    static void printPreorder(TreeNode root) {
+        if (root == null) return;
+        System.out.print(root.val + " ");
+        printPreorder(root.left);
+        printPreorder(root.right);
     }
 
 }
