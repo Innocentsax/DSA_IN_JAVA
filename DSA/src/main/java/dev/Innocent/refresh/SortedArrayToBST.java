@@ -29,7 +29,8 @@ public class SortedArrayToBST {
         TreeNode root = new TreeNode(a[mid]); // mid value or median
         root.left = CreateBST(a, l, mid - 1); // assign the value for left of subtree that is l to mid -1 for given
         // array
-        root.right = CreateBST(a, mid + 1, r);
+        root.right = CreateBST(a, mid + 1, r);// assign the value for right go subtree that is mid+1 to r for given
+        // array
 
         return root;
     }
