@@ -17,6 +17,14 @@ public class SortedArrayToBST {
         if(l > r){
             return null;
         }
+
+        // so basically in this question we have to convert sorted array to height
+        // balanced tree
+        // so if we directly create tree in given sorted order it will become linked
+        // list
+        // so we have to take middle element as head value such it will become height
+        // balanced tree
+
         int mid = l + (r - l) / 2;
         TreeNode root = new TreeNode(a[mid]);
         root.left = CreateBST(a, l, mid - 1);
