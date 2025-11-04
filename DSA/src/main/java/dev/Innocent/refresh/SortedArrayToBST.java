@@ -25,9 +25,10 @@ public class SortedArrayToBST {
         // so we have to take middle element as head value such it will become height
         // balanced tree
 
-        int mid = l + (r - l) / 2;
-        TreeNode root = new TreeNode(a[mid]);
-        root.left = CreateBST(a, l, mid - 1);
+        int mid = l + (r - l) / 2; // this is the formula to find mid value
+        TreeNode root = new TreeNode(a[mid]); // mid value or median
+        root.left = CreateBST(a, l, mid - 1); // assign the value for left of subtree that is l to mid -1 for given
+        // array
         root.right = CreateBST(a, mid + 1, r);
 
         return root;
