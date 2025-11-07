@@ -25,7 +25,8 @@ public class PascalTriangle {
                     row.add(val);
                 }
             }
+            triangle.add(row);
         }
-        return null;
+        return triangle;
     }
 }
