@@ -6,7 +6,8 @@ import java.util.List;
 //https://leetcode.com/problems/pascals-triangle/description/?envType=problem-list-v2&envId=array
 public class PascalTriangle {
     public static void main(String[] args) {
-
+        int numRows = 5;
+        System.out.println(generate(numRows));
     }
 
     public static List<List<Integer>> generate(int numRows) {
