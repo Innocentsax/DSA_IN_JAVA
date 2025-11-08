@@ -41,6 +41,7 @@ public class Main {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        warehouse.shutDown();
     }
 
     private static Order generateOrder(){
