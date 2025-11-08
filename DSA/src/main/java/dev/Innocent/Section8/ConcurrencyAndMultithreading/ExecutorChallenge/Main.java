@@ -28,12 +28,21 @@ public class Main {
             return newOrder;
         };
 
-        List<Callable<Order>> tasks = Collections.nCopies(15, orderingTask);
-        try {
-            orderingService.invokeAll(tasks);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        List<Callable<Order>> tasks = Collections.nCopies(15, orderingTask);
+//        try {
+//            orderingService.invokeAll(tasks);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+
+           try {
+                for(int j = 0; j < 15; j++){
+                    orderingService.submit(() -> warehouse.receiveOrder(generateOrder()));
+                    Thread.sleep(random.nextInt(500, 2000));
+                }
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
         orderingService.shutdown();
         try {
