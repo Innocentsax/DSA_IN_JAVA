@@ -1,6 +1,9 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.ExecutorChallenge;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.*;
 
 record Order(long orderId, String item, int qty) {
 };
@@ -12,15 +15,32 @@ public class Main {
     public static void main(String[] args) {
 
         ShoeWarehouse warehouse = new ShoeWarehouse();
-        Thread producerThread = new Thread(() -> {
-            for (int j = 0; j < 10; j++) {
-                warehouse.receiveOrder(new Order(
-                        random.nextLong(1000000, 9999999),
-                        ShoeWarehouse.PRODUCT_LIST[random.nextInt(0, 5)],
-                        random.nextInt(1, 4)));
+        ExecutorService orderingService = Executors.newCachedThreadPool();
+
+        Callable<Order> orderingTask = () -> {
+            Order newOrder = generateOrder();
+            try{
+                Thread.sleep(random.nextInt(500, 5000));
+                warehouse.receiveOrder(newOrder);
+            }catch (InterruptedException e){
+                throw new RuntimeException();
             }
-        });
-        producerThread.start();
+            return newOrder;
+        };
+
+        List<Callable<Order>> tasks = Collections.nCopies(15, orderingTask);
+        try {
+            orderingService.invokeAll(tasks);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        orderingService.shutdown();
+        try {
+            orderingService.awaitTermination(6, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static Order generateOrder(){
