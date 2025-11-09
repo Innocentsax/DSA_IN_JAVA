@@ -1,7 +1,5 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.ExecutorChallenge;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
 
