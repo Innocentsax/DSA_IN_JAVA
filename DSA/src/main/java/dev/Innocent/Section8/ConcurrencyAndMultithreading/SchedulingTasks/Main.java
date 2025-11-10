@@ -3,7 +3,11 @@ package dev.Innocent.Section8.ConcurrencyAndMultithreading.SchedulingTasks;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
@@ -22,5 +26,14 @@ public class Main {
             }
             return zdt;
         };
+
+        var threadPool = Executors.newFixedThreadPool(4);
+        List<Callable<ZonedDateTime>> list = Collections.nCopies(4, waitThenDoIt);
+        try{
+            System.out.println("--->" + ZonedDateTime.now().format(dtf));
+            List<Future<ZonedDateTime>> futureList = threadPool.invokeAll(list);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
