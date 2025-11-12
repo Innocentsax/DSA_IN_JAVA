@@ -46,6 +46,19 @@ public class Main {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
         var scheduledTask = executor.scheduleWithFixedDelay(() -> System.out.println(ZonedDateTime.now().format(dtf)),
                 2, 2, TimeUnit.SECONDS);
+
+        long time = System.currentTimeMillis();
+        while(!scheduledTask.isDone()){
+            try {
+                TimeUnit.SECONDS.sleep(2);
+                if ((System.currentTimeMillis() - time) / 1000 > 10) {
+                    scheduledTask.cancel(true);
+                }
+            } catch (InterruptedException e){
+                throw new RuntimeException(e);
+            }
+        }
+
         executor.shutdown();
     }
 }
