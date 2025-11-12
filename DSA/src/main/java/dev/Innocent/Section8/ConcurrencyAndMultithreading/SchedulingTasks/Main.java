@@ -24,7 +24,7 @@ public class Main {
             return zdt;
         };
 
-        var threadPool = Executors.newFixedThreadPool(4);
+        var threadPool = Executors.newFixedThreadPool(2);
         List<Callable<ZonedDateTime>> list = Collections.nCopies(4, waitThenDoIt);
         try{
             System.out.println("--->" + ZonedDateTime.now().format(dtf));
@@ -41,5 +41,11 @@ public class Main {
         } finally {
             threadPool.shutdown();
         }
+
+        System.out.println("----> " + ZonedDateTime.now().format(dtf));
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
+        var scheduledTask = executor.scheduleWithFixedDelay(() -> System.out.println(ZonedDateTime.now().format(dtf)),
+                2, 2, TimeUnit.SECONDS);
+        executor.shutdown();
     }
 }
