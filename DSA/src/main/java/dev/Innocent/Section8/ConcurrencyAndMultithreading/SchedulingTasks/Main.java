@@ -42,10 +42,18 @@ public class Main {
             threadPool.shutdown();
         }
 
+        Runnable dateTask = () -> {
+            try{
+                TimeUnit.SECONDS.sleep(3);
+                System.out.println("a " + ZonedDateTime.now().format(dtf));
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        };
+
         System.out.println("----> " + ZonedDateTime.now().format(dtf));
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
-        var scheduledTask = executor.scheduleWithFixedDelay(() -> System.out.println(ZonedDateTime.now().format(dtf)),
-                2, 2, TimeUnit.SECONDS);
+        var scheduledTask = executor.scheduleWithFixedDelay(dateTask, 2, 2, TimeUnit.SECONDS);
 
         long time = System.currentTimeMillis();
         while(!scheduledTask.isDone()){
