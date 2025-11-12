@@ -53,8 +53,10 @@ public class Main {
 
         System.out.println("----> " + ZonedDateTime.now().format(dtf));
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
-        var scheduledTask = executor.scheduleWithFixedDelay(dateTask, 2, 2, TimeUnit.SECONDS);
-
+        var scheduledTask = executor.scheduleAtFixedRate(dateTask, 2, 2, TimeUnit.SECONDS);
+        var scheduledTask2 = executor.scheduleAtFixedRate(
+                () -> System.out.println("b" + ZonedDateTime.now().format(dtf)),
+                2, 2, TimeUnit.SECONDS);
         long time = System.currentTimeMillis();
         while(!scheduledTask.isDone()){
             try {
