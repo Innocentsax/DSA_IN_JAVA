@@ -7,9 +7,10 @@ import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         int numbersLength = 100_000;
         long[] numbers = new Random().longs(numbersLength, 1, numbersLength).toArray();
@@ -33,5 +34,13 @@ public class Main {
                 return taskSum;
             });
         }
+
+        List<Future<Long>> futures = threadPool.invokeAll(tasks);
+        long taskSum = 0;
+        for(Future<Long> future : futures){
+            taskSum += future.get();
+        }
+
+        System.out.println("Thread Pool sum " + taskSum);
     }
 }
