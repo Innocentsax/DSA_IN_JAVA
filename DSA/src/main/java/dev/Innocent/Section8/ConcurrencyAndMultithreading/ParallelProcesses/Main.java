@@ -42,5 +42,7 @@ public class Main {
         }
 
         System.out.println("Thread Pool sum " + taskSum);
+        threadPool.shutdown();
+        System.out.println(threadPool.getClass().getName());
     }
 }
