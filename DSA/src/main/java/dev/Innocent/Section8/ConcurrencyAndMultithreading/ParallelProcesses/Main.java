@@ -19,5 +19,19 @@ public class Main {
 
         ExecutorService threadPool = Executors.newWorkStealingPool(4);
         List<Callable<Long>> tasks = new ArrayList<>();
+
+        int taskNo = 10;
+        int splitCount = numbersLength / taskNo;
+        for (int i = 0; i < taskNo; i++) {
+            int start = i * splitCount;
+            int end = start + splitCount;
+            tasks.add(() -> {
+                long taskSum = 0;
+                for (int j = start; j < end; j++) {
+                    taskSum += numbers[j];
+                }
+                return taskSum;
+            });
+        }
     }
 }
