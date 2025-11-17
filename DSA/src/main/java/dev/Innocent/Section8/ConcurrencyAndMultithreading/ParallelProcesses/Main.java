@@ -8,6 +8,18 @@ import java.util.concurrent.*;
 
 class RecursiveSumTask extends RecursiveTask<Long>{
 
+    private final long[] number;
+    private final int start;
+    private final int end;
+    private final int division;
+
+    public RecursiveSumTask(long[] number, int start, int end, int division) {
+        this.number = number;
+        this.start = start;
+        this.end = end;
+        this.division = division;
+    }
+
     @Override
     protected Long compute() {
         return 0L;
