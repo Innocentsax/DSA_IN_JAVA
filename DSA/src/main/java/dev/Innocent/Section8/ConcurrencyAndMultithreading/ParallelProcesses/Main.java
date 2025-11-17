@@ -6,6 +6,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
 
+class RecursiveSumTask extends RecursiveTask<Long>{
+
+    @Override
+    protected Long compute() {
+        return 0L;
+    }
+}
+
 public class Main {
     public static void main(String[] args) throws Exception {
 
