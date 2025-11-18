@@ -29,8 +29,13 @@ class RecursiveSumTask extends RecursiveTask<Long>{
                 sum += number[i];
             }
             return sum;
-        }else {
-            
+        } else {
+            int mid = (start + end) / 2;
+            RecursiveSumTask leftTask = new RecursiveSumTask(number, start, mid, division);
+            RecursiveSumTask rightTask = new RecursiveSumTask(number, mid, end, division);
+            leftTask.fork();
+            rightTask.fork();
+            return leftTask.join() + rightTask.join();
         }
     }
 }
