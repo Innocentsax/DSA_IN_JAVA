@@ -22,7 +22,16 @@ class RecursiveSumTask extends RecursiveTask<Long>{
 
     @Override
     protected Long compute() {
-        return 0L;
+        if((end - start) <= (number.length / division)){
+            System.out.println(start + " : " + end);
+            long sum = 0;
+            for(int i = start; i < end; i++){
+                sum += number[i];
+            }
+            return sum;
+        }else {
+            
+        }
     }
 }
 
