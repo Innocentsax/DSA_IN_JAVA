@@ -79,6 +79,11 @@ public class Main {
         }
 
         System.out.println("Thread Pool sum " + taskSum);
+
+        RecursiveTask<Long> task = new RecursiveSumTask(numbers, 0, numbersLength, 2);
+        long forkJoinSum = threadPool.invoke(task);
+        System.out.println("RecursiveTask sum is: " + forkJoinSum);
+
         threadPool.shutdown();
         System.out.println(threadPool.getClass().getName());
     }
