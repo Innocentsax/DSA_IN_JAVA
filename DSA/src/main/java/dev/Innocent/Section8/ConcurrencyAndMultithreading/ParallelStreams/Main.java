@@ -10,5 +10,7 @@ public class Main {
         long[] number = new Random().longs(numberLength, 1, numberLength).toArray();
         long start = System.nanoTime();
         double averageSerial = Arrays.stream(number).average().orElseThrow();
+        long elapsedSerial = System.nanoTime() - start;
+        
     }
 }
