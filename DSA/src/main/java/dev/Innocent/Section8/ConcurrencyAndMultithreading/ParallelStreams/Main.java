@@ -13,9 +13,9 @@ public class Main {
         long elapsedSerial = System.nanoTime() - start;
         System.out.printf("Ave = %.2f , elapsed = %d nanos or %.2f ms%n", averageSerial, elapsedSerial, elapsedSerial/1000000.0);
 
-        long start = System.nanoTime();
-        double averageSerial = Arrays.stream(number).average().orElseThrow();
-        long elapsedSerial = System.nanoTime() - start;
+        start = System.nanoTime();
+        double averageParallel = Arrays.stream(number).parallel().average().orElseThrow();
+        long elapsedParallel = System.nanoTime() - start;
         System.out.printf("Ave = %.2f , elapsed = %d nanos or %.2f ms%n",
                 averageSerial, elapsedSerial, elapsedSerial/1000000.0);
     }
