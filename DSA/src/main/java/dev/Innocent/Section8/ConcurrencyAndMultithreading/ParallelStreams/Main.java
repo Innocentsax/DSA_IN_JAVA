@@ -17,6 +17,6 @@ public class Main {
         double averageParallel = Arrays.stream(number).parallel().average().orElseThrow();
         long elapsedParallel = System.nanoTime() - start;
         System.out.printf("Ave = %.2f , elapsed = %d nanos or %.2f ms%n",
-                averageSerial, elapsedSerial, elapsedSerial/1000000.0);
+                averageParallel, elapsedParallel, elapsedParallel/1000000.0);
     }
 }
