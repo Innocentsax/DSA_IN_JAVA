@@ -25,6 +25,7 @@ public class Main {
 
         Stream.generate(Person::new)
                 .limit(10)
+                .parallel()
                 .sorted(Comparator.comparing(Person::lastName))
                 .forEach(System.out::println);
     }
