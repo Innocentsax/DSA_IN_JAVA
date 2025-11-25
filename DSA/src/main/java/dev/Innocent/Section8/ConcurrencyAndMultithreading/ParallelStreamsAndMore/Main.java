@@ -27,6 +27,6 @@ public class Main {
                 .limit(10)
                 .parallel()
                 .sorted(Comparator.comparing(Person::lastName))
-                .forEach(System.out::println);
+                .forEachOrdered(System.out::println);
     }
 }
