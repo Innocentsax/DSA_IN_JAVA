@@ -3,6 +3,7 @@ package dev.Innocent.Section8.ConcurrencyAndMultithreading.ParallelStreamsAndMor
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 record Person(String firstName, String lastName, int age){
@@ -35,5 +36,10 @@ public class Main {
                 .parallel()
 //                .sorted(Comparator.comparing(Person::lastName))
                 .forEachOrdered(System.out::println);
+
+
+        System.out.println("---------------------------------------");
+        int sum = IntStream.range(1, 101).parallel().reduce(0, Integer::sum);
+        System.out.println("The sum of the number is : " + sum);
     }
 }
