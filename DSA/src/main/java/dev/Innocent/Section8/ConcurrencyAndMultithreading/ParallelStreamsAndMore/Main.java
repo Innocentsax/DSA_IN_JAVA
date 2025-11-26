@@ -1,5 +1,6 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.ParallelStreamsAndMore;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.stream.Stream;
@@ -23,10 +24,16 @@ record Person(String firstName, String lastName, int age){
 public class Main {
     public static void main(String[] args) {
 
-        Stream.generate(Person::new)
+        var persons = Stream.generate(Person::new)
+                        .limit(10).sorted(Comparator.comparing(Person::lastName)).toArray();
+        for (var person : persons){
+            System.out.println(person);
+        }
+        System.out.println("------------------------------------------");
+        Arrays.stream(persons)
                 .limit(10)
                 .parallel()
-                .sorted(Comparator.comparing(Person::lastName))
+//                .sorted(Comparator.comparing(Person::lastName))
                 .forEachOrdered(System.out::println);
     }
 }
