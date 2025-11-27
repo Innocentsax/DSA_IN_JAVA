@@ -1,8 +1,7 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.ParallelStreamsAndMore;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -41,5 +40,40 @@ public class Main {
         System.out.println("---------------------------------------");
         int sum = IntStream.range(1, 101).parallel().reduce(0, Integer::sum);
         System.out.println("The sum of the number is : " + sum);
+
+        String humptyDumpty = """
+                Humpty Dumpty sat on a wall.
+                Humpty Dumpty had a great fall.
+                All the king's horses and all the king's men
+                couldn't put Humpty together again.
+                """;
+
+        System.out.println("-----------------------------");
+        var words = new Scanner(humptyDumpty).tokens().toList();
+        words.forEach(System.out::println);
+        System.out.println("-----------------------------");
+
+        var backTogetherAgain = words
+                .parallelStream()
+                .collect(Collectors.joining(" "));
+
+        System.out.println(backTogetherAgain);
+
+        Map<String, Long> lastNameCounts =
+                Stream.generate(Person::new)
+                        .limit(10000)
+                        .parallel()
+                        .collect(Collectors.groupingBy(
+                                Person::lastName,
+                                Collectors.counting()
+                        ));
+
+        lastNameCounts.entrySet().forEach(System.out::println);
+
+        long total = 0;
+        for (long count : lastNameCounts.values()) {
+            total += count;
+        }
+        System.out.println("Total = " + total);
     }
 }
