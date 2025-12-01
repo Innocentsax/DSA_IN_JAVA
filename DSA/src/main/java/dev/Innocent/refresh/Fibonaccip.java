@@ -35,8 +35,15 @@ public class Fibonaccip {
         long first = 0;
         long second = 1;
 
+        System.out.println(first);
+        if(n == 1){
+            System.out.println();
+            return;
+        }
+
         for (int i = 3; i <= n; i++) {
             long result = first + second;
+            System.out.println();
             first = second;
             second = result;
         }
