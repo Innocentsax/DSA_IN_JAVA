@@ -12,5 +12,17 @@ public class Fibonaccip {
     }
 
     // long cut
-//    public
+    public static long fibonacci1(int n){
+        if(n <= 0) throw new IllegalArgumentException("n most be positive number");
+        if(n == 1) return 0;
+        if(n == 2) return 1;
+
+        long first = 0, second = 1;
+        for (int i = 3; i <= n; i++) {
+            long result = first + second;
+            first = second;
+            second = result;
+        }
+        return second;
+    }
 }
