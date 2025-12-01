@@ -2,7 +2,8 @@ package dev.Innocent.refresh;
 
 public class Fibonaccip {
     public static void main(String[] args) {
-        System.out.println(fibonacci(10));
+        printFibonacci(10);
+        System.out.println("5th fib = " + fibonacci1(1));
     }
 
     // Shortcut
@@ -12,17 +13,33 @@ public class Fibonaccip {
     }
 
     // long cut
+    // Return nth Fibonacci (1-indexed: F1=0, F2=1)
     public static long fibonacci1(int n){
         if(n <= 0) throw new IllegalArgumentException("n most be positive number");
         if(n == 1) return 0;
         if(n == 2) return 1;
 
-        long first = 0, second = 1;
+        long first = 0;
+        long second = 1;
         for (int i = 3; i <= n; i++) {
             long result = first + second;
             first = second;
             second = result;
         }
         return second;
+    }
+
+    public static void printFibonacci(int n){
+        if(n <= 0) return;
+
+        long first = 0;
+        long second = 1;
+
+        for (int i = 3; i <= n; i++) {
+            long result = first + second;
+            first = second;
+            second = result;
+        }
+        System.out.println();
     }
 }
