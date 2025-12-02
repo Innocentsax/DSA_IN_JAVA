@@ -7,6 +7,7 @@ public class Fibonaccip {
     }
 
     // Shortcut
+    // This is to print the Fibo number
     public static int fibonacci(int n){
         if(n < 2) return n;
         return fibonacci(n - 1) + fibonacci(n - 2);
