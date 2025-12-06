@@ -58,4 +58,23 @@ public class TwoSum {
 
         return new StringBuilder(s).reverse().toString();
     }
+
+    public String reverseString1(String s) {
+        if (s == null) return null;
+        if (s.length() <= 1) return s;
+
+        char[] chars = s.toCharArray();
+        int i = 0, j = chars.length - 1;
+
+        while (i < j) {
+            char temp = chars[i];
+            chars[i] = chars[j];
+            chars[j] = temp;
+            i++;
+            j--;
+        }
+
+        return new String(chars);
+    }
+
 }
