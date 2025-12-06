@@ -51,4 +51,11 @@ public class TwoSum {
         }
         return null;
     }
+
+    public String reverseString(String s) {
+        if (s == null) return null;
+        if (s.length() <= 1) return s;
+
+        return new StringBuilder(s).reverse().toString();
+    }
 }
