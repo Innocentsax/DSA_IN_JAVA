@@ -4,8 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class LengthOfLongestSubstring {
+    public static void main(String[] args) {
+        System.out.println(lengthOfLongestSubstring("asdfghjfk"));
+    }
 
-    public int lengthOfLongestSubstring(String s) {
+    public static int lengthOfLongestSubstring(String s) {
         int n = s.length();
         int left = 0, maxLen = 0;
         Set<Character> set = new HashSet<>();
