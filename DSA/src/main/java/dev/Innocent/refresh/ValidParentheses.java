@@ -32,4 +32,17 @@ public class ValidParentheses {
         }
         return stack.empty();
     }
+
+    public boolean isValid1(String s) {
+        Map<Character, Character> map = Map.of(')', '(', '}', '{', ']', '[');
+        Stack<Character> st = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+            if (map.containsValue(c)) st.push(c);
+            else if (map.containsKey(c)) {
+                if (st.isEmpty() || st.pop() != map.get(c)) return false;
+            }
+        }
+        return st.isEmpty();
+    }
 }
