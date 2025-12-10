@@ -33,7 +33,7 @@ public class ValidParentheses {
         return stack.empty();
     }
 
-    public boolean isValid1(String s) {
+    public static boolean isValid1(String s) {
         Map<Character, Character> map = Map.of(')', '(', '}', '{', ']', '[');
         Stack<Character> st = new Stack<>();
 
