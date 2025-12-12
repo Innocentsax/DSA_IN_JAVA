@@ -108,5 +108,17 @@ public class Main {
         System.out.println("Total = " + total);
 
         System.out.println(lastCounts.getClass().getName());
+
+        var lastCount = new TreeMap<String, Long>();
+        Stream.generate(Person::new).limit(10000).parallel().forEach(
+                (person) -> lastCount.merge(person.lastName(), 1L, Long::sum));
+        System.out.println(lastCount);
+        total = 0;
+
+        for(long count : lastCounts.values()){
+            total += count;
+        }
+        System.out.println("Total = " + total);
+        System.out.println(lastCount.getClass().getName());
     }
 }
