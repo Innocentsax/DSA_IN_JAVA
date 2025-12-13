@@ -29,6 +29,5 @@ public class MainLists {
             total += count;
         }
         System.out.println("ThreadCounts = " + total);
-
     }
 }
