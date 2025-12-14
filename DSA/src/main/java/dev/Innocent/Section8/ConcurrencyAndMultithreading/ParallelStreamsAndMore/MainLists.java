@@ -1,6 +1,5 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.ParallelStreamsAndMore;
 
-import java.sql.SQLOutput;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.stream.Stream;
 
@@ -21,9 +20,7 @@ public class MainLists {
                 .toArray(Person[]::new);
 
         System.out.println("Total = " + persons.length);
-
         System.out.println(threadMap);
-
         long total = 0;
         for (long count : threadMap.values()) {
             total += count;
