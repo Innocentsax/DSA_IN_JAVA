@@ -57,6 +57,15 @@ public class VisitorList {
             String threadName = Thread.currentThread().getName();
             System.out.println(threadName + " Polling queue " + newVisitors.size());
             Person visitor = newVisitors.poll();
+
+            if(visitor != null){
+                System.out.println(threadName + " " + visitor);
+                if(!masterList.contains(visitor)){
+                    masterList.add(visitor);
+                    System.out.println(" --> New visitor get Coupon!: " + visitor);
+                }
+            }
+            System.out.println(threadName + " done " + newVisitors.size());
         };
 
         ScheduledExecutorService producerExecutor =
