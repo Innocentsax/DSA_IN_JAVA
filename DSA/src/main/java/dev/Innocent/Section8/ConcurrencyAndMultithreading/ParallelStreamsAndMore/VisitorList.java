@@ -53,6 +53,12 @@ public class VisitorList {
             }
         };
 
+        Runnable consumer = () -> {
+            String threadName = Thread.currentThread().getName();
+            System.out.println(threadName + " Polling queue " + newVisitors.size());
+            Person visitor = newVisitors.poll();
+        };
+
         ScheduledExecutorService producerExecutor =
                 Executors.newSingleThreadScheduledExecutor();
         producerExecutor.scheduleWithFixedDelay(producer, 0, 1,
