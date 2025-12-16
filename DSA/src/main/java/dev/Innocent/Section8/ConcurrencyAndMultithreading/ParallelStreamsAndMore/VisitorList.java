@@ -26,7 +26,7 @@ public class VisitorList {
         Runnable producer = () -> {
 
             Person visitor = new Person();
-            System.out.println("Adding " + visitor);
+            System.out.println("Queueing " + visitor);
             boolean queued = false;
             try {
                 queued = newVisitors.offer(visitor, 5, TimeUnit.SECONDS);
@@ -34,7 +34,7 @@ public class VisitorList {
                 System.out.println("Interrupted Exception!");
             }
             if (queued) {
-                System.out.println(newVisitors);
+//                System.out.println(newVisitors);
             } else {
                 System.out.println("Queue is Full, cannot add " + visitor);
                 System.out.println("Draining Queue and writing data to file");
@@ -56,7 +56,12 @@ public class VisitorList {
         Runnable consumer = () -> {
             String threadName = Thread.currentThread().getName();
             System.out.println(threadName + " Polling queue " + newVisitors.size());
-            Person visitor = newVisitors.poll();
+            Person visitor = null;
+            try {
+                visitor = newVisitors.take();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
             if(visitor != null){
                 System.out.println(threadName + " " + visitor);
@@ -70,12 +75,12 @@ public class VisitorList {
 
         ScheduledExecutorService producerExecutor =
                 Executors.newSingleThreadScheduledExecutor();
-        producerExecutor.scheduleWithFixedDelay(producer, 0, 1,
+        producerExecutor.scheduleWithFixedDelay(producer, 0, 3,
                 TimeUnit.SECONDS);
 
         ScheduledExecutorService consumerPool = Executors.newScheduledThreadPool(3);
         for (int i = 0; i < 3; i++) {
-            consumerPool.scheduleAtFixedRate(consumer, 6, 3, TimeUnit.SECONDS);
+            consumerPool.scheduleAtFixedRate(consumer, 6, 1, TimeUnit.SECONDS);
         }
 
         while (true) {
