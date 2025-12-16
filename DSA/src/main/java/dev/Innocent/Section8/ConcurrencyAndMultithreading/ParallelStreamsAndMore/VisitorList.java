@@ -73,6 +73,11 @@ public class VisitorList {
         producerExecutor.scheduleWithFixedDelay(producer, 0, 1,
                 TimeUnit.SECONDS);
 
+        ScheduledExecutorService consumerPool = Executors.newScheduledThreadPool(3);
+        for (int i = 0; i < 3; i++) {
+            consumerPool.scheduleAtFixedRate(consumer, 6, 3, TimeUnit.SECONDS);
+        }
+
         while (true) {
             try {
                 if (!producerExecutor.awaitTermination(20, TimeUnit.SECONDS))
