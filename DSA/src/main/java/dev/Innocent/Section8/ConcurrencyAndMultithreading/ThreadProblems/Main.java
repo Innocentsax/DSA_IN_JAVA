@@ -17,6 +17,12 @@ public class Main {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                System.out.println(threadName + " NEXT attempting to lock resourceB (json), " +
+                        "still has lock on resource A (csv)");
+                synchronized (resourceB){
+                    System.out.println(threadName + " has lock on resourceB (json)");
+                }
+                System.out.println(threadName + " has released lock on resourceB (json)");
             }
             System.out.println(threadName + " has released lock on resourceA (csv)");
         }, "THREAD-A");
