@@ -11,4 +11,14 @@ public class Maze {
             Arrays.fill(row, "");
         }
     }
+
+    public int[] getNextLocation(int[] lastSpot){
+        int[] nextSpot = new int[2];
+        nextSpot[1] = (lastSpot[1] == Maze.MAZE_SIZE - 1) ? 0 : lastSpot[1] + 1;
+        nextSpot[0] = lastSpot[0];
+        if(nextSpot[1] == 0){
+            nextSpot[0] = (lastSpot[0] == Maze.MAZE_SIZE - 1) ? 0 : lastSpot[0] + 1;
+        }
+        return nextSpot;
+    }
 }
