@@ -21,4 +21,15 @@ public class Maze {
         }
         return nextSpot;
     }
+
+    public void moveLocation(int locX, int locY, String name){
+        cells[locX][locY] = name.substring(0, 1);
+        resetSearchedCells(name);
+    }
+
+    public void resetSearchedCells(String name){
+        for(var row : cells){
+            Arrays.asList(row).replaceAll(c -> c.equals("!" + name.charAt(0)) ? "" : c);
+        }
+    }
 }
