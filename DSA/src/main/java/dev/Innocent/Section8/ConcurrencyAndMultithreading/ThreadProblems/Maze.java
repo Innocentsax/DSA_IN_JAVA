@@ -32,4 +32,8 @@ public class Maze {
             Arrays.asList(row).replaceAll(c -> c.equals("!" + name.charAt(0)) ? "" : c);
         }
     }
+
+    public boolean searchCell(){
+        
+    }
 }
