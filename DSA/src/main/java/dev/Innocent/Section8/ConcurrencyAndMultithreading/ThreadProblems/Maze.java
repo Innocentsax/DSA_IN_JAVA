@@ -33,7 +33,16 @@ public class Maze {
         }
     }
 
-    public boolean searchCell(String partner, int[] nextSpot){
+    public boolean searchCell(String partner, int[] nextSpot, int[] lastSpot){
+        if(cells[nextSpot[0]][nextSpot[1]].equals(partner.substring(0, 1))){
+            return true;
+        }
+        cells[lastSpot[0]][lastSpot[1]] = "!" + partner.charAt(0);
+        return false;
+    }
 
+    @Override
+    public String toString() {
+        return Arrays.deepToString(cells);
     }
 }
