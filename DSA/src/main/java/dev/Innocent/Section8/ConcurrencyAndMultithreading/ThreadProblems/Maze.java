@@ -33,7 +33,7 @@ public class Maze {
         }
     }
 
-    public boolean searchCell(){
-        
+    public boolean searchCell(String partner, int[] nextSpot){
+
     }
 }
