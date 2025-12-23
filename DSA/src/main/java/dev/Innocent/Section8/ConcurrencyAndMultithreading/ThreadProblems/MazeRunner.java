@@ -1,6 +1,7 @@
 package dev.Innocent.Section8.ConcurrencyAndMultithreading.ThreadProblems;
 
 import java.util.Arrays;
+import java.util.concurrent.Executors;
 
 record Participant(String name, String searchingFor, Maze maze, int[] startingPosition){
     Participant{
@@ -45,6 +46,14 @@ class ParticipantThread extends Thread{
 
 public class MazeRunner {
     public static void main(String[] args) {
+        Maze maze = new Maze();
+        Participant adam = new Participant("Adam", "Grace", maze, new int[]{3,3});
+        Participant grace = new Participant("Grace", "Adam", maze, new int[]{1,1});
 
+        System.out.println(maze);
+
+        var executor  = Executors.newCachedThreadPool();
+        var adamsResults = executor.submit(new ParticipantThread(adam));
+        executor.shutdown();
     }
 }
