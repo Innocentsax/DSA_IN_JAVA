@@ -37,4 +37,21 @@ public class Palindrome {
         }
         return true;
     }
+
+
+    // https://leetcode.com/problems/palindrome-number/
+    public boolean isPalindrome(int x) {
+        char[] bp = String.valueOf(x).toCharArray();
+        int start = 0;
+        int end = bp.length - 1;
+
+        while(start < end){
+            if(bp[start] != bp[end]){
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
 }
