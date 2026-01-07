@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class Main {
@@ -19,9 +20,19 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+        String query = "SELECT * FROM music.artists";
+
         var dataSource = new MysqlDataSource();
         dataSource.setServerName(prop.getProperty("serverName"));
         dataSource.setPort(Integer.parseInt(prop.getProperty("port")));
         dataSource.setDatabaseName(prop.getProperty("databaseName"));
+
+        try(var connection = dataSource.getConnection(prop.getProperty("user"),
+                System.getenv("MYSQL_PASS")))
+        {
+            System.out.println("Success");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
