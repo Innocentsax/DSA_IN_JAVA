@@ -123,7 +123,7 @@ UNLOCK TABLES;
 /*!50001 SET character_set_results     = utf8mb4 */;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`devuser`@`localhost` SQL SECURITY DEFINER */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `albumview` AS select `a`.`album_name` AS `album_name`,`r`.`artist_name` AS `artist_name`,`s`.`track_number` AS `track_number`,`s`.`song_title` AS `song_title` from ((`albums` `a` join `artists` `r` on((`a`.`artist_id` = `r`.`artist_id`))) join `songs` `s` on((`s`.`album_id` = `a`.`album_id`))) order by `a`.`album_name`,`r`.`artist_name`,`s`.`track_number` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
