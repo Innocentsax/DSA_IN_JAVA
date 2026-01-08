@@ -34,12 +34,32 @@ public class Main {
         try(var connection = dataSource.getConnection(prop.getProperty("user"),
                 System.getenv("MYSQL_PASS")); Statement statement = connection.createStatement();)
         {
+
             ResultSet resultSet = statement.executeQuery(query);
+
+            var meta = resultSet.getMetaData();
+            for(int i = 1; i <= meta.getColumnCount(); i++){
+                System.out.printf("%d %s %s%n",
+                        i,
+                        meta.getColumnName(i),
+                        meta.getColumnTypeName(i));
+            }
+            System.out.println("======================");
+
+            for(int i = 1; i <= meta.getColumnCount(); i++){
+                System.out.printf("%-15s", meta.getColumnName(i).toUpperCase());
+            }
+            System.out.println();
             while (resultSet.next()){
-                System.out.printf("%d %s %s %n",
-                        resultSet.getInt("track_number"),
-                        resultSet.getString("artist_name"),
-                        resultSet.getString("song_title"));
+//                System.out.printf("%d %s %s %n",
+//                        resultSet.getInt("track_number"),
+//                        resultSet.getString("artist_name"),
+//                        resultSet.getString("song_title"));
+
+                for(int i = 1; i <= meta.getColumnCount(); i++){
+                    System.out.printf("%-15s", resultSet.getString(i));
+                }
+                System.out.println();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
