@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,14 +23,19 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        String albumName = "Tapestry";
-        String query = "SELECT * FROM music.albumview WHERE album_name='%s'".formatted(albumName);
+//        String albumName = "Tapestry";
+
 //        String query = "SELECT * FROM music.artists";
 
         var dataSource = new MysqlDataSource();
         dataSource.setServerName(prop.getProperty("serverName"));
         dataSource.setPort(Integer.parseInt(prop.getProperty("port")));
         dataSource.setDatabaseName(prop.getProperty("databaseName"));
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter an Album Name");
+        String albumName = scanner.nextLine();
+        String query = "SELECT * FROM music.albumview WHERE album_name='%s'".formatted(albumName);
 
         try(var connection = dataSource.getConnection(prop.getProperty("user"),
                 System.getenv("MYSQL_PASS")); Statement statement = connection.createStatement();)
@@ -38,12 +44,12 @@ public class Main {
             ResultSet resultSet = statement.executeQuery(query);
 
             var meta = resultSet.getMetaData();
-            for(int i = 1; i <= meta.getColumnCount(); i++){
-                System.out.printf("%d %s %s%n",
-                        i,
-                        meta.getColumnName(i),
-                        meta.getColumnTypeName(i));
-            }
+//            for(int i = 1; i <= meta.getColumnCount(); i++){
+//                System.out.printf("%d %s %s%n",
+//                        i,
+//                        meta.getColumnName(i),
+//                        meta.getColumnTypeName(i));
+//            }
             System.out.println("======================");
 
             for(int i = 1; i <= meta.getColumnCount(); i++){
