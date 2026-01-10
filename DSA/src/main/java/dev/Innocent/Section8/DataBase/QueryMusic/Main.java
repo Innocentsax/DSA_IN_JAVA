@@ -31,6 +31,11 @@ public class Main {
         dataSource.setServerName(prop.getProperty("serverName"));
         dataSource.setPort(Integer.parseInt(prop.getProperty("port")));
         dataSource.setDatabaseName(prop.getProperty("databaseName"));
+        try {
+            dataSource.setMaxRows(10);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 //        Scanner scanner = new Scanner(System.in);
 //        System.out.println("Enter an Artist Id: ");
