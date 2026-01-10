@@ -35,7 +35,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter an Artist Id: ");
         String artistId = scanner.nextLine();
-        String query = "SELECT * FROM music.artists WHERE artist_id='%s'".formatted(artistId);
+        int artistid = Integer.parseInt(artistId);
+        String query = "SELECT * FROM music.artists WHERE artist_id='%d'".formatted(artistid);
 
         try(var connection = dataSource.getConnection(prop.getProperty("user"),
                 System.getenv("MYSQL_PASS")); Statement statement = connection.createStatement();)
