@@ -32,11 +32,11 @@ public class Main {
         dataSource.setPort(Integer.parseInt(prop.getProperty("port")));
         dataSource.setDatabaseName(prop.getProperty("databaseName"));
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter an Artist Id: ");
-        String artistId = scanner.nextLine();
-        int artistid = Integer.parseInt(artistId);
-        String query = "SELECT * FROM music.artists WHERE artist_id='%d'".formatted(artistid);
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Enter an Artist Id: ");
+//        String artistId = scanner.nextLine();
+//        int artistid = Integer.parseInt(artistId);
+        String query = "SELECT * FROM music.artists limit 10";
 
         try(var connection = dataSource.getConnection(prop.getProperty("user"),
                 System.getenv("MYSQL_PASS")); Statement statement = connection.createStatement();)
