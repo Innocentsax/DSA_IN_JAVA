@@ -56,7 +56,7 @@ public class Main {
 //                        meta.getColumnName(i),
 //                        meta.getColumnTypeName(i));
 //            }
-            System.out.println("==============================");
+            System.out.println("================================");
 
             for(int i = 1; i <= meta.getColumnCount(); i++){
                 System.out.printf("%-15s", meta.getColumnName(i).toUpperCase());
