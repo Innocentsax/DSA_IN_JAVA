@@ -4,6 +4,7 @@ package dev.Innocent.Section8.DataBase.QueryMusic;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -57,6 +58,9 @@ public class Main {
 //                        meta.getColumnTypeName(i));
 //            }
             System.out.println("================================");
+
+
+            BigDecimal a = BigDecimal.valueOf(1000);
 
             for(int i = 1; i <= meta.getColumnCount(); i++){
                 System.out.printf("%-15s", meta.getColumnName(i).toUpperCase());
