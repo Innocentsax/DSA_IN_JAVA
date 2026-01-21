@@ -79,4 +79,9 @@ public class MusicDML {
         }
         return recordsInserted > 0;
     }
+
+    private static boolean deleteRecord(Statement statement, String table,
+                                        String columnName, String columnValue){
+        
+    }
 }
