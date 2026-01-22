@@ -30,6 +30,8 @@ public class MusicDML {
                 System.out.println("Maybe we should add this record");
                 insertRecord(statement, tableName, new String[]{columnName}, new String[]{columnValue});
 
+            } else {
+                deleteRecord(statement, tableName, columnName,columnValue);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
