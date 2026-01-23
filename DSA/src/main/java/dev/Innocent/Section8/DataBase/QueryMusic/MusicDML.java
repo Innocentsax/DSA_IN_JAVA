@@ -25,7 +25,7 @@ public class MusicDML {
 
             String tableName = "music.artists";
             String columnName = "artist_name";
-            String columnValue = "Innocent Udo";
+            String columnValue = "elf";
             if(!executeSelect(statement, tableName, columnName, columnValue)){
                 System.out.println("Maybe we should add this record");
                 insertRecord(statement, tableName, new String[]{columnName}, new String[]{columnValue});
@@ -107,5 +107,15 @@ public class MusicDML {
             executeSelect(statement, table, updatedName, updateValue);
         }
         return recordsUpdated > 0;
+    }
+
+    private static void insertArtistAlbum(Statement statement, String artistName, String albumName) throws SQLException {
+        String artistInsert = "INSERT INTO music.artists (artist_name) VALUES (%s)"
+                .formatted(statement.enquoteLiteral(artistName));
+        System.out.println(artistInsert);
+        statement.execute(artistInsert, Statement.RETURN_GENERATED_KEYS);
+
+        ResultSet rs = statement.getGeneratedKeys();
+        int artistId = (rs != null && rs.next()) ? rs.getInt(1) : -1;
     }
 }
