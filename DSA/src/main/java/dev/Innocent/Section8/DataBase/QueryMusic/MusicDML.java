@@ -31,7 +31,8 @@ public class MusicDML {
                 insertRecord(statement, tableName, new String[]{columnName}, new String[]{columnValue});
 
             } else {
-                deleteRecord(statement, tableName, columnName,columnValue);
+//                deleteRecord(statement, tableName, columnName,columnValue);
+                updateRecord(statement, tableName, columnName, columnValue, columnName, columnValue.toUpperCase());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
