@@ -117,5 +117,8 @@ public class MusicDML {
 
         ResultSet rs = statement.getGeneratedKeys();
         int artistId = (rs != null && rs.next()) ? rs.getInt(1) : -1;
+        String albumInsert = ("INSERT INTO music.albums (album_name, artist_id" + " VALUES (%s, %d)");
+        System.out.println(albumInsert);
+        statement.execute(albumInsert, Statement.RETURN_GENERATED_KEYS);
     }
 }
