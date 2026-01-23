@@ -93,4 +93,18 @@ public class MusicDML {
         }
         return recordsDeleted > 0;
     }
+
+    private static boolean updateRecord(Statement statement, String table,
+                                        String matchedColumn, String matchedValue,
+                                        String updatedName, String updateValue) throws SQLException {
+        String query = "DELETE FROM %s WHERE %s='%s'".formatted(table, updatedName, updateValue,
+                matchedColumn, matchedValue);
+        System.out.println(query);
+        statement.execute(query);
+        int recordsUpdated = statement.getUpdateCount();
+        if(recordsUpdated > 0){
+            executeSelect(statement, table, updatedName, updateValue);
+        }
+        return recordsUpdated > 0;
+    }
 }
