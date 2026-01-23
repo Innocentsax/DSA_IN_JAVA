@@ -120,5 +120,18 @@ public class MusicDML {
         String albumInsert = ("INSERT INTO music.albums (album_name, artist_id" + " VALUES (%s, %d)");
         System.out.println(albumInsert);
         statement.execute(albumInsert, Statement.RETURN_GENERATED_KEYS);
+        rs = statement.getGeneratedKeys();
+        int albumId = (rs != null && rs.next()) ? rs.getInt(1) : -1;
+
+        String[] songs = new String[]{
+                "You're No Good",
+                "Talkin' New York",
+                "In My Time of Dyin",
+                "Man of Constant Sorrow",
+                "Fixin' to Die",
+                "Pretty Peggy-O",
+                "Highway 51 Blues"
+        };
+        
     }
 }
