@@ -132,6 +132,12 @@ public class MusicDML {
                 "Pretty Peggy-O",
                 "Highway 51 Blues"
         };
-        
+
+        String songInsert = "INSERT INTO music.songs " + "(track_number, song_title, album_id) VALUES (%d, %s, %d)";
+        for (int i = 0; i < songs.length; i++) {
+            String songQuery = songInsert.formatted(i + 1, statement.enquoteLiteral(songs[i]), albumId);
+            System.out.println(songQuery);
+            statement.execute(songQuery);
+        }
     }
 }
