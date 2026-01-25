@@ -157,4 +157,9 @@ public class MusicDML {
         executeSelect(statement, "music.albumview", "album_name",
                 "Bob Dylan");
     }
+
+    private static void deleteArtistAlbum(Connection conn, Statement statement,
+                                          String artistName, String albumName) throws SQLException {
+        System.out.println("AUTOCOMMIT = " + conn.getAutoCommit());
+    }
 }
