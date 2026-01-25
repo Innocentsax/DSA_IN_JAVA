@@ -138,7 +138,7 @@ public class MusicDML {
                 "You're No Good",
                 "Talkin' New York",
                 "In My Time of Dyin'",
-                "Man of Constant Sorrow",
+                "Man of Constant Sorrow.",
                 "Fixin' to Die",
                 "Pretty Peggy-O",
                 "Highway 51 Blues"
