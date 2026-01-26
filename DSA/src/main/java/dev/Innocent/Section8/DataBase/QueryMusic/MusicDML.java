@@ -21,6 +21,13 @@ public class MusicDML {
 //                updateRecord(statement, tableName, columnName,
 //                        columnValue, columnName,
 //                        columnValue.toUpperCase());
+                try{
+                    deleteArtistAlbum(connection, statement, columnValue, columnValue);
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
+                executeSelect(statement, "music.albumview", "album_name", columnValue);
+                executeSelect(statement, "music.albums", "album_name", columnValue);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
