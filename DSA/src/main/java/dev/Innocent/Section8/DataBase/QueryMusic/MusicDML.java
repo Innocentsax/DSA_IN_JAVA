@@ -18,9 +18,9 @@ public class MusicDML {
                 insertArtistAlbum(statement, columnValue, columnValue);
             } else {
 //                deleteRecord(statement, tableName, columnName, columnValue);
-                updateRecord(statement, tableName, columnName,
-                        columnValue, columnName,
-                        columnValue.toUpperCase());
+//                updateRecord(statement, tableName, columnName,
+//                        columnValue, columnName,
+//                        columnValue.toUpperCase());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
