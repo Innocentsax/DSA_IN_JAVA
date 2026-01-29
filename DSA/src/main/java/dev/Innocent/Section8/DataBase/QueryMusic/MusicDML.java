@@ -180,6 +180,6 @@ public class MusicDML {
 
         String deleteArtist = "DELETE FROM music.artists WHERE artist_name='%s'".formatted(artistName);
         int deletedArtists = statement.executeUpdate(deleteArtist);
-        System.out.printf("Deleted %d rows from music.artists%n", deletedArtists);
+        System.out.printf("Deleted %d rows from music.artists.%n", deletedArtists);
     }
 }
