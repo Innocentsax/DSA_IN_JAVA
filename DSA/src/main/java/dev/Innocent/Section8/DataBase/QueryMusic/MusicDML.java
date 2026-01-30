@@ -39,7 +39,7 @@ public class MusicDML {
         boolean foundData = false;
         var meta = resultSet.getMetaData();
 
-        System.out.println("===================");
+        System.out.println("=========================");
 
         for (int i = 1; i <= meta.getColumnCount(); i++) {
             System.out.printf("%-15s", meta.getColumnName(i).toUpperCase());
