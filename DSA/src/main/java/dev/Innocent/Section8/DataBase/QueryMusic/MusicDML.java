@@ -162,7 +162,7 @@ public class MusicDML {
             statement.execute(songQuery);
         }
         executeSelect(statement, "music.albumview", "album_name",
-                "Bob Dylan");
+                "Bob Dylan.");
     }
 
     private static void deleteArtistAlbum(Connection conn, Statement statement,
@@ -180,6 +180,6 @@ public class MusicDML {
 
         String deleteArtist = "DELETE FROM music.artists WHERE artist_name='%s'".formatted(artistName);
         int deletedArtists = statement.executeUpdate(deleteArtist);
-        System.out.printf("Deleted %d rows from music.artists.%n", deletedArtists);
+        System.out.printf("Deleted %d rows from music.artists%n", deletedArtists);
     }
 }
