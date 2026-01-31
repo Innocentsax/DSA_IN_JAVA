@@ -1,6 +1,7 @@
 package dev.Innocent.Section8.DataBase.QueryMusic;
 
 import java.sql.*;
+import java.util.Arrays;
 
 public class MusicDML {
     public static void main(String[] args) {
@@ -183,6 +184,11 @@ public class MusicDML {
             String deleteArtist = "DELETE FROM music.artists WHERE artist_name='%s'".formatted(artistName);
 //            int deletedArtists = statement.executeUpdate(deleteArtist);
 //            System.out.printf("Deleted %d rows from music.artists%n", deletedArtists);
+            statement.addBatch(deleteSongs);
+            statement.addBatch(deleteAlbums);
+            statement.addBatch(deleteArtist);
+            int[] results = statement.executeBatch();
+            System.out.println(Arrays.toString(results));
             conn.commit();
         } catch (SQLException e){
             e.printStackTrace();
