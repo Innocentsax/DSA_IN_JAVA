@@ -168,6 +168,7 @@ public class MusicDML {
     private static void deleteArtistAlbum(Connection conn, Statement statement,
                                           String artistName, String albumName) throws SQLException {
         System.out.println("AUTOCOMMIT = " + conn.getAutoCommit());
+        conn.setAutoCommit(false);
         String deleteSongs = """
                 DELETE FROM music.songs WHERE album_id = 
                 (SELECT ALBUM_ID from music.albums WHERE album_name = '%s')
@@ -178,8 +179,10 @@ public class MusicDML {
         int deletedAlbums = statement.executeUpdate(deleteAlbums);
         System.out.printf("Deleted %d rows from music.albums%n", deletedAlbums);
 
-        String deleteArtist = "DELETE FROM music.artists WHERE artist_name='%s'".formatted(artistName);
+        String deleteArtist = "DELETE FROM music.artists WHERE artist_name='%s".formatted(artistName);
         int deletedArtists = statement.executeUpdate(deleteArtist);
         System.out.printf("Deleted %d rows from music.artists%n", deletedArtists);
+        conn.commit();
+        conn.setAutoCommit(true);
     }
 }
