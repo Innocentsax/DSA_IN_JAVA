@@ -3,6 +3,7 @@ package dev.Innocent.Section8.DataBase.JDBCChallenges;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -15,6 +16,18 @@ public class Main {
         dataSource.setPort(3306);
         dataSource.setUser(System.getenv("MYSQLUSER"));
         dataSource.setPassword(System.getenv("MYSQLPASS"));
+
+        try(Connection conn = dataSource.getConnection()){
+
+            DatabaseMetaData metaData = conn.getMetaData();
+            System.out.println(metaData.getSQLStateType());
+
+            if(!checkSchema(conn)){
+                System.out.println("storefront schema does not exist");
+            }
+        } catch(SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
     private static boolean checkSchema(Connection conn){
