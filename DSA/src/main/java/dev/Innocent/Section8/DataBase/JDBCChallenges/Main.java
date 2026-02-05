@@ -35,6 +35,9 @@ public class Main {
             statement.execute(USE_SCHEMA);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("Error Code: " + e.getErrorCode());
+            System.out.println("Message: " + e.getMessage());
             return false;
         }
         return true;
