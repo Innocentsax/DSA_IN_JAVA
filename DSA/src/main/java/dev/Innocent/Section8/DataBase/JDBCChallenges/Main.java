@@ -32,8 +32,8 @@ public class Main {
             }
 
             deleteOrder(conn, 2);
-//            int newOrder = addOrder(conn, new String[]{"shoes", "shirt", "socks"});
-//            System.out.println("New Order = " + newOrder);
+            int newOrder = addOrder(conn, new String[]{"shoes", "shirt", "socks"});
+            System.out.println("New Order = " + newOrder);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
