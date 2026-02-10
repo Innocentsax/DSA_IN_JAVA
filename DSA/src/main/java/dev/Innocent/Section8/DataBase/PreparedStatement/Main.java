@@ -1,5 +1,9 @@
 package dev.Innocent.Section8.DataBase.PreparedStatement;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
+
+import java.sql.SQLException;
+
 public class Main {
 
     private static String ARTIST_INSERT =
@@ -11,6 +15,16 @@ public class Main {
                     "VALUES (?, ?, ?)";
 
     public static void main(String[] args) {
+        var dataSource = new MysqlDataSource();
 
+        dataSource.setServerName("localhost");
+        dataSource.setPort(3306);
+        dataSource.setDatabaseName("music");
+
+        try {
+            dataSource.setContinueBatchOnError(false);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
