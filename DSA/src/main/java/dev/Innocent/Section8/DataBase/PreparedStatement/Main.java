@@ -2,6 +2,9 @@ package dev.Innocent.Section8.DataBase.PreparedStatement;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Main {
@@ -25,6 +28,19 @@ public class Main {
             dataSource.setContinueBatchOnError(false);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+
+        try (Connection connection = dataSource.getConnection(
+                System.getenv("MYSQL_USER"),
+                System.getenv("MYSQL_PASS"));
+        ) {
+            String sql = "SELECT * FROM music.albumview where artist_name = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, "Elf");
+            ResultSet resultSet = ps.executeQuery();
+//            printRecords(resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
