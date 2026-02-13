@@ -65,4 +65,20 @@ public class Main {
         }
         return foundData;
     }
+
+    private static int addArtist(PreparedStatement ps, Connection conn,
+                                 String artistName) throws SQLException {
+
+        int artistId = -1;
+        ps.setString(1, artistName);
+        int insertedCount = ps.executeUpdate();
+        if (insertedCount > 0) {
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                artistId = generatedKeys.getInt(1);
+                System.out.println("Auto-incremented ID: " + artistId);
+            }
+        }
+        return artistId;
+    }
 }
