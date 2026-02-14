@@ -81,4 +81,22 @@ public class Main {
         }
         return artistId;
     }
+
+    private static int addAlbum(PreparedStatement ps, Connection conn, int artistId,
+                                String albumName) throws SQLException {
+
+        int albumId = -1;
+        ps.setInt(1, artistId);
+        ps.setString(2, albumName);
+        int insertedCount = ps.executeUpdate();
+        if (insertedCount > 0) {
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                albumId = generatedKeys.getInt(1);
+                System.out.println("Auto-incremented ID: " + albumId);
+            }
+        }
+        return albumId;
+    }
+
 }
