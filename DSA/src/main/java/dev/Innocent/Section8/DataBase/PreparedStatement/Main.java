@@ -99,4 +99,22 @@ public class Main {
         return albumId;
     }
 
+    private static int addSong(PreparedStatement ps, Connection conn, int albumId,
+                               int trackNo, String songTitle) throws SQLException {
+
+        int songId = -1;
+        ps.setInt(1, albumId);
+        ps.setInt(2, trackNo);
+        ps.setString(3, songTitle);
+        int insertedCount = ps.executeUpdate();
+        if (insertedCount > 0) {
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                songId = generatedKeys.getInt(1);
+                System.out.println("Auto-incremented ID: " + songId);
+            }
+        }
+        return songId;
+    }
+
 }
