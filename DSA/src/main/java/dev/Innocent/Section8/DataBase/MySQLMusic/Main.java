@@ -4,7 +4,6 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 
 import javax.swing.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Arrays;
 
