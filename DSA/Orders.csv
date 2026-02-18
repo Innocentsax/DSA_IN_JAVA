@@ -1,0 +1,38 @@
+order,2023-11-01 06:01:00
+item,5,Apple
+item,2,Orange
+item,3,Banana
+item,1,Turkey
+item,1,Milk
+order,2023-11-01 06:02:00
+item,1,Bunch Celery
+item,2,Onion
+item,7,Banana
+item,1,Package Ground Beef
+item,1,Nuttin' Honey Cereal
+order,2023-11-01 06:03:00
+item,3,loaves of bread
+item,1,milk
+item,2,juice
+item,1,bag of dog food
+item,10,cans of cat food
+order,2023-11-31 05:04:00
+item,1,milk
+item,1,dozen eggs
+item,1,lettuce
+item,1,cookies
+order,2023-11-01 06:05:00
+item,1,milk
+item,1,dozen eggs
+item,1,lettuce
+item,1,cookies
+item,5,Apple
+item,2,Orange
+item,3,Banana
+item,1,Turkey
+item,1,Milk
+item,1,Bunch Celery
+item,2,Onion
+item,7,Banana
+item,1,Package Ground Beef
+item,1,Nuttin' Honey Cereal
