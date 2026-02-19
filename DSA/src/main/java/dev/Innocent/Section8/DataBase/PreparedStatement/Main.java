@@ -87,6 +87,7 @@ public class Main {
         return artistId;
     }
 
+    // This is to add new album to the table
     private static int addAlbum(PreparedStatement ps, Connection conn, int artistId,
                                 String albumName) throws SQLException {
 
