@@ -105,6 +105,7 @@ public class Main {
         return albumId;
     }
 
+    // This is to add new Song to the table
     private static void addSong(PreparedStatement ps, Connection conn, int albumId,
                                 int trackNo, String songTitle) throws SQLException {
 
