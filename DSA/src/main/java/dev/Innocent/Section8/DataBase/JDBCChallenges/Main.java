@@ -151,6 +151,7 @@ public class Main {
         return orderId;
     }
 
+    // This is to delete Order from the table
     private static void deleteOrder(Connection conn, int orderId) throws SQLException {
 
         String deleteOrder = "DELETE FROM %s where order_id=%d";
