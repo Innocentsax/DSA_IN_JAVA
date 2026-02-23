@@ -115,6 +115,7 @@ public class Main {
         ps.addBatch();
     }
 
+    // This is to read data from NewAlbums.csv file
     private static void addDataFromFile(Connection conn) throws SQLException {
 
         List<String> records = null;
