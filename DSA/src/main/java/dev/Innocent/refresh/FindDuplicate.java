@@ -22,4 +22,10 @@ public class FindDuplicate {
 
         System.out.println(dup);
     }
+
+    // Remove Duplicate without Set
+    private static int[] removeDuplicate(int[] arr){
+        int[] temp = new int[arr.length];
+
+    }
 }
