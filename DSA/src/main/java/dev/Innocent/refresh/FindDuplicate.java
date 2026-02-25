@@ -43,8 +43,6 @@ public class FindDuplicate {
                 temp[index++] = arr[i];
             }
         }
-
-        // create array of correct size
         int[] result = new int[index];
         for (int i = 0; i < index; i++) {
             result[i] = temp[i];
