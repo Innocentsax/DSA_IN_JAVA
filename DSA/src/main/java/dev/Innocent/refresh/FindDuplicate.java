@@ -1,14 +1,18 @@
 package dev.Innocent.refresh;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class FindDuplicate {
 
     public static void main(String[] args) {
         int[] numbers = {4, 2, 7, 4, 8, 2, 9, 7};
+        int k = 3;
 
-        removeDuplicates(numbers);
-        findDuplicate(numbers);
+        rotateRight(numbers, k);
+        System.out.println(Arrays.toString(numbers));
+//        removeDuplicates(numbers);
+//        findDuplicate(numbers);
     }
 
     private static void findDuplicate(int[] arr){
@@ -50,5 +54,25 @@ public class FindDuplicate {
         }
 
         return result;
+    }
+
+    public static void reverse(int[] arr, int start, int end){
+        while (start < end){
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void rotateRight(int[] nums, int k){
+        int n = nums.length;
+        k %= n;
+        if(k == 0) return;
+
+        reverse(nums, 0, n - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n -1);
     }
 }
