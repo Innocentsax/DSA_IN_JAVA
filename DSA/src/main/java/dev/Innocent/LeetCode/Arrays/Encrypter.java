@@ -37,6 +37,7 @@ public class Encrypter {
         return rep.toString();
     }
 
+    // Reverse an array of Character version 2
     public static String rev2(String name){
         int start = 0;
         int end = name.length() -1;
