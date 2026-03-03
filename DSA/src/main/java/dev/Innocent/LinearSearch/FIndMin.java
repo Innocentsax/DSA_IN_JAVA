@@ -5,6 +5,8 @@ public class FIndMin {
         int[] arr = {18, 12, 3, 14, 5};
         System.out.println(max(arr));
     }
+
+    // Find the min number in d array
     static int min(int[] arr){
         int ans = arr[0];
         for (int i = 1; i < arr.length; i++) {
