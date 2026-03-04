@@ -16,7 +16,8 @@ public class FIndMin {
         }
         return ans;
     }
-    
+
+    // Method to find the max number
     static int max(int[] arr){
 //        int ans = arr[0];
         if(arr.length == 0){
