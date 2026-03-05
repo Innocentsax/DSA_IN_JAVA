@@ -4,6 +4,7 @@ public class MaximumWealth {
     public static void main(String[] args) {
 
     }
+    // Method 1
     public int maxWealth(int[][] accounts){
         int ans = Integer.MIN_VALUE;
 
