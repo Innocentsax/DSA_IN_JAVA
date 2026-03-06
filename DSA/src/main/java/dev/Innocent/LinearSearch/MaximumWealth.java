@@ -25,6 +25,7 @@ public class MaximumWealth {
         return ans;
     }
 
+    // Method 2
     public int maxWealth2(int[][] accounts){
         int ans = Integer.MIN_VALUE;
 
