@@ -28,12 +28,9 @@ public class MaximumWealth {
     // Method 2
     public int maxWealth2(int[][] accounts){
         int ans = Integer.MIN_VALUE;
-
         // person = rol
         // account = col
-
         for (int[] ints : accounts) {
-            // when you start a new col, take a new sum for that row
             int sum = 0;
             for (int anInt : ints) {
                 sum = sum + anInt;
