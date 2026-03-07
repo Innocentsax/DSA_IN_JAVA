@@ -12,6 +12,7 @@ public class SearchIn2DArray {
         System.out.println(Arrays.toString(search(arr, 23)));
     }
 
+    // This method is to search through the double array list
     static int[] search(int[][] arr, int target){
         if(arr.length == 0){
             return new int[]{-1};
