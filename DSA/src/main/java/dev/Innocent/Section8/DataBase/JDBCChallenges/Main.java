@@ -95,6 +95,8 @@ public class Main {
         }
     }
 
+
+    // Add new order
     private static int addOrder(Connection conn, String[] items) throws SQLException {
 
         int orderId = -1;
