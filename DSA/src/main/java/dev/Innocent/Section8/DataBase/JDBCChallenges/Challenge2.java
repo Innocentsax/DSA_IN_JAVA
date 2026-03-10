@@ -5,6 +5,12 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+record OrderDetail(int orderDetailId, String itemDescription, int qty) {
+
+    public OrderDetail(String itemDescription, int qty) {
+        this(-1, itemDescription, qty);
+    }
+}
 
 public class Challenge2 {
 
