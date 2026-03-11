@@ -4,11 +4,25 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 record OrderDetail(int orderDetailId, String itemDescription, int qty) {
 
     public OrderDetail(String itemDescription, int qty) {
         this(-1, itemDescription, qty);
+    }
+}
+
+record Order(int orderId, String dateString, List<OrderDetail> details) {
+
+    public Order(String dateString) {
+        this(-1, dateString, new ArrayList<>());
+    }
+
+    public void addDetail(String itemDescription, int qty) {
+        OrderDetail item = new OrderDetail(itemDescription, qty);
+        details.add(item);
     }
 }
 
