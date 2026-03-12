@@ -2,10 +2,13 @@ package dev.Innocent.Section8.DataBase.JDBCChallenges;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 record OrderDetail(int orderDetailId, String itemDescription, int qty) {
 
@@ -45,5 +48,19 @@ public class Challenge2 {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static List<Order> readData() {
+
+        List<Order> vals = new ArrayList<>();
+
+        try (Scanner scanner = new Scanner(Path.of("Orders.csv"))) {
+
+            scanner.useDelimiter("[,\\n]");
+            var list = scanner.tokens().map(String::trim).toList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return vals;
     }
 }
