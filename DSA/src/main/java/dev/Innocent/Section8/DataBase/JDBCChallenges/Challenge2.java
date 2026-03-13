@@ -58,6 +58,22 @@ public class Challenge2 {
 
             scanner.useDelimiter("[,\\n]");
             var list = scanner.tokens().map(String::trim).toList();
+
+            for (int i = 0; i < list.size(); i++) {
+
+                String value = list.get(i);
+                if (value.equals("order")) {
+                    var date = list.get(++i);
+                    vals.add(new Order(date));
+                } else if (value.equals("item")) {
+                    var qty = Integer.parseInt(list.get(++i));
+                    var description = list.get(++i);
+                    Order order = vals.get(vals.size() - 1);
+                    order.addDetail(description, qty);
+                }
+            }
+            vals.forEach(System.out::println);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
