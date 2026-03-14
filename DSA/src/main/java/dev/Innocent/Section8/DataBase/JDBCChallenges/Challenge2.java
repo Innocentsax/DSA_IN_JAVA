@@ -5,8 +5,10 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -78,5 +80,43 @@ public class Challenge2 {
             throw new RuntimeException(e);
         }
         return vals;
+    }
+
+    private static void addOrder(Connection conn, PreparedStatement psOrder,
+                                 PreparedStatement psDetail, Order order)
+            throws SQLException {
+
+        try {
+            conn.setAutoCommit(false);
+            int orderId = -1;
+            psOrder.setString(1, order.dateString());
+            if (psOrder.executeUpdate() == 1) {
+                var rs = psOrder.getGeneratedKeys();
+                if (rs.next()) {
+                    orderId = rs.getInt(1);
+                    System.out.println("orderId = " + orderId);
+
+                    if (orderId > -1) {
+                        psDetail.setInt(1, orderId);
+                        for (OrderDetail od : order.details()) {
+                            psDetail.setString(2, od.itemDescription());
+                            psDetail.setInt(3, od.qty());
+                            psDetail.addBatch();
+                        }
+                        int[] data = psDetail.executeBatch();
+                        int rowsInserted = Arrays.stream(data).sum();
+                        if (rowsInserted != order.details().size()) {
+                            throw new SQLException("Inserts don't match");
+                        }
+                    }
+                }
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            conn.rollback();
+            throw e;
+        } finally {
+            conn.setAutoCommit(true);
+        }
     }
 }
