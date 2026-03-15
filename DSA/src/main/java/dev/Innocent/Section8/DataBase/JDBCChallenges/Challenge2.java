@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -117,6 +118,34 @@ public class Challenge2 {
             throw e;
         } finally {
             conn.setAutoCommit(true);
+        }
+    }
+
+    private static void addOrders(Connection conn, List<Order> orders) {
+
+        String insertOrder = "INSERT INTO storefront.order (order_date) VALUES (?)";
+        String insertDetail = "INSERT INTO storefront.order_details " +
+                "(order_id, item_description, quantity) values(?, ?, ?)";
+
+        try (
+                PreparedStatement psOrder = conn.prepareStatement(insertOrder,
+                        Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement psDetail = conn.prepareStatement(insertDetail,
+                        Statement.RETURN_GENERATED_KEYS);
+        ) {
+
+            orders.forEach((o) -> {
+                try {
+                    addOrder(conn, psOrder, psDetail, o);
+                } catch (SQLException e) {
+                    System.err.printf("%d (%s) %s%n", e.getErrorCode(),
+                            e.getSQLState(), e.getMessage());
+                    System.err.println("Problem: " + psOrder);
+                    System.err.println("Order: " + o);
+                }
+            });
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
