@@ -35,11 +35,13 @@ record Order(int orderId, String dateString, List<OrderDetail> details) {
 public class Challenge2 {
 
     public static void main(String[] args) {
+
         var dataSource = new MysqlDataSource();
         dataSource.setServerName("localhost");
         dataSource.setPort(3306);
         dataSource.setUser(System.getenv("MYSQLUSER"));
         dataSource.setPassword(System.getenv("MYSQLPASS"));
+        List<Order> orders = readData();
 
         try (Connection conn = dataSource.getConnection()) {
 
@@ -48,6 +50,7 @@ public class Challenge2 {
 //            Statement statement = conn.createStatement();
 //            statement.execute(alterString);
 
+            addOrders(conn, orders);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
