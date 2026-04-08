@@ -42,7 +42,7 @@ Various sorting algorithms like Bubble Sort, Selection Sort, Insertion Sort, Mer
 Graph algorithms like Breadth-First Search (BFS), Depth-First Search (DFS), Dijkstra's algorithm, and others are used to traverse and solve problems on graphs.
 
 11. Dynamic Programming:
-Dynamic Programming is a technique for solving complex problems by breaking them down into overlapping subproblems and storing the results of these subproblems to avoid redundant calculations.
+Dynamic Programming is a technique for solving complex problems by breaking them down into overlapping subproblems and storing the results of these subproblems to avoid redundant calculations..
 
 These are just a few examples of the many data structures and algorithms available in Java. Depending on the specific problem you are trying to solve, you may choose the most appropriate data structure and algorithm to achieve optimal performance and efficiency. The Java Collections Framework (java.util package) provides many built-in data structures that you can readily use in your Java programs.
 
