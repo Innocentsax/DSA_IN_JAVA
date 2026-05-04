@@ -32,8 +32,8 @@ public class Main {
             }
 
             deleteOrder(conn, 2);
-            int newOrder = addOrder(conn, new String[]{"shoes", "shirt", "socks"});
-            System.out.println("New Order = " + newOrder);
+//            int newOrder = addOrder(conn, new String[]{"shoes", "shirt", "socks"});
+//            System.out.println("New Order = " + newOrder);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -95,8 +95,6 @@ public class Main {
         }
     }
 
-
-    // Add new order
     private static int addOrder(Connection conn, String[] items) throws SQLException {
 
         int orderId = -1;
@@ -153,7 +151,6 @@ public class Main {
         return orderId;
     }
 
-    // This is to delete Order from the table
     private static void deleteOrder(Connection conn, int orderId) throws SQLException {
 
         String deleteOrder = "DELETE FROM %s where order_id=%d";
