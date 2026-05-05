@@ -45,8 +45,8 @@ public class Challenge2 {
 
         try (Connection conn = dataSource.getConnection()) {
 
-//            String alterString =
-//                    "ALTER TABLE storefront.order_details ADD COLUMN quantity INT";
+            String alterString =
+                    "ALTER TABLE storefront.order_details ADD COLUMN quantity INT";
 //            Statement statement = conn.createStatement();
 //            statement.execute(alterString);
 
