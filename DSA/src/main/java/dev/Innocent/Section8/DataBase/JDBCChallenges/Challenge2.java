@@ -47,8 +47,8 @@ public class Challenge2 {
 
             String alterString =
                     "ALTER TABLE storefront.order_details ADD COLUMN quantity INT";
-//            Statement statement = conn.createStatement();
-//            statement.execute(alterString);
+            Statement statement = conn.createStatement();
+            statement.execute(alterString);
 
             addOrders(conn, orders);
         } catch (SQLException e) {
